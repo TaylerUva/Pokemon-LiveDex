@@ -10,5 +10,9 @@ namespace LiveDex {
         public MainPage() {
             InitializeComponent();
         }
+
+        void LoadLiveDex(object sender, System.EventArgs e) {
+            Navigation.PushAsync(new LiveDex());
+        }
     }
 }

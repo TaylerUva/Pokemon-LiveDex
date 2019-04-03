@@ -8,7 +8,10 @@ namespace LiveDex {
         public App() {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage()) {
+                BarBackgroundColor = Color.FromHex("990D11"),
+                BarTextColor = Color.White
+            };
         }
 
         protected override void OnStart() {
