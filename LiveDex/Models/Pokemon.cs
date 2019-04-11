@@ -180,19 +180,4 @@ namespace LiveDex.Models {
     public partial class Pokemon {
         public static Pokemon FromJson(string json) => JsonConvert.DeserializeObject<Pokemon>(json, Converter.Settings);
     }
-
-    public static class Serialize {
-        public static string ToJson(this Pokemon self) => JsonConvert.SerializeObject(self, Converter.Settings);
-    }
-
-    internal static class Converter {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters =
-            {
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
-        };
-    }
 }
