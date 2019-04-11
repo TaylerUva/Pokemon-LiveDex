@@ -7,22 +7,19 @@ using LiveDex.Models;
 namespace LiveDex.Models {
     public static class GetPokedex {
 
+        public const int MIN_DEX_NUM = 1;
+        //public const int MAX_DEX_NUM = 807;
+        public const int MAX_DEX_NUM = 100;
+
         private const string END_POINT = "https://pokeapi.co/api/v2/pokemon/";
 
-        private static Pokedex pokedexEntry;
+        private static List<Pokemon> FullPokedex = new List<Pokemon>();
 
-        public static async Task<Pokedex> GetEntryAsync(string id) {
-            // PULL DATA
-            Uri pokeAPIUri = new Uri(END_POINT + id);
+        public static async Task<Pokemon> GetEntryAsync(int id) {
 
-            HttpClient client = new HttpClient();
-
-            HttpResponseMessage response = await client.GetAsync(pokeAPIUri);
-
-            if (response.IsSuccessStatusCode) {
-                // PULL DATA
-                string jsonContent = await response.Content.ReadAsStringAsync();
-                pokedexEntry = Pokedex.FromJson(jsonContent);
+            string jsonContent = await GetJsonContent(END_POINT + id);
+            if (jsonContent != null) {
+                var pokedexEntry = Pokemon.FromJson(jsonContent);
 
                 if (pokedexEntry != null) {
                     pokedexEntry.EncounterData = await GetLocationDataAsync(pokedexEntry.LocationAreaEncounters);
@@ -32,24 +29,34 @@ namespace LiveDex.Models {
             return null;
         }
 
-        public static async Task<List<LocationData>> GetLocationDataAsync(Uri pokemon) {
-            // PULL DATA
-            Uri locationUri = pokemon;
-
-            HttpClient client = new HttpClient();
-
-            HttpResponseMessage response = await client.GetAsync(locationUri);
-
-            if (response.IsSuccessStatusCode) {
-                // PULL DATA
-                string jsonContent = await response.Content.ReadAsStringAsync();
-                var locationData = LocationData.FromJson(jsonContent);
-
+        private static async Task<List<PokemonLocation>> GetLocationDataAsync(string pokemon) {
+            string jsonContent = await GetJsonContent(pokemon);
+            if (jsonContent != null) {
+                var locationData = PokemonLocation.FromJson(jsonContent);
                 if (locationData != null) {
                     return locationData;
                 }
             }
             return null;
         }
+
+        //public static async Task<List<Pokemon>> GetSurfaceData() {
+
+
+        //}
+
+        private static async Task<string> GetJsonContent(string URL) {
+            Uri uri = new Uri(URL);
+
+            HttpClient client = new HttpClient();
+
+            HttpResponseMessage response = await client.GetAsync(uri);
+
+            if (response.IsSuccessStatusCode) {
+                return await response.Content.ReadAsStringAsync();
+            }
+            return null;
+        }
+
     }
 }

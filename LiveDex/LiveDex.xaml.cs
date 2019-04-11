@@ -8,5 +8,10 @@ namespace LiveDex {
         public LiveDex() {
             InitializeComponent();
         }
+
+
+        private void poplutateListView() {
+
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace LiveDex.Models {
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
-    public partial class Pokedex {
+    public partial class Pokemon {
         [JsonProperty("abilities")]
         public List<Ability> Abilities { get; set; }
 
@@ -41,9 +41,9 @@ namespace LiveDex.Models {
         public bool IsDefault { get; set; }
 
         [JsonProperty("location_area_encounters")]
-        public Uri LocationAreaEncounters { get; set; }
+        public string LocationAreaEncounters { get; set; }
 
-        public List<LocationData> EncounterData { get; set; }
+        public List<PokemonLocation> EncounterData { get; set; }
 
         [JsonProperty("moves")]
         public List<Move> Moves { get; set; }
@@ -177,12 +177,12 @@ namespace LiveDex.Models {
         public Species Type { get; set; }
     }
 
-    public partial class Pokedex {
-        public static Pokedex FromJson(string json) => JsonConvert.DeserializeObject<Pokedex>(json, Converter.Settings);
+    public partial class Pokemon {
+        public static Pokemon FromJson(string json) => JsonConvert.DeserializeObject<Pokemon>(json, Converter.Settings);
     }
 
     public static class Serialize {
-        public static string ToJson(this Pokedex self) => JsonConvert.SerializeObject(self, Converter.Settings);
+        public static string ToJson(this Pokemon self) => JsonConvert.SerializeObject(self, Converter.Settings);
     }
 
     internal static class Converter {

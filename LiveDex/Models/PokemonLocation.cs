@@ -14,7 +14,7 @@ namespace LiveDex.Models {
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
-    public partial class LocationData {
+    public partial class PokemonLocation {
         [JsonProperty("location_area")]
         public LocationArea LocationArea { get; set; }
 
@@ -55,7 +55,7 @@ namespace LiveDex.Models {
         public long MinLevel { get; set; }
     }
 
-    public partial class LocationData {
-        public static List<LocationData> FromJson(string json) => JsonConvert.DeserializeObject<List<LocationData>>(json, Converter.Settings);
+    public partial class PokemonLocation {
+        public static List<PokemonLocation> FromJson(string json) => JsonConvert.DeserializeObject<List<PokemonLocation>>(json, Converter.Settings);
     }
 }
