@@ -9,7 +9,7 @@ using Xamarin.Forms;
 namespace LiveDex {
     public partial class MainPage : ContentPage {
 
-        Pokemon pokedexData;
+        Pokedex pokedexData;
 
 
         public MainPage() {
@@ -17,7 +17,8 @@ namespace LiveDex {
         }
 
         async void LoadLiveDex(object sender, System.EventArgs e) {
-            pokedexData = await PokeData.GetPokemon(1);
+            //pokedexData = await PokeData.GetPokemon(1);
+            pokedexData = await PokeData.GetSurfaceData();
             await Navigation.PushAsync(new LiveDex());
         }
     }

@@ -21,7 +21,7 @@ namespace LiveDex.Models {
                 var pokedexEntry = Pokemon.FromJson(jsonContent);
 
                 if (pokedexEntry != null) {
-                    pokedexEntry.EncounterData = await GetPokemonLocation(pokedexEntry.LocationAreaEncounters);
+                    pokedexEntry.EncounterData = await GetPokemonLocation(pokedexEntry.LocationAreaEncounters.ToString());
                     return pokedexEntry;
                 }
             }
@@ -43,7 +43,11 @@ namespace LiveDex.Models {
             string jsonContent = await GetJsonContent(END_POINT + "?limit=" + MAX_DEX_NUM);
             if (jsonContent != null) {
                 pokedex = Pokedex.FromJson(jsonContent);
+                if (pokedex != null) {
+                    return pokedex;
+                }
             }
+            return null;
         }
 
         private static async Task<string> GetJsonContent(string URL) {

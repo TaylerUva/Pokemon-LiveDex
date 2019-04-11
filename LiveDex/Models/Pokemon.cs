@@ -41,7 +41,7 @@ namespace LiveDex.Models {
         public bool IsDefault { get; set; }
 
         [JsonProperty("location_area_encounters")]
-        public string LocationAreaEncounters { get; set; }
+        public Uri LocationAreaEncounters { get; set; }
 
         public List<PokemonLocation> EncounterData { get; set; }
 

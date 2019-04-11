@@ -25,15 +25,21 @@ namespace LiveDex.Models {
         public string Name { get; set; }
 
         [JsonProperty("url")]
-        public Uri Url { get; set; }
+        private Uri EntryUrl { get; set; }
 
         public int id {
-            //get { return Url.Segments[6]; }
+            get {
+                string idString = EntryUrl.Segments[4];
+                idString = idString.Replace("/", "");
+                return Int32.Parse(idString);
+            }
             set { }
         }
 
         public string imgURL {
-            get { return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + Url.Segments[6]; }
+            get {
+                return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + id + ".png";
+            }
             set { }
         }
     }
