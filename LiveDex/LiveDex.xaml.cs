@@ -13,8 +13,10 @@ namespace LiveDex {
 
 
         private async void PoplutateListView() {
+            ToCatchList.IsRefreshing = true;
             var pokedex = await PokeData.GetPokedexList();
             ToCatchList.ItemsSource = pokedex.Entries;
+            ToCatchList.IsRefreshing = false;
         }
     }
 }
