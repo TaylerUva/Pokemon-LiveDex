@@ -27,7 +27,7 @@ namespace LiveDex.Models {
         [JsonProperty("url")]
         private Uri EntryUrl { get; set; }
 
-        public int id {
+        public int DexNum {
             get {
                 string idString = EntryUrl.Segments[4];
                 idString = idString.Replace("/", "");
@@ -36,9 +36,9 @@ namespace LiveDex.Models {
             set { }
         }
 
-        public string imgURL {
+        public string Sprite {
             get {
-                return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + id + ".png";
+                return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + DexNum + ".png";
             }
             set { }
         }

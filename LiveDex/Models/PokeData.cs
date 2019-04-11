@@ -39,7 +39,7 @@ namespace LiveDex.Models {
             return null;
         }
 
-        public static async Task<Pokedex> GetSurfaceData() {
+        public static async Task<Pokedex> GetPokedexList() {
             string jsonContent = await GetJsonContent(END_POINT + "?limit=" + MAX_DEX_NUM);
             if (jsonContent != null) {
                 pokedex = Pokedex.FromJson(jsonContent);
