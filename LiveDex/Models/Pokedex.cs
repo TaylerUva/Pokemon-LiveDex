@@ -22,7 +22,14 @@ namespace LiveDex.Models {
 
     public partial class Entry {
         [JsonProperty("name")]
-        public string Name { get; set; }
+        private string lowercaseName { get; set; }
+
+        public string Name {
+            get {
+                return char.ToUpper(lowercaseName[0]) + lowercaseName.Substring(1);
+            }
+            set { }
+        }
 
         [JsonProperty("url")]
         private Uri EntryUrl { get; set; }
@@ -38,7 +45,7 @@ namespace LiveDex.Models {
 
         public string Sprite {
             get {
-                return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + DexNum + ".png";
+                return "https://img.pokemondb.net/sprites/sun-moon/icon/" + lowercaseName + ".png";
             }
             set { }
         }
