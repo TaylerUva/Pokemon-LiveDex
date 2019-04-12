@@ -45,7 +45,8 @@ namespace LiveDex.Models {
 
         public string Sprite {
             get {
-                return "https://img.pokemondb.net/sprites/sun-moon/icon/" + lowercaseName + ".png";
+                return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + DexNum + ".png";
+                //return "https://img.pokemondb.net/sprites/sun-moon/icon/" + Name.ToLower() + ".png";
             }
             set { }
         }
