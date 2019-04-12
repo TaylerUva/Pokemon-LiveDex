@@ -9,7 +9,7 @@
 namespace LiveDex.Models {
     using System;
     using System.Collections.Generic;
-
+    using System.Collections.ObjectModel;
     using System.Globalization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -17,7 +17,7 @@ namespace LiveDex.Models {
     public partial class Pokedex {
 
         [JsonProperty("results")]
-        public List<Entry> Entries { get; set; }
+        public ObservableCollection<Entry> Entries { get; set; }
     }
 
     public partial class Entry {
