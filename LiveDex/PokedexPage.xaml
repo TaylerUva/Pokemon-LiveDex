@@ -5,8 +5,8 @@
     BackgroundColor      = "#990D11"
     xmlns:ios            = "clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea = "true"
-    x:Class              = "LiveDex.LiveDex"
-    Title                = "LiveDex Tracker">
+    x:Class              = "LiveDex.PokedexPage"
+    Title                = "Pokedex">
     <StackLayout>
         <Label
             x:Name                  = "Caught"

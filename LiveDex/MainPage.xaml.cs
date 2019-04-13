@@ -14,9 +14,8 @@ namespace LiveDex {
             InitializeComponent();
         }
 
-        async void LoadLiveDex(object sender, System.EventArgs e) {
-            //pokedexData = await PokeData.GetPokemon(1);
-            await Navigation.PushAsync(new LiveDex());
+        async void LoadPokedex(object sender, System.EventArgs e) {
+            await Navigation.PushAsync(new PokedexPage());
         }
     }
 }

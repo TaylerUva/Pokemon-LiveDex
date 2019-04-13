@@ -5,8 +5,8 @@ using LiveDex.Models;
 using Xamarin.Forms;
 
 namespace LiveDex {
-    public partial class LiveDex : ContentPage {
-        public LiveDex() {
+    public partial class PokedexPage : ContentPage {
+        public PokedexPage() {
             InitializeComponent();
             PoplutateListView();
         }

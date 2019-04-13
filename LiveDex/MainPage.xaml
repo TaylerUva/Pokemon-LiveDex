@@ -9,10 +9,10 @@ ios:Page.UseSafeArea="true"
     <StackLayout>
         <!-- Place new controls here -->
         <Label
-            Text              = "Welcome to Xamarin.Forms!"
+            Text              = "Welcome to the ultimate pokedex"
             HorizontalOptions = "Center" />
         <Button
-            Text    = "LiveDex"
-            Clicked = "LoadLiveDex" />
+            Text    = "Pokedex"
+            Clicked = "LoadPokedex" />
     </StackLayout>
 </ContentPage>
