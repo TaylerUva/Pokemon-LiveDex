@@ -61,8 +61,15 @@ namespace LiveDex.Models {
         }
 
         public bool Obtained {
-            get { return PokeData.Caught[index]; }
-            set { PokeData.Caught[index] = value; }
+            get {
+                App.CaughtDatabaseInstance.GetCaughtStatus(index);
+                return PokeData.Caught[index];
+            }
+            set {
+                var pokemon = new CaughtModel { ID = index, Obtained = value };
+                App.CaughtDatabaseInstance.SetCaughtStatus(pokemon);
+                PokeData.Caught[index] = value;
+            }
         }
     }
 
