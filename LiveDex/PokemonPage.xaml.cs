@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using LiveDex.Models;
+using Plugin.Connectivity;
 using Xamarin.Forms;
 
 namespace LiveDex {
@@ -18,11 +19,13 @@ namespace LiveDex {
         }
 
         private async Task PullPokemon() {
-            pokemon = await PokeData.GetPokemon(dexEntry.DexNum);
-            pkmCaught.IsToggled = dexEntry.Obtained;
-            pkmSprite.Source = dexEntry.Sprite;
-            string type1 = pokemon.Types[0].Type.Name;
-            BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
+            if (CrossConnectivity.Current.IsConnected) {
+                pokemon = await PokeData.GetPokemon(dexEntry.DexNum);
+                pkmCaught.IsToggled = dexEntry.Obtained;
+                pkmSprite.Source = dexEntry.Sprite;
+                string type1 = pokemon.Types[0].Type.Name;
+                BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
+            } else await DisplayAlert("No Internet", "Please connect to the internet", "Close");
         }
 
         void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e) {

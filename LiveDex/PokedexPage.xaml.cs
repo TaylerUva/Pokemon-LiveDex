@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using LiveDex.Models;
-
+using Plugin.Connectivity;
 using Xamarin.Forms;
 
 namespace LiveDex {
@@ -16,9 +16,11 @@ namespace LiveDex {
         }
 
         private async Task PullPokedex() {
-            pokedex = await PokeData.GetPokedexList();
-            PokedexList.ItemsSource = pokedex.DexEntries;
-            PokedexList.IsRefreshing = false;
+            if (CrossConnectivity.Current.IsConnected) {
+                pokedex = await PokeData.GetPokedexList();
+                PokedexList.ItemsSource = pokedex.DexEntries;
+                PokedexList.IsRefreshing = false;
+            } else await DisplayAlert("No Internet", "Please connect to the internet", "Close");
         }
 
         async void PokemonTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {
