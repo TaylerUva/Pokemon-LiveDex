@@ -64,6 +64,8 @@ namespace LiveDex.Models {
         [JsonProperty("species")]
         public Species Species { get; set; }
 
+        //public List
+
         [JsonProperty("sprites")]
         public Sprites Sprites { get; set; }
 

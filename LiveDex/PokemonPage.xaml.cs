@@ -11,7 +11,9 @@ namespace LiveDex {
         public PokemonPage(DexEntry pkm) {
             InitializeComponent();
             Title = pkm.Name;
+            loadingIcon.IsRunning = true;
             PullPokemon(pkm);
+            loadingIcon.IsRunning = false;
         }
 
         private async void PullPokemon(DexEntry pkm) {

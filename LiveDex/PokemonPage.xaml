@@ -5,6 +5,7 @@
 	x:Class = "LiveDex.PokemonPage">
 	<ContentPage.Content>
         <StackLayout>
+            <ActivityIndicator x:Name="loadingIcon"/>
             <Image x:Name="pkmSprite"/>
             <Label x:Name="pkmDescription"/>
         </StackLayout>
