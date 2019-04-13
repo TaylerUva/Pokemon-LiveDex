@@ -16,7 +16,6 @@ namespace LiveDex {
         }
 
         private async Task PullPokedex() {
-            PokedexList.IsRefreshing = true;
             pokedex = await PokeData.GetPokedexList();
             PokedexList.ItemsSource = pokedex.DexEntries;
             PokedexList.IsRefreshing = false;

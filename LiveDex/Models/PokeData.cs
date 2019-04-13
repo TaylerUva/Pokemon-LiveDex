@@ -18,6 +18,8 @@ namespace LiveDex.Models {
 
         private static Dictionary<int, bool> pkmCaught;
 
+        public static List<string> Names;
+
         public static Dictionary<int, bool> CaughtPokemonList() {
             if (pkmCaught == null) {
                 pkmCaught = new Dictionary<int, bool>();
@@ -112,6 +114,7 @@ namespace LiveDex.Models {
             string jsonContent = await GetJsonContent(POKEAPI_END_POINT + "?limit=" + MAX_DEX_NUM);
             if (jsonContent != null) {
                 pokedex = Pokedex.FromJson(jsonContent);
+                Names = await GetPokemonNames();
                 if (pokedex != null) {
                     return pokedex;
                 }

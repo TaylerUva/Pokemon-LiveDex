@@ -58,8 +58,11 @@ namespace LiveDex.Models {
         [JsonProperty("name")]
         private string lowercaseName { get; set; }
 
+
+        // ADDED
         public string Name {
             get {
+                if (Id <= PokeData.Names.Count) return PokeData.Names[Id - 1];
                 return char.ToUpper(lowercaseName[0]) + lowercaseName.Substring(1);
             }
             set { }
