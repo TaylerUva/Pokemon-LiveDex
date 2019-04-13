@@ -32,7 +32,7 @@ namespace LiveDex.Models {
 
         public async void GetCaughtStatus(int id) {
             var pokemon = await GetItemAsync(id);
-            PokeData.Caught[id] = pokemon.Obtained;
+            PokeData.Caught[id].Obtained = pokemon.Obtained;
         }
 
         public Task<List<CaughtModel>> GetAllPokemonCaught() {

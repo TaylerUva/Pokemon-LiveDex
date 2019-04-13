@@ -19,7 +19,7 @@ namespace LiveDex.Models {
 
         public static string[] Names;
 
-        public static bool[] Caught = new bool[MAX_DEX_NUM];
+        public static CaughtModel[] Caught;
 
         public static async Task<Pokemon> GetPokemon(int id) {
 
@@ -63,6 +63,7 @@ namespace LiveDex.Models {
             if (jsonContent != null) {
                 pokedex = Pokedex.FromJson(jsonContent);
                 Names = await GetPokemonNames();
+                Caught = (await App.CaughtDatabaseInstance.GetAllPokemonCaught()).ToArray();
                 if (pokedex != null) {
                     return pokedex;
                 }
