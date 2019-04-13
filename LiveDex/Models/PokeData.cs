@@ -65,6 +65,7 @@ namespace LiveDex.Models {
 
                 if (pokedexEntry != null) {
                     pokedexEntry.EncounterData = await GetPokemonLocation(pokedexEntry.LocationAreaEncounters.ToString());
+                    //pokedexEntry.SpeciesData = await GetPokemonSpecies(pokedexEntry.Species.Url.ToString());
                     return pokedexEntry;
                 }
             }
@@ -77,6 +78,17 @@ namespace LiveDex.Models {
                 var locationData = PokemonLocation.FromJson(jsonContent);
                 if (locationData != null) {
                     return locationData;
+                }
+            }
+            return null;
+        }
+
+        private static async Task<PokemonSpecies> GetPokemonSpecies(string pokemon) {
+            string jsonContent = await GetJsonContent(pokemon);
+            if (jsonContent != null) {
+                var speciesData = PokemonSpecies.FromJson(jsonContent);
+                if (speciesData != null) {
+                    return speciesData;
                 }
             }
             return null;

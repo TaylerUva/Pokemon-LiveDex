@@ -43,6 +43,7 @@ namespace LiveDex.Models {
         [JsonProperty("location_area_encounters")]
         public Uri LocationAreaEncounters { get; set; }
 
+        // ADDED
         public List<PokemonLocation> EncounterData { get; set; }
 
         [JsonProperty("moves")]
@@ -64,7 +65,8 @@ namespace LiveDex.Models {
         [JsonProperty("species")]
         public NameURL Species { get; set; }
 
-        //public List
+        // ADDED
+        public PokemonSpecies SpeciesData { get; set; }
 
         [JsonProperty("sprites")]
         public Sprites Sprites { get; set; }
