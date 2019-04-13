@@ -16,6 +16,9 @@ namespace LiveDex.Models {
     using Newtonsoft.Json.Converters;
 
     public partial class Pokemon {
+
+        public bool caught { get; set; }
+
         [JsonProperty("abilities")]
         public List<Ability> Abilities { get; set; }
 
@@ -35,7 +38,7 @@ namespace LiveDex.Models {
         public List<HeldItem> HeldItems { get; set; }
 
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("is_default")]
         public bool IsDefault { get; set; }

@@ -20,6 +20,7 @@ namespace LiveDex {
             pokemon = await PokeData.GetPokemon(pkm.DexNum);
             pkmSprite.Source = pkm.Sprite;
             string type1 = pokemon.Types[0].Type.Name;
+            pkmCaught.IsToggled = pokemon.caught;
             BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
         }
     }
