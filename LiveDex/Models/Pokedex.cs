@@ -50,6 +50,11 @@ namespace LiveDex.Models {
             }
             set { }
         }
+
+        public bool Obtained {
+            get { return PokeData.CaughtPokemonList()[DexNum]; }
+            set { PokeData.CaughtPokemonList()[DexNum] = value; }
+        }
     }
 
     public partial class Pokedex {

@@ -17,7 +17,10 @@ namespace LiveDex.Models {
 
     public partial class Pokemon {
 
-        public bool caught { get; set; }
+        public bool Obtained {
+            get { return PokeData.CaughtPokemonList()[Id]; }
+            set { PokeData.CaughtPokemonList()[Id] = value; }
+        }
 
         [JsonProperty("abilities")]
         public List<Ability> Abilities { get; set; }

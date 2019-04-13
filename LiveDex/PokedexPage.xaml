@@ -17,6 +17,7 @@
             x:Name          = "PokedexList"
             BackgroundColor = "#34393D"
             ItemTapped="PokemonTapped"
+            SelectionMode="None"
             SeparatorColor  = "White">
             <ListView.ItemTemplate>
                 <DataTemplate>

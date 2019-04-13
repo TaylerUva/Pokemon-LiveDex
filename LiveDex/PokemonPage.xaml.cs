@@ -17,20 +17,20 @@ namespace LiveDex {
             dexEntry = pkm;
         }
 
-        private async Task PullPokemon(DexEntry pkm) {
-            pokemon = await PokeData.GetPokemon(pkm.DexNum);
-            pkmCaught.IsToggled = pokemon.caught;
-            pkmSprite.Source = pkm.Sprite;
+        private async Task PullPokemon() {
+            pokemon = await PokeData.GetPokemon(dexEntry.DexNum);
+            pkmCaught.IsToggled = dexEntry.Obtained;
+            pkmSprite.Source = dexEntry.Sprite;
             string type1 = pokemon.Types[0].Type.Name;
             BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
         }
 
         void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e) {
-            PokeData.CaughtPokemonList()[pokemon.Id] = e.Value;
+            dexEntry.Obtained = e.Value;
         }
 
         async void Handle_Appearing(object sender, System.EventArgs e) {
-            await PullPokemon(dexEntry);
+            await PullPokemon();
             loadingIcon.IsRunning = false;
         }
     }

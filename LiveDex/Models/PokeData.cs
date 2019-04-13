@@ -78,7 +78,6 @@ namespace LiveDex.Models {
                 if (pokedexEntry != null) {
                     pokedexEntry.EncounterData = await GetPokemonLocation(pokedexEntry.LocationAreaEncounters.ToString());
                     //pokedexEntry.SpeciesData = await GetPokemonSpecies(pokedexEntry.Species.Url.ToString());
-                    pokedexEntry.caught = CaughtPokemonList()[pokedexEntry.Id];
                     return pokedexEntry;
                 }
             }
