@@ -13,6 +13,7 @@ namespace LiveDex.Models {
             caughtDatabase.CreateTableAsync<CaughtModel>().Wait();
         }
 
+        // TODO: Fix it to allow more pokemon without breaking current database
         public async void PopulateDatabase() {
             if ((await GetAllPokemonCaught()).Count != PokeData.MAX_DEX_NUM) {
                 for (int id = PokeData.MIN_DEX_NUM; id < PokeData.MAX_DEX_NUM; id++) {
