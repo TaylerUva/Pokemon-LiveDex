@@ -17,10 +17,10 @@ namespace LiveDex.Models {
     public partial class Pokedex {
 
         [JsonProperty("results")]
-        public ObservableCollection<Entry> Entries { get; set; }
+        public ObservableCollection<DexEntry> DexEntries { get; set; }
     }
 
-    public partial class Entry {
+    public partial class DexEntry {
         [JsonProperty("name")]
         private string lowercaseName { get; set; }
 

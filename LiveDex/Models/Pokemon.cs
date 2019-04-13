@@ -49,7 +49,14 @@ namespace LiveDex.Models {
         public List<Move> Moves { get; set; }
 
         [JsonProperty("name")]
-        public string Name { get; set; }
+        private string lowercaseName { get; set; }
+
+        public string Name {
+            get {
+                return char.ToUpper(lowercaseName[0]) + lowercaseName.Substring(1);
+            }
+            set { }
+        }
 
         [JsonProperty("order")]
         public long Order { get; set; }

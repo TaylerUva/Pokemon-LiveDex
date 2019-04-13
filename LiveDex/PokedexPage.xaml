@@ -14,8 +14,9 @@
             TextColor               = "White"
             FontAttributes          = "Bold" />
         <ListView
-            x:Name          = "ToCatchList"
+            x:Name          = "PokedexList"
             BackgroundColor = "#34393D"
+            ItemTapped="PokemonTapped"
             SeparatorColor  = "White">
             <ListView.ItemTemplate>
                 <DataTemplate>
