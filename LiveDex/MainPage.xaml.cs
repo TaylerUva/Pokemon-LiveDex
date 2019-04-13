@@ -15,7 +15,7 @@ namespace LiveDex {
             InitializeComponent();
         }
 
-        async void LoadPokedex(object sender, System.EventArgs e) {
+        async void LoadPokedexPage(object sender, System.EventArgs e) {
             if (await HasInternet()) {
                 await Navigation.PushAsync(new PokedexPage());
             }
@@ -24,6 +24,11 @@ namespace LiveDex {
         async void LoadCaughtPage(object sender, System.EventArgs e) {
             if (await HasInternet()) {
                 await Navigation.PushAsync(new CaughtPage());
+            }
+        }
+        async void LoadMissingPage(object sender, System.EventArgs e) {
+            if (await HasInternet()) {
+                await Navigation.PushAsync(new MissingPage());
             }
         }
 
