@@ -6,9 +6,7 @@ using SQLite;
 namespace LiveDex.Models {
     public class CaughtDatabase {
 
-        // todo
-        //public static bool populated;
-        //public static int pullCount;
+        public static bool populated;
 
         readonly SQLiteAsyncConnection caughtDatabase;
 
@@ -25,7 +23,6 @@ namespace LiveDex.Models {
                     var pokemon = new CaughtModel { ID = id, Obtained = false };
                     await caughtDatabase.InsertAsync(pokemon);
                 }
-                pullCount++;
             }
             populated = true;
         }
