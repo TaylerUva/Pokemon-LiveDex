@@ -25,11 +25,16 @@ namespace LiveDex {
         public App() {
             InitializeComponent();
             CaughtDatabaseInstance.PopulateDatabase();
+            test();
 
             MainPage = new NavigationPage(new MainPage()) {
                 BarBackgroundColor = Color.FromHex("990D11"),
                 BarTextColor = Color.White
             };
+        }
+
+        public async void test() {
+            var list = await CaughtDatabaseInstance.GetAllPokemonCaught();
         }
 
         protected override void OnStart() {
