@@ -14,16 +14,16 @@ namespace LiveDex.Models {
 
         private static Pokedex pokedex;
 
-        private static Dictionary<int, bool> caughtPokemon = null;
+        private static Dictionary<int, bool> pkmCaught = null;
 
-        private static Dictionary<int, bool> IsCaughtPokemon() {
-            if (caughtPokemon == null) {
-                caughtPokemon = new Dictionary<int, bool>();
+        public static Dictionary<int, bool> CaughtPokemonList() {
+            if (pkmCaught == null) {
+                pkmCaught = new Dictionary<int, bool>();
                 for (int id = MIN_DEX_NUM; id <= MAX_DEX_NUM; id++) {
-                    caughtPokemon.Add(id, false);
+                    pkmCaught.Add(id, false);
                 }
             }
-            return caughtPokemon;
+            return pkmCaught;
         }
 
         public static string GetTypeColor(string type) {
@@ -78,7 +78,7 @@ namespace LiveDex.Models {
                 if (pokedexEntry != null) {
                     pokedexEntry.EncounterData = await GetPokemonLocation(pokedexEntry.LocationAreaEncounters.ToString());
                     //pokedexEntry.SpeciesData = await GetPokemonSpecies(pokedexEntry.Species.Url.ToString());
-                    pokedexEntry.caught = IsCaughtPokemon()[pokedexEntry.Id];
+                    pokedexEntry.caught = CaughtPokemonList()[pokedexEntry.Id];
                     return pokedexEntry;
                 }
             }

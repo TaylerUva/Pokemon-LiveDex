@@ -10,7 +10,8 @@
             <Image
                 x:Name = "pkmSprite" />
             <Switch
-                x:Name          = "pkmCaught"/>
+                x:Name          = "pkmCaught"
+            Toggled="Handle_Toggled"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

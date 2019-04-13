@@ -23,5 +23,9 @@ namespace LiveDex {
             pkmCaught.IsToggled = pokemon.caught;
             BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
         }
+
+        void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e) {
+            ;
+        }
     }
 }
