@@ -13,6 +13,7 @@
             x:Name                  = "DexCount"
             HorizontalTextAlignment = "Center"
             TextColor               = "White"
+            Text                    = "Loading..."
             FontAttributes          = "Bold" />
         <ListView
             x:Name          = "PokedexList"
