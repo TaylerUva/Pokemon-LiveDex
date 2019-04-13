@@ -5,12 +5,12 @@
     BackgroundColor      = "#990D11"
     xmlns:ios            = "clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea = "true"
-    x:Class              = "LiveDex.PokedexPage"
+    x:Class              = "LiveDex.CaughtPage"
     Appearing            = "Handle_Appearing"
-    Title                = "Pokedex">
+    Title                = "Caught">
     <StackLayout>
         <Label
-            x:Name                  = "DexCount"
+            x:Name                  = "CaughtCount"
             HorizontalTextAlignment = "Center"
             TextColor               = "White"
             FontAttributes          = "Bold" />

@@ -14,5 +14,8 @@ ios:Page.UseSafeArea="true"
         <Button
             Text    = "Pokedex"
             Clicked = "LoadPokedex" />
+        <Button
+            Text    = "Caught Pokemon"
+        Clicked="LoadCaughtPage"/>
     </StackLayout>
 </ContentPage>

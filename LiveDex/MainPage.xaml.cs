@@ -21,6 +21,12 @@ namespace LiveDex {
             }
         }
 
+        async void LoadCaughtPage(object sender, System.EventArgs e) {
+            if (await HasInternet()) {
+                await Navigation.PushAsync(new CaughtPage());
+            }
+        }
+
         private async Task<bool> HasInternet() {
             if (!CrossConnectivity.Current.IsConnected) {
                 await DisplayAlert("No Internet Connection", "Our data is pulled from the web, please connect to the internet", "Close");

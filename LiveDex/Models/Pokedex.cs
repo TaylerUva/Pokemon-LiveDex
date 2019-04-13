@@ -17,7 +17,7 @@ namespace LiveDex.Models {
     public partial class Pokedex {
 
         [JsonProperty("results")]
-        public ObservableCollection<DexEntry> DexEntries { get; set; }
+        public List<DexEntry> DexEntries { get; set; }
     }
 
     public partial class DexEntry {

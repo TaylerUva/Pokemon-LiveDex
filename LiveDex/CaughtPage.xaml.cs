@@ -6,19 +6,24 @@ using Plugin.Connectivity;
 using Xamarin.Forms;
 
 namespace LiveDex {
-    public partial class PokedexPage : ContentPage {
+    public partial class CaughtPage : ContentPage {
 
-        public PokedexPage() {
+        public CaughtPage() {
             InitializeComponent();
             PokedexList.IsRefreshing = true;
         }
 
         private async Task PullPokedex() {
             if (await HasInternet()) {
-                PokedexList.ItemsSource = (await PokeData.GetPokedexList()).DexEntries;
-                DexCount.Text = "Dex Count: " + PokeData.MAX_DEX_NUM;
+                var subdex = await GetSubDex();
+                CaughtCount.Text = "Caught: " + subdex.Count + " of " + PokeData.MAX_DEX_NUM;
+                PokedexList.ItemsSource = subdex;
                 PokedexList.IsRefreshing = false;
             }
+        }
+
+        private async Task<List<DexEntry>> GetSubDex() {
+            return (await PokeData.GetPokedexList()).DexEntries.FindAll((obj) => obj.Obtained.Equals(true));
         }
 
         async void PokemonTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {
