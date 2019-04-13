@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using LiveDex.Models;
 using Xamarin.Forms;
 
@@ -7,16 +8,16 @@ namespace LiveDex {
     public partial class PokemonPage : ContentPage {
 
         Pokemon pokemon;
+        DexEntry dexEntry;
 
         public PokemonPage(DexEntry pkm) {
             InitializeComponent();
-            Title = pkm.Name;
             loadingIcon.IsRunning = true;
-            PullPokemon(pkm);
-            loadingIcon.IsRunning = false;
+            Title = pkm.Name;
+            dexEntry = pkm;
         }
 
-        private async void PullPokemon(DexEntry pkm) {
+        private async Task PullPokemon(DexEntry pkm) {
             pokemon = await PokeData.GetPokemon(pkm.DexNum);
             pkmCaught.IsToggled = pokemon.caught;
             pkmSprite.Source = pkm.Sprite;
@@ -26,6 +27,11 @@ namespace LiveDex {
 
         void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e) {
             PokeData.CaughtPokemonList()[pokemon.Id] = e.Value;
+        }
+
+        async void Handle_Appearing(object sender, System.EventArgs e) {
+            await PullPokemon(dexEntry);
+            loadingIcon.IsRunning = false;
         }
     }
 }
