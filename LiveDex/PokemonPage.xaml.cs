@@ -18,14 +18,14 @@ namespace LiveDex {
 
         private async void PullPokemon(DexEntry pkm) {
             pokemon = await PokeData.GetPokemon(pkm.DexNum);
+            pkmCaught.IsToggled = pokemon.caught;
             pkmSprite.Source = pkm.Sprite;
             string type1 = pokemon.Types[0].Type.Name;
-            pkmCaught.IsToggled = pokemon.caught;
             BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
         }
 
         void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e) {
-            ;
+            PokeData.CaughtPokemonList()[pokemon.Id] = e.Value;
         }
     }
 }

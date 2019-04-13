@@ -14,7 +14,7 @@ namespace LiveDex.Models {
 
         private static Pokedex pokedex;
 
-        private static Dictionary<int, bool> pkmCaught = null;
+        private static Dictionary<int, bool> pkmCaught;
 
         public static Dictionary<int, bool> CaughtPokemonList() {
             if (pkmCaught == null) {
