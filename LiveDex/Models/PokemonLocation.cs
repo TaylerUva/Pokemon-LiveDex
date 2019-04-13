@@ -16,18 +16,10 @@ namespace LiveDex.Models {
 
     public partial class PokemonLocation {
         [JsonProperty("location_area")]
-        public LocationArea LocationArea { get; set; }
+        public NameURL LocationArea { get; set; }
 
         [JsonProperty("version_details")]
         public List<VersionDetail> VersionDetails { get; set; }
-    }
-
-    public partial class LocationArea {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("url")]
-        public Uri Url { get; set; }
     }
 
     public partial class VersionDetail {
@@ -43,13 +35,13 @@ namespace LiveDex.Models {
         public long Chance { get; set; }
 
         [JsonProperty("condition_values")]
-        public List<LocationArea> ConditionValues { get; set; }
+        public List<NameURL> ConditionValues { get; set; }
 
         [JsonProperty("max_level")]
         public long MaxLevel { get; set; }
 
         [JsonProperty("method")]
-        public LocationArea Method { get; set; }
+        public NameURL Method { get; set; }
 
         [JsonProperty("min_level")]
         public long MinLevel { get; set; }
