@@ -7,15 +7,17 @@ using Xamarin.Forms;
 
 namespace LiveDex {
     public partial class PokedexPage : ContentPage {
+
+        static Pokedex pokedex;
+
         public PokedexPage() {
             InitializeComponent();
-            PullPokedex();
+            PokedexList.IsRefreshing = true;
         }
 
-
-        private async void PullPokedex() {
+        private async Task PullPokedex() {
             PokedexList.IsRefreshing = true;
-            var pokedex = await PokeData.GetPokedexList();
+            pokedex = await PokeData.GetPokedexList();
             PokedexList.ItemsSource = pokedex.DexEntries;
             PokedexList.IsRefreshing = false;
         }
@@ -23,6 +25,10 @@ namespace LiveDex {
         async void PokemonTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {
             var pokemon = e.Item as DexEntry;
             await Navigation.PushAsync(new PokemonPage(pokemon));
+        }
+
+        async void Handle_Appearing(object sender, System.EventArgs e) {
+            await PullPokedex();
         }
     }
 }

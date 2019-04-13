@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using LiveDex.Models;
+using Newtonsoft.Json;
 
 namespace LiveDex.Models {
     public static class PokeData {
@@ -10,7 +11,8 @@ namespace LiveDex.Models {
         public const int MIN_DEX_NUM = 1;
         public const int MAX_DEX_NUM = 807;
 
-        private const string END_POINT = "https://pokeapi.co/api/v2/pokemon/";
+        private const string POKEAPI_END_POINT = "https://pokeapi.co/api/v2/pokemon/";
+        private const string POKENAMES_END_POINT = "https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/en.json";
 
         private static Pokedex pokedex;
 
@@ -71,7 +73,7 @@ namespace LiveDex.Models {
 
         public static async Task<Pokemon> GetPokemon(int id) {
 
-            string jsonContent = await GetJsonContent(END_POINT + id);
+            string jsonContent = await GetJsonContent(POKEAPI_END_POINT + id);
             if (jsonContent != null) {
                 var pokedexEntry = Pokemon.FromJson(jsonContent);
 
@@ -107,11 +109,22 @@ namespace LiveDex.Models {
         }
 
         public static async Task<Pokedex> GetPokedexList() {
-            string jsonContent = await GetJsonContent(END_POINT + "?limit=" + MAX_DEX_NUM);
+            string jsonContent = await GetJsonContent(POKEAPI_END_POINT + "?limit=" + MAX_DEX_NUM);
             if (jsonContent != null) {
                 pokedex = Pokedex.FromJson(jsonContent);
                 if (pokedex != null) {
                     return pokedex;
+                }
+            }
+            return null;
+        }
+
+        private static async Task<List<string>> GetPokemonNames() {
+            string jsonContent = await GetJsonContent(POKENAMES_END_POINT);
+            if (jsonContent != null) {
+                var names = JsonConvert.DeserializeObject<List<string>>(jsonContent);
+                if (pokedex != null) {
+                    return names;
                 }
             }
             return null;

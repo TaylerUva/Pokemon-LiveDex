@@ -9,7 +9,8 @@
             VerticalOptions   = "CenterAndExpand"
             HorizontalOptions = "CenterAndExpand">
             <ActivityIndicator
-                x:Name = "loadingIcon" />
+                x:Name = "loadingIcon"
+                Color  = "Red" />
             <Image
                 x:Name = "pkmSprite" />
             <Switch

@@ -30,6 +30,7 @@ namespace LiveDex {
         }
 
         async void Handle_Appearing(object sender, System.EventArgs e) {
+            loadingIcon.IsRunning = true;
             await PullPokemon();
             loadingIcon.IsRunning = false;
         }
