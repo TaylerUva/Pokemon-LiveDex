@@ -18,8 +18,8 @@ namespace LiveDex.Models {
     public partial class Pokemon {
 
         public bool Obtained {
-            get { return PokeData.CaughtPokemonList()[Id]; }
-            set { PokeData.CaughtPokemonList()[Id] = value; }
+            get { return PokeData.Caught[index]; }
+            set { PokeData.Caught[index] = value; }
         }
 
         [JsonProperty("abilities")]
@@ -41,7 +41,13 @@ namespace LiveDex.Models {
         public List<HeldItem> HeldItems { get; set; }
 
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int DexNum { get; set; }
+        public int index {
+            get {
+                return DexNum - 1;
+            }
+            set { }
+        }
 
         [JsonProperty("is_default")]
         public bool IsDefault { get; set; }
@@ -49,7 +55,6 @@ namespace LiveDex.Models {
         [JsonProperty("location_area_encounters")]
         public Uri LocationAreaEncounters { get; set; }
 
-        // ADDED
         public List<PokemonLocation> EncounterData { get; set; }
 
         [JsonProperty("moves")]
@@ -58,11 +63,9 @@ namespace LiveDex.Models {
         [JsonProperty("name")]
         private string lowercaseName { get; set; }
 
-
-        // ADDED
         public string Name {
             get {
-                if (Id <= PokeData.Names.Count) return PokeData.Names[Id - 1];
+                if (DexNum <= PokeData.Names.Length) return PokeData.Names[index];
                 return char.ToUpper(lowercaseName[0]) + lowercaseName.Substring(1);
             }
             set { }
@@ -74,7 +77,6 @@ namespace LiveDex.Models {
         [JsonProperty("species")]
         public NameURL Species { get; set; }
 
-        // ADDED
         public PokemonSpecies SpeciesData { get; set; }
 
         [JsonProperty("sprites")]

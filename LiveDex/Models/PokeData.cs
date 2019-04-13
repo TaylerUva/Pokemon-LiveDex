@@ -16,19 +16,9 @@ namespace LiveDex.Models {
 
         private static Pokedex pokedex;
 
-        private static Dictionary<int, bool> pkmCaught;
+        public static string[] Names;
 
-        public static List<string> Names;
-
-        public static Dictionary<int, bool> CaughtPokemonList() {
-            if (pkmCaught == null) {
-                pkmCaught = new Dictionary<int, bool>();
-                for (int id = MIN_DEX_NUM; id <= MAX_DEX_NUM; id++) {
-                    pkmCaught.Add(id, false);
-                }
-            }
-            return pkmCaught;
-        }
+        public static bool[] Caught = new bool[MAX_DEX_NUM];
 
         public static string GetTypeColor(string type) {
             switch (type) {
@@ -122,12 +112,12 @@ namespace LiveDex.Models {
             return null;
         }
 
-        private static async Task<List<string>> GetPokemonNames() {
+        private static async Task<string[]> GetPokemonNames() {
             string jsonContent = await GetJsonContent(POKENAMES_END_POINT);
             if (jsonContent != null) {
                 var names = JsonConvert.DeserializeObject<List<string>>(jsonContent);
                 if (pokedex != null) {
-                    return names;
+                    return names.ToArray();
                 }
             }
             return null;

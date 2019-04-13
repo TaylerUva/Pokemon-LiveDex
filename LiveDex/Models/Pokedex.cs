@@ -24,10 +24,9 @@ namespace LiveDex.Models {
         [JsonProperty("name")]
         private string lowercaseName { get; set; }
 
-        // ADDED
         public string Name {
             get {
-                if (DexNum <= PokeData.Names.Count) return PokeData.Names[DexNum - 1];
+                if (DexNum <= PokeData.Names.Length) return PokeData.Names[index];
                 return char.ToUpper(lowercaseName[0]) + lowercaseName.Substring(1);
             }
             set { }
@@ -37,7 +36,6 @@ namespace LiveDex.Models {
         private Uri EntryUrl { get; set; }
 
 
-        // ADDED
         public int DexNum {
             get {
                 string idString = EntryUrl.Segments[4];
@@ -47,7 +45,13 @@ namespace LiveDex.Models {
             set { }
         }
 
-        // ADDED
+        public int index {
+            get {
+                return DexNum - 1;
+            }
+            set { }
+        }
+
         public string Sprite {
             get {
                 return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + DexNum + ".png";
@@ -56,10 +60,9 @@ namespace LiveDex.Models {
             set { }
         }
 
-        // ADDED
         public bool Obtained {
-            get { return PokeData.CaughtPokemonList()[DexNum]; }
-            set { PokeData.CaughtPokemonList()[DexNum] = value; }
+            get { return PokeData.Caught[index]; }
+            set { PokeData.Caught[index] = value; }
         }
     }
 
