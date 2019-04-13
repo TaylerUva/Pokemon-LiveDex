@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LiveDex.Models;
+using Plugin.Connectivity;
 using Xamarin.Forms;
 
 namespace LiveDex {
@@ -15,7 +16,17 @@ namespace LiveDex {
         }
 
         async void LoadPokedex(object sender, System.EventArgs e) {
-            await Navigation.PushAsync(new PokedexPage());
+            if (await HasInternet()) {
+                await Navigation.PushAsync(new PokedexPage());
+            }
+        }
+
+        private async Task<bool> HasInternet() {
+            if (!CrossConnectivity.Current.IsConnected) {
+                await DisplayAlert("No Internet Connection", "Our data is pulled from the web, please connect to the internet", "Close");
+                return false;
+            }
+            return true;
         }
     }
 }

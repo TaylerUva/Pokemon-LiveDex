@@ -16,11 +16,11 @@ namespace LiveDex {
         }
 
         private async Task PullPokedex() {
-            if (CrossConnectivity.Current.IsConnected) {
+            if (await HasInternet()) {
                 pokedex = await PokeData.GetPokedexList();
                 PokedexList.ItemsSource = pokedex.DexEntries;
                 PokedexList.IsRefreshing = false;
-            } else await DisplayAlert("No Internet", "Please connect to the internet", "Close");
+            }
         }
 
         async void PokemonTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {
@@ -30,6 +30,14 @@ namespace LiveDex {
 
         async void Handle_Appearing(object sender, System.EventArgs e) {
             await PullPokedex();
+        }
+
+        private async Task<bool> HasInternet() {
+            if (!CrossConnectivity.Current.IsConnected) {
+                await DisplayAlert("No Internet", "Please connect to the internet", "Close");
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -19,14 +19,15 @@ namespace LiveDex {
         }
 
         private async Task PullPokemon() {
-            if (CrossConnectivity.Current.IsConnected) {
+            if (await HasInternet()) {
                 pokemon = await PokeData.GetPokemon(dexEntry.DexNum);
                 pkmCaught.IsToggled = dexEntry.Obtained;
                 pkmSprite.Source = dexEntry.Sprite;
                 string type1 = pokemon.Types[0].Type.Name;
                 BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
-            } else await DisplayAlert("No Internet", "Please connect to the internet", "Close");
+            }
         }
+
 
         void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e) {
             dexEntry.Obtained = e.Value;
@@ -36,6 +37,14 @@ namespace LiveDex {
             loadingIcon.IsRunning = true;
             await PullPokemon();
             loadingIcon.IsRunning = false;
+        }
+
+        private async Task<bool> HasInternet() {
+            if (!CrossConnectivity.Current.IsConnected) {
+                await DisplayAlert("No Internet", "Please connect to the internet", "Close");
+                return false;
+            }
+            return true;
         }
     }
 }
