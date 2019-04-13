@@ -15,6 +15,7 @@ namespace LiveDex {
             InitializeComponent();
         }
 
+
         async void LoadPokedexPage(object sender, System.EventArgs e) {
             if (await HasInternet()) {
                 await Navigation.PushAsync(new PokedexPage());
@@ -38,6 +39,20 @@ namespace LiveDex {
                 return false;
             }
             return true;
+        }
+
+        async void Handle_Appearing(object sender, System.EventArgs e) {
+
+            //todo
+            //var checkB = CaughtDatabase.populated;
+            //var countB = CaughtDatabase.pullCount;
+
+            await App.CaughtDatabaseInstance.PopulateDatabase();
+
+            // todo
+            //var list = await App.CaughtDatabaseInstance.GetAllPokemonCaught();
+            //var checkA = CaughtDatabase.populated;
+            //var countA = CaughtDatabase.pullCount;
         }
     }
 }

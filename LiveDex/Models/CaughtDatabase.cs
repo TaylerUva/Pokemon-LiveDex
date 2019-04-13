@@ -6,6 +6,10 @@ using SQLite;
 namespace LiveDex.Models {
     public class CaughtDatabase {
 
+        // todo
+        //public static bool populated;
+        //public static int pullCount;
+
         readonly SQLiteAsyncConnection caughtDatabase;
 
         public CaughtDatabase(string dbPath) {
@@ -14,13 +18,16 @@ namespace LiveDex.Models {
         }
 
         // TODO: Fix it to allow more pokemon without breaking current database
-        public async void PopulateDatabase() {
+        public async Task PopulateDatabase() {
+            if (populated) return;
             if ((await GetAllPokemonCaught()).Count != PokeData.MAX_DEX_NUM) {
-                for (int id = PokeData.MIN_DEX_NUM; id < PokeData.MAX_DEX_NUM; id++) {
+                for (int id = 0; id < PokeData.MAX_DEX_NUM; id++) {
                     var pokemon = new CaughtModel { ID = id, Obtained = false };
                     await caughtDatabase.InsertAsync(pokemon);
                 }
+                pullCount++;
             }
+            populated = true;
         }
 
         public Task<int> SetCaughtStatus(CaughtModel item) {
