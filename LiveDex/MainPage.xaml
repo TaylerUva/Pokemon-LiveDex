@@ -12,7 +12,7 @@
             Text              = "Welcome to the ultimate pokedex"
             HorizontalOptions = "Center" />
         <Button
-            Text = "Pokedex"
+            Text = "All Pokemon"
             Clicked  = "LoadPokedexPage" />
         <Button
             Text    = "Caught Pokemon"
