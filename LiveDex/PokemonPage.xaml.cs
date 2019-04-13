@@ -16,7 +16,9 @@ namespace LiveDex {
 
         private async void PullPokemon(DexEntry pkm) {
             pokemon = await PokeData.GetPokemon(pkm.DexNum);
-            this.BindingContext = pokemon;
+            pkmSprite.Source = pkm.Sprite;
+            string type1 = pokemon.Types[0].Type.Name;
+            BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
         }
     }
 }

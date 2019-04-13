@@ -14,6 +14,49 @@ namespace LiveDex.Models {
 
         private static Pokedex pokedex;
 
+        public static string GetTypeColor(string type) {
+            switch (type) {
+            case "normal":
+                return "#A8A878";
+            case "fighting":
+                return "#C03028";
+            case "flying":
+                return "#A891F0";
+            case "posion":
+                return "#A040A0";
+            case "ground":
+                return "#E0C068";
+            case "rock":
+                return "#B8A038";
+            case "bug":
+                return "#A8B820";
+            case "ghost":
+                return "#705898";
+            case "steel":
+                return "#B8B8D0";
+            case "fire":
+                return "#FA7C00";
+            case "water":
+                return "#6890F0";
+            case "grass":
+                return "#32CD32";
+            case "electric":
+                return "#FFC631";
+            case "psychic":
+                return "#F85888";
+            case "ice":
+                return "#98D8D8";
+            case "dragon":
+                return "#7038F8";
+            case "dark":
+                return "#705848";
+            case "fariy":
+                return "#EE99AC";
+            default:
+                return "#68A090";
+            }
+        }
+
         public static async Task<Pokemon> GetPokemon(int id) {
 
             string jsonContent = await GetJsonContent(END_POINT + id);
