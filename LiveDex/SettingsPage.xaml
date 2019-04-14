@@ -5,9 +5,9 @@
     x:Class = "LiveDex.SettingsPage">
     <ContentPage.Content>
         <StackLayout
-            VerticalOptions   = "CenterAndExpand"
             HorizontalOptions = "CenterAndExpand">
-            <ActivityIndicator x:Name="loading"/>
+            <ActivityIndicator
+                x:Name = "loading" />
             <Button
                 Text    = "Release 'em All"
                 Clicked = "SetAllPokemonMissing" />

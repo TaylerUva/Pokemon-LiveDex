@@ -29,7 +29,7 @@ namespace LiveDex {
                   "Cancel");
             if (changeSelected) {
                 loading.IsRunning = true;
-                await App.CaughtDatabaseInstance.PopulateDatabase(false, true);
+                await App.CaughtDatabaseInstance.PopulateDatabase(caught, true);
                 loading.IsRunning = false;
                 await DisplayAlert("Changed!", statusSet + caughtString, "Okay");
             }
