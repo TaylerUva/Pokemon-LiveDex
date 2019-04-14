@@ -15,11 +15,12 @@
                 Color  = "Red" />
             <Image
                 x:Name          = "pkmSprite"
-                BackgroundColor = "Red"
+                BackgroundColor="White"
                 HeightRequest   = "250"
                 WidthRequest    = "250" />
             <Switch
                 x:Name  = "pkmCaught"
+                HorizontalOptions="CenterAndExpand"
                 OnColor = "Red"
                 Toggled = "Handle_Toggled" />
             <ListView
@@ -48,14 +49,14 @@
                                         Grid.Column    = "0"
                                         TextColor      = "White"
                                         FontAttributes = "Bold"
-                                        Text           = "{Binding LocationArea.Name}" />
+                                        Text           = "{Binding LocationArea.FormattedName}" />
                                     <Label
                                         Margin         = "2"
                                         Grid.Row       = "1"
                                         Grid.Column    = "0"
                                         TextColor      = "White"
                                         FontAttributes = "Bold"
-                                        Text           = "{Binding LocationArea.VersionDetails[0].Version.Name}" />
+                                        Text           = "{Binding LocationArea.VersionDetails.Version.Name}" />
                                 </Grid>
                             </ViewCell.View>
                         </ViewCell>

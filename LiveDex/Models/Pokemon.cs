@@ -114,6 +114,15 @@ namespace LiveDex.Models {
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        public string FormattedName {
+            get {
+                Name = Name.Replace("-", " ");
+                return System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(Name);
+            }
+            set { }
+
+        }
+
         [JsonProperty("url")]
         public Uri Url { get; set; }
     }
