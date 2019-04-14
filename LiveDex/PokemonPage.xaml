@@ -49,14 +49,14 @@
                                         Grid.Column    = "0"
                                         TextColor      = "White"
                                         FontAttributes = "Bold"
-                                        Text           = "{Binding LocationArea.FormattedName}" />
+                                        Text           = "{Binding Name}" />
                                     <Label
                                         Margin         = "2"
                                         Grid.Row       = "1"
                                         Grid.Column    = "0"
                                         TextColor      = "White"
                                         FontAttributes = "Bold"
-                                        Text           = "{Binding LocationArea.VersionDetails.Version.Name}" />
+                                        Text           = "{Binding Game}" />
                                 </Grid>
                             </ViewCell.View>
                         </ViewCell>

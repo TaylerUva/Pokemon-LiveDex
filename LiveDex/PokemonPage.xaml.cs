@@ -11,6 +11,12 @@ namespace LiveDex {
 
         Pokemon pokemon;
         DexEntry dexEntry;
+        List<Route> routes = new List<Route>();
+
+        public class Route {
+            public string Name { get; set; }
+            public string Game { get; set; }
+        }
 
         public PokemonPage(DexEntry pkm) {
             InitializeComponent();
@@ -26,7 +32,16 @@ namespace LiveDex {
                 pkmSprite.Source = dexEntry.Sprite;
                 string type1 = pokemon.Types[0].Type.Name;
                 BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
-                LocationList.ItemsSource = pokemon.EncounterData;
+                if (pokemon.EncounterData != null) {
+                    foreach (PokemonLocation location in pokemon.EncounterData) {
+                        var route = new Route {
+                            Name = location.LocationArea.FormattedName,
+                            Game = location.VersionDetails[0].Version.FormattedName
+                        };
+                        routes.Add(route);
+                    }
+                    LocationList.ItemsSource = routes;
+                }
             }
         }
 
