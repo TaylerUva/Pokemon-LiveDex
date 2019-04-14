@@ -9,8 +9,16 @@ namespace LiveDex {
             InitializeComponent();
         }
 
-        async void SetPokemonToMissing(object sender, System.EventArgs e) {
+        async void SetAllPokemonMissing(object sender, System.EventArgs e) {
+            loading.IsRunning = true;
             await App.CaughtDatabaseInstance.PopulateDatabase(false, true);
+            loading.IsRunning = false;
+        }
+
+        async void SetAllPokemonCaught(object sender, System.EventArgs e) {
+            loading.IsRunning = true;
+            await App.CaughtDatabaseInstance.PopulateDatabase(true, true);
+            loading.IsRunning = false;
         }
     }
 }

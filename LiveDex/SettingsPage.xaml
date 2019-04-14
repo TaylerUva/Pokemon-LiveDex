@@ -4,9 +4,16 @@
     xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class = "LiveDex.SettingsPage">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-            <Button Text="Clear Caught Pokemon"
-                    Clicked="SetPokemonToMissing"/>
+        <StackLayout
+            VerticalOptions   = "CenterAndExpand"
+            HorizontalOptions = "CenterAndExpand">
+            <ActivityIndicator x:Name="loading"/>
+            <Button
+                Text    = "Release 'em All"
+                Clicked = "SetAllPokemonMissing" />
+            <Button
+                Text    = "Catch 'em All"
+                Clicked = "SetAllPokemonCaught" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
