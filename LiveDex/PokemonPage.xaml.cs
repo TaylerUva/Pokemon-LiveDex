@@ -32,8 +32,7 @@ namespace LiveDex {
                 pkmSprite.Source = dexEntry.Sprite;
                 string type1 = pokemon.Types[0].Type.Name;
                 BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
-                if (pokemon.EncounterData != null) {
-
+                if (pokemon.EncounterData.Count != 0) {
                     foreach (PokemonLocation location in pokemon.EncounterData) {
                         var gameList = new List<string>();
                         foreach (VersionDetail game in location.VersionDetails) {
@@ -47,8 +46,10 @@ namespace LiveDex {
 
                         routes.Add(route);
                     }
-                    LocationList.ItemsSource = routes;
+                } else {
+                    routes.Add(new Route { Name = "Cannot be caught", Games = "All" });
                 }
+                LocationList.ItemsSource = routes;
             }
         }
 
