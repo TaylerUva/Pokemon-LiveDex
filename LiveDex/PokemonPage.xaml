@@ -32,7 +32,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
-                                <Grid>
+                                <Grid Padding="5">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition
                                             Width = "Auto" />
@@ -44,19 +44,17 @@
                                             Height = "*" />
                                     </Grid.RowDefinitions>
                                     <Label
-                                        Margin         = "2"
+                                        Grid.Row       = "1"
+                                        Grid.Column    = "0"
+                                        TextColor      = "White"
+                                        FontAttributes = "Bold"
+                                        Text           = "{Binding Games,StringFormat='Games: {0}'}" />
+                                    <Label
                                         Grid.Row       = "0"
                                         Grid.Column    = "0"
                                         TextColor      = "White"
                                         FontAttributes = "Bold"
                                         Text           = "{Binding Name}" />
-                                    <Label
-                                        Margin         = "2"
-                                        Grid.Row       = "1"
-                                        Grid.Column    = "0"
-                                        TextColor      = "White"
-                                        FontAttributes = "Bold"
-                                        Text           = "{Binding Game}" />
                                 </Grid>
                             </ViewCell.View>
                         </ViewCell>
