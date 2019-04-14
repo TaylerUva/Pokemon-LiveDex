@@ -10,7 +10,7 @@ namespace LiveDex {
         }
 
         async void SetPokemonToMissing(object sender, System.EventArgs e) {
-            await App.CaughtDatabaseInstance.ClearDatabase();
+            await App.CaughtDatabaseInstance.PopulateDatabase(false, true);
         }
     }
 }
