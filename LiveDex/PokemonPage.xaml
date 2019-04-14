@@ -1,22 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
-    xmlns    = "http://xamarin.com/schemas/2014/forms"
-    xmlns:x   = "http://schemas.microsoft.com/winfx/2009/xaml"
-    Appearing = "Handle_Appearing"
-    x:Class   = "LiveDex.PokemonPage">
+    xmlns               = "http://xamarin.com/schemas/2014/forms"
+    xmlns:x              = "http://schemas.microsoft.com/winfx/2009/xaml"
+    Appearing            = "Handle_Appearing"
+    xmlns:ios            = "clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea = "true"
+    x:Class              = "LiveDex.PokemonPage">
     <ContentPage.Content>
         <StackLayout
-            VerticalOptions   = "CenterAndExpand"
+            Margin            = "5"
             HorizontalOptions = "CenterAndExpand">
             <ActivityIndicator
                 x:Name = "loadingIcon"
                 Color  = "Red" />
             <Image
-                x:Name = "pkmSprite" />
+                x:Name          = "pkmSprite"
+                BackgroundColor = "Red"
+                HeightRequest   = "250"
+                WidthRequest    = "250" />
             <Switch
                 x:Name  = "pkmCaught"
                 OnColor = "Red"
                 Toggled = "Handle_Toggled" />
+            <ListView
+                x:Name          = "LocationList"
+                BackgroundColor = "#34393D"
+                SelectionMode   = "None"
+                SeparatorColor  = "White">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition
+                                            Width = "Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition
+                                            Height = "*" />
+                                        <RowDefinition
+                                            Height = "*" />
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        Margin         = "2"
+                                        Grid.Row       = "0"
+                                        Grid.Column    = "0"
+                                        TextColor      = "White"
+                                        FontAttributes = "Bold"
+                                        Text           = "{Binding LocationArea.Name}" />
+                                    <Label
+                                        Margin         = "2"
+                                        Grid.Row       = "1"
+                                        Grid.Column    = "0"
+                                        TextColor      = "White"
+                                        FontAttributes = "Bold"
+                                        Text           = "{Binding LocationArea.VersionDetails[0].Version.Name}" />
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

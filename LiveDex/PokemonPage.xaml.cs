@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using LiveDex.Models;
 using Plugin.Connectivity;
@@ -25,9 +26,9 @@ namespace LiveDex {
                 pkmSprite.Source = dexEntry.Sprite;
                 string type1 = pokemon.Types[0].Type.Name;
                 BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
+                LocationList.ItemsSource = pokemon.EncounterData;
             }
         }
-
 
         void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e) {
             dexEntry.Obtained = e.Value;
