@@ -15,7 +15,7 @@ namespace LiveDex {
 
         public class Route {
             public string Name { get; set; }
-            public string Games { get; set; }
+            public string Game { get; set; }
         }
 
         public PokemonPage(DexEntry pkm) {
@@ -34,20 +34,16 @@ namespace LiveDex {
                 BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
                 if (pokemon.EncounterData.Count != 0) {
                     foreach (PokemonLocation location in pokemon.EncounterData) {
-                        var gameList = new List<string>();
                         foreach (VersionDetail game in location.VersionDetails) {
-                            gameList.Add(game.Version.FormattedName);
+                            var route = new Route {
+                                Name = location.LocationArea.FormattedName,
+                                Game = game.Version.FormattedName
+                            };
+                            routes.Add(route);
                         }
-
-                        var route = new Route {
-                            Name = location.LocationArea.FormattedName,
-                            Games = string.Join(", ", gameList)
-                        };
-
-                        routes.Add(route);
                     }
                 } else {
-                    routes.Add(new Route { Name = "Cannot be caught", Games = "All" });
+                    routes.Add(new Route { Name = "Cannot be caught", Game = "All" });
                 }
                 LocationList.ItemsSource = routes;
             }
