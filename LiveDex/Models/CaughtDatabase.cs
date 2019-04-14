@@ -16,15 +16,21 @@ namespace LiveDex.Models {
         }
 
         // TODO: Fix it to allow more pokemon without breaking current database
-        public async Task PopulateDatabase() {
+        public async Task PopulateDatabase(bool populateWith) {
             if (populated) return;
             if ((await GetAllPokemonCaught()).Count != PokeData.MAX_DEX_NUM) {
                 for (int id = 0; id < PokeData.MAX_DEX_NUM; id++) {
-                    var pokemon = new CaughtModel { ID = id, Obtained = false };
+                    var pokemon = new CaughtModel { ID = id, Obtained = populateWith };
                     await caughtDatabase.InsertAsync(pokemon);
                 }
             }
             populated = true;
+        }
+
+        public async Task ClearDatabase() {
+            await caughtDatabase.DeleteAllAsync<CaughtModel>();
+            populated = false;
+            await PopulateDatabase(false);
         }
 
         public Task<int> SetCaughtStatus(CaughtModel item) {

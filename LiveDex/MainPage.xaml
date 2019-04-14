@@ -4,7 +4,7 @@
     xmlns:x              = "http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local          = "clr-namespace:LiveDex"
     xmlns:ios            = "clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    Appearing="Handle_Appearing"
+    Appearing            = "Handle_Appearing"
     ios:Page.UseSafeArea = "true"
     x:Class              = "LiveDex.MainPage">
     <StackLayout>
@@ -13,13 +13,16 @@
             Text              = "Welcome to the ultimate pokedex"
             HorizontalOptions = "Center" />
         <Button
-            Text = "All Pokemon"
-            Clicked  = "LoadPokedexPage" />
+            Text    = "All Pokemon"
+            Clicked = "LoadPokedexPage" />
         <Button
             Text    = "Caught Pokemon"
             Clicked = "LoadCaughtPage" />
         <Button
             Text    = "Missing Pokemon"
             Clicked = "LoadMissingPage" />
+        <Button
+            Text    = "Settings"
+            Clicked = "LoadSettingsPage" />
     </StackLayout>
 </ContentPage>

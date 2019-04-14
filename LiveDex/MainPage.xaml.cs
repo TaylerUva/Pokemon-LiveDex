@@ -27,10 +27,15 @@ namespace LiveDex {
                 await Navigation.PushAsync(new CaughtPage());
             }
         }
+
         async void LoadMissingPage(object sender, System.EventArgs e) {
             if (await HasInternet()) {
                 await Navigation.PushAsync(new MissingPage());
             }
+        }
+
+        async void LoadSettingsPage(object sender, System.EventArgs e) {
+            await Navigation.PushAsync(new SettingsPage());
         }
 
         private async Task<bool> HasInternet() {
@@ -43,16 +48,7 @@ namespace LiveDex {
 
         async void Handle_Appearing(object sender, System.EventArgs e) {
 
-            //todo
-            //var checkB = CaughtDatabase.populated;
-            //var countB = CaughtDatabase.pullCount;
-
-            await App.CaughtDatabaseInstance.PopulateDatabase();
-
-            // todo
-            //var list = await App.CaughtDatabaseInstance.GetAllPokemonCaught();
-            //var checkA = CaughtDatabase.populated;
-            //var countA = CaughtDatabase.pullCount;
+            await App.CaughtDatabaseInstance.PopulateDatabase(false);
         }
     }
 }
