@@ -10,7 +10,7 @@
     Title                = "Caught">
     <StackLayout>
         <Label
-            x:Name                  = "CaughtCount"
+            x:Name                  = "Count"
             HorizontalTextAlignment = "Center"
             TextColor               = "White"
             Text                    = "Loading..."

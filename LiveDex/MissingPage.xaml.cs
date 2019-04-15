@@ -33,7 +33,7 @@ namespace LiveDex {
             var subdex = PokeData.NationalDex.Where(
                 p => p.DexNum >= selectedItem.DexStart && p.DexNum <= selectedItem.DexEnd && p.Obtained == false);
             PokedexList.ItemsSource = subdex;
-            MissingCount.Text = "Missing: " + subdex.Count() + " of " + (selectedItem.DexEnd - selectedItem.DexStart + 1);
+            Count.Text = subdex.Count() + " of " + (selectedItem.DexEnd - selectedItem.DexStart + 1);
             PokedexList.IsRefreshing = false;
         }
     }

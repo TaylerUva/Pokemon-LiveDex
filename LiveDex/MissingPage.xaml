@@ -10,7 +10,7 @@
     Title                = "Missing">
     <StackLayout>
         <Label
-            x:Name                  = "MissingCount"
+            x:Name                  = "Count"
             HorizontalTextAlignment = "Center"
             TextColor               = "White"
             Text                    = "Loading..."
