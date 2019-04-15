@@ -159,10 +159,10 @@ namespace LiveDex.Models {
         public NameURL Item { get; set; }
 
         [JsonProperty("version_details")]
-        public List<ItemVersionDetail> VersionDetails { get; set; }
+        public List<HeldItemVersionDetail> VersionDetails { get; set; }
     }
 
-    public partial class ItemVersionDetail {
+    public partial class HeldItemVersionDetail {
         [JsonProperty("rarity")]
         public long Rarity { get; set; }
 
@@ -175,10 +175,10 @@ namespace LiveDex.Models {
         public NameURL MoveMove { get; set; }
 
         [JsonProperty("version_group_details")]
-        public List<VersionGroupDetail> VersionGroupDetails { get; set; }
+        public List<MoveVersionDetails> VersionGroupDetails { get; set; }
     }
 
-    public partial class VersionGroupDetail {
+    public partial class MoveVersionDetails {
         [JsonProperty("level_learned_at")]
         public long LevelLearnedAt { get; set; }
 
