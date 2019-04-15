@@ -15,6 +15,12 @@
             TextColor               = "White"
             Text                    = "Loading..."
             FontAttributes          = "Bold" />
+        <Picker
+            x:Name = "GenFilter"
+            ItemDisplayBinding="{Binding ExtendedName}"
+            Title  = "Filter by Generation"
+            SelectedIndexChanged="FilterChanged"
+        />
         <ListView
             x:Name          = "PokedexList"
             BackgroundColor = "#34393D"

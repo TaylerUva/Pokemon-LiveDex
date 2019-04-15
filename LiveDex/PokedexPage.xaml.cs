@@ -35,17 +35,19 @@ namespace LiveDex {
             await Navigation.PushAsync(new PokemonPage(pokemon));
         }
 
-        async void Handle_Appearing(object sender, System.EventArgs e) {
-            if (pulledPreviously) UpdateListView();
-            else await PullPokedex();
-        }
-
         private async Task<bool> HasInternet() {
             if (!CrossConnectivity.Current.IsConnected) {
                 await DisplayAlert("No Internet", "Please connect to the internet", "Close");
                 return false;
             }
             return true;
+        }
+
+
+
+        async void Handle_Appearing(object sender, System.EventArgs e) {
+            if (pulledPreviously) UpdateListView();
+            else await PullPokedex();
         }
 
         void FilterChanged(object sender, System.EventArgs e) {
@@ -57,7 +59,6 @@ namespace LiveDex {
             if (selectedItem == null) {
                 PokedexList.ItemsSource = pokedexEntries.Where(
                     p => p.DexNum >= PokeData.AllGens.DexStart && p.DexNum <= PokeData.AllGens.DexEnd);
-                System.Diagnostics.Debug.WriteLine("CHANGED");
             } else {
                 DexCount.Text = "Dex Count: " + (selectedItem.DexEnd - selectedItem.DexStart + 1);
                 PokedexList.ItemsSource = pokedexEntries.Where(
