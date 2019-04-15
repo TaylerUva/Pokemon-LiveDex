@@ -24,9 +24,9 @@
                 OnColor           = "Red"
                 Toggled           = "Handle_Toggled" />
             <Picker
-            x:Name="GameFilter"
-                SelectedIndexChanged="FilterChanged"
-            />
+                x:Name               = "GameFilter"
+                SelectedIndexChanged = "FilterChanged"
+                Title                = "Filter by Game" />
             <ListView
                 x:Name          = "LocationList"
                 BackgroundColor = "#34393D"

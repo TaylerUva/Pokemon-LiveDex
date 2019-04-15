@@ -28,7 +28,11 @@ namespace LiveDex {
                 string type1 = pokemon.Types[0].Type.Name;
                 BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
 
-                GameFilter.ItemsSource = pokemon.GamesCatchable;
+                var gamesCatchable = pokemon.GamesCatchable;
+                gamesCatchable.Add("All Games");
+                gamesCatchable.Sort();
+
+                GameFilter.ItemsSource = gamesCatchable;
                 LocationList.ItemsSource = pokemon.Routes;
             }
         }
@@ -59,7 +63,9 @@ namespace LiveDex {
         }
 
         void FilterChanged(object sender, System.EventArgs e) {
-            LocationList.ItemsSource = pokemon.Routes.Where(r => r.Details.Version.FormattedName.Equals(GameFilter.SelectedItem.ToString()));
+            string selectedFilter = GameFilter.SelectedItem.ToString();
+            if (selectedFilter.Equals("All Games")) LocationList.ItemsSource = pokemon.Routes;
+            else LocationList.ItemsSource = pokemon.Routes.Where(r => r.Details.Version.FormattedName.Equals(selectedFilter));
         }
     }
 }
