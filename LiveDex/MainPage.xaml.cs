@@ -24,13 +24,13 @@ namespace LiveDex {
 
         async void LoadCaughtPage(object sender, System.EventArgs e) {
             if (await DonePulling()) {
-                await Navigation.PushAsync(new CaughtPage());
+                await Navigation.PushAsync(new PokedexPage(true));
             } else await PullData();
         }
 
         async void LoadMissingPage(object sender, System.EventArgs e) {
             if (await DonePulling()) {
-                await Navigation.PushAsync(new MissingPage());
+                await Navigation.PushAsync(new PokedexPage(false));
             } else await PullData();
         }
 

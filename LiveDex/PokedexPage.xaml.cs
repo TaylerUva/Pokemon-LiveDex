@@ -9,6 +9,16 @@ using Xamarin.Forms;
 namespace LiveDex {
     public partial class PokedexPage : ContentPage {
 
+        bool isSubdex;
+        bool obtainedCheck;
+
+        public PokedexPage(bool checkIsCaught) {
+            isSubdex = true;
+            obtainedCheck = checkIsCaught;
+            InitializeComponent();
+            PokedexList.IsRefreshing = true;
+        }
+
         public PokedexPage() {
             InitializeComponent();
             PokedexList.IsRefreshing = true;
@@ -30,9 +40,16 @@ namespace LiveDex {
 
         void UpdateListView(object sender, System.EventArgs e) {
             var selectedItem = GenFilter.SelectedItem as PokeData.GenerationModel;
-            DexCount.Text = "Dex Count: " + (selectedItem.DexEnd - selectedItem.DexStart + 1);
-            PokedexList.ItemsSource = PokeData.NationalDex.Where(
-                p => p.DexNum >= selectedItem.DexStart && p.DexNum <= selectedItem.DexEnd);
+            if (!isSubdex) {
+                Count.Text = "Pokemon Count: " + (selectedItem.DexEnd - selectedItem.DexStart + 1);
+                PokedexList.ItemsSource = PokeData.NationalDex.Where(
+                    p => p.DexNum >= selectedItem.DexStart && p.DexNum <= selectedItem.DexEnd);
+            } else {
+                var subdex = PokeData.NationalDex.Where(
+                    p => p.DexNum >= selectedItem.DexStart && p.DexNum <= selectedItem.DexEnd && p.Obtained == obtainedCheck);
+                Count.Text = subdex.Count() + " of " + (selectedItem.DexEnd - selectedItem.DexStart + 1);
+                PokedexList.ItemsSource = subdex;
+            }
             PokedexList.IsRefreshing = false;
         }
     }

@@ -10,7 +10,7 @@
     Title                = "Pokedex">
     <StackLayout>
         <Label
-            x:Name                  = "DexCount"
+            x:Name                  = "Count"
             HorizontalTextAlignment = "Center"
             TextColor               = "White"
             Text                    = "Loading..."
