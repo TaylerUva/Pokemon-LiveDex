@@ -15,7 +15,7 @@ namespace LiveDex.Models {
         private const string POKEAPI_END_POINT = "https://pokeapi.co/api/v2/pokemon/";
         private const string POKENAMES_END_POINT = "https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/en.json";
 
-        private static Pokedex pokedex;
+        public static List<DexEntry> NationalDex;
 
         public static string[] Names;
 
@@ -58,14 +58,15 @@ namespace LiveDex.Models {
             return null;
         }
 
-        public static async Task<Pokedex> GetPokedexList() {
+        public static async Task<List<DexEntry>> GetPokedexList() {
+            if (NationalDex != null) return NationalDex;
             string jsonContent = await GetJsonContent(POKEAPI_END_POINT + "?limit=" + MAX_DEX_NUM);
             if (jsonContent != null) {
-                pokedex = Pokedex.FromJson(jsonContent);
+                NationalDex = Pokedex.FromJson(jsonContent).DexEntries;
                 Names = await GetPokemonNames();
                 Caught = (await App.CaughtDatabaseInstance.GetAllPokemonCaught()).ToArray();
-                if (pokedex != null) {
-                    return pokedex;
+                if (NationalDex != null) {
+                    return NationalDex;
                 }
             }
             return null;
@@ -75,7 +76,7 @@ namespace LiveDex.Models {
             string jsonContent = await GetJsonContent(POKENAMES_END_POINT);
             if (jsonContent != null) {
                 var names = JsonConvert.DeserializeObject<List<string>>(jsonContent);
-                if (pokedex != null) {
+                if (NationalDex != null) {
                     return names.ToArray();
                 }
             }

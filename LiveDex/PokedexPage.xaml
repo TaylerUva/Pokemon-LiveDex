@@ -5,8 +5,8 @@
     BackgroundColor      = "#990D11"
     xmlns:ios            = "clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea = "true"
+    Appearing="Handle_Appearing"
     x:Class              = "LiveDex.PokedexPage"
-    Appearing            = "Handle_Appearing"
     Title                = "Pokedex">
     <StackLayout>
         <Label
@@ -19,7 +19,7 @@
             x:Name = "GenFilter"
             ItemDisplayBinding="{Binding ExtendedName}"
             Title  = "Filter by Generation"
-            SelectedIndexChanged="FilterChanged"
+            SelectedIndexChanged="UpdateListView"
         />
         <ListView
             x:Name          = "PokedexList"

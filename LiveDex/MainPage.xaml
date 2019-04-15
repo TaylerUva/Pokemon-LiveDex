@@ -12,6 +12,8 @@
         <Label
             Text              = "Welcome to the ultimate pokedex"
             HorizontalOptions = "Center" />
+        <ActivityIndicator
+            x:Name = "pullingData" />
         <Button
             Text    = "All Pokemon"
             Clicked = "LoadPokedexPage" />

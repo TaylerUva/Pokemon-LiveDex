@@ -19,7 +19,7 @@
             x:Name = "GenFilter"
             ItemDisplayBinding="{Binding ExtendedName}"
             Title  = "Filter by Generation"
-            SelectedIndexChanged="FilterChanged"
+            SelectedIndexChanged="UpdateListView"
         />
         <ListView
             x:Name          = "PokedexList"

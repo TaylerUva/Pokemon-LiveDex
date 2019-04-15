@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using LiveDex.Models;
 using Plugin.Connectivity;
@@ -13,17 +14,13 @@ namespace LiveDex {
             PokedexList.IsRefreshing = true;
         }
 
-        private async Task PullPokedex() {
-            if (await HasInternet()) {
-                var subdex = await GetSubDex();
-                CaughtCount.Text = "Caught: " + subdex.Count + " of " + PokeData.MAX_DEX_NUM;
-                PokedexList.ItemsSource = subdex;
+        void Handle_Appearing(object sender, System.EventArgs e) {
+            if (PokedexList.IsRefreshing == true) {
+                GenFilter.ItemsSource = PokeData.Generations;
+                GenFilter.SelectedIndex = 0;
                 PokedexList.IsRefreshing = false;
-            }
-        }
-
-        private async Task<List<DexEntry>> GetSubDex() {
-            return (await PokeData.GetPokedexList()).DexEntries.FindAll((obj) => obj.Obtained.Equals(true));
+            } else
+                UpdateListView(null, null);
         }
 
         async void PokemonTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {
@@ -31,16 +28,13 @@ namespace LiveDex {
             await Navigation.PushAsync(new PokemonPage(pokemon));
         }
 
-        async void Handle_Appearing(object sender, System.EventArgs e) {
-            await PullPokedex();
-        }
-
-        private async Task<bool> HasInternet() {
-            if (!CrossConnectivity.Current.IsConnected) {
-                await DisplayAlert("No Internet", "Please connect to the internet", "Close");
-                return false;
-            }
-            return true;
+        void UpdateListView(object sender, System.EventArgs e) {
+            var selectedItem = GenFilter.SelectedItem as PokeData.GenerationModel;
+            var subdex = PokeData.NationalDex.Where(
+                p => p.DexNum >= selectedItem.DexStart && p.DexNum <= selectedItem.DexEnd && p.Obtained == true);
+            PokedexList.ItemsSource = subdex;
+            CaughtCount.Text = "Caught: " + subdex.Count() + " of " + (selectedItem.DexEnd - selectedItem.DexStart + 1);
+            PokedexList.IsRefreshing = false;
         }
     }
 }

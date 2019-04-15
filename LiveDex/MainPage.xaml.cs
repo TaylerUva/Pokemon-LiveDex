@@ -13,25 +13,25 @@ namespace LiveDex {
 
         public MainPage() {
             InitializeComponent();
+            pullingData.IsRunning = true;
         }
 
-
         async void LoadPokedexPage(object sender, System.EventArgs e) {
-            if (await HasInternet()) {
+            if (await DonePulling()) {
                 await Navigation.PushAsync(new PokedexPage());
-            }
+            } else await PullData();
         }
 
         async void LoadCaughtPage(object sender, System.EventArgs e) {
-            if (await HasInternet()) {
+            if (await DonePulling()) {
                 await Navigation.PushAsync(new CaughtPage());
-            }
+            } else await PullData();
         }
 
         async void LoadMissingPage(object sender, System.EventArgs e) {
-            if (await HasInternet()) {
+            if (await DonePulling()) {
                 await Navigation.PushAsync(new MissingPage());
-            }
+            } else await PullData();
         }
 
         async void LoadSettingsPage(object sender, System.EventArgs e) {
@@ -40,15 +40,30 @@ namespace LiveDex {
 
         private async Task<bool> HasInternet() {
             if (!CrossConnectivity.Current.IsConnected) {
-                await DisplayAlert("No Internet Connection", "Our data is pulled from the web, please connect to the internet", "Close");
+                await DisplayAlert("No Internet Connection", "Our data is pulled from the web.\nPlease connect to the internet.", "Okay");
                 return false;
             }
             return true;
         }
 
-        async void Handle_Appearing(object sender, System.EventArgs e) {
+        private async Task<bool> DonePulling() {
+            if (pullingData.IsRunning) {
+                await DisplayAlert("Pokedex Still Loading", "Pokedex data is still being downloaded. Please wait until the activity indicator disappears.", "Okay");
+                return false;
+            }
+            return true;
+        }
 
-            await App.CaughtDatabaseInstance.PopulateDatabase(false);
+        async Task PullData() {
+            if (await HasInternet() && pullingData.IsRunning) {
+                await App.CaughtDatabaseInstance.PopulateDatabase(false);
+                PokeData.NationalDex = await PokeData.GetPokedexList();
+                pullingData.IsRunning = false;
+            }
+        }
+
+        async void Handle_Appearing(object sender, System.EventArgs e) {
+            await PullData();
         }
     }
 }
