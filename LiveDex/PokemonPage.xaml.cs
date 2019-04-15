@@ -13,6 +13,8 @@ namespace LiveDex {
         Pokemon pokemon;
         DexEntry dexEntry;
 
+        bool pulledPreviously;
+
         public PokemonPage(DexEntry pkm) {
             InitializeComponent();
             loadingIcon.IsRunning = true;
@@ -21,7 +23,7 @@ namespace LiveDex {
         }
 
         private async Task PullPokemon() {
-            if (await HasInternet()) {
+            if (await HasInternet() && !pulledPreviously) {
                 pokemon = await PokeData.GetPokemon(dexEntry.DexNum);
                 pkmCaught.IsToggled = dexEntry.Obtained;
                 pkmSprite.Source = dexEntry.Sprite;
@@ -34,6 +36,7 @@ namespace LiveDex {
 
                 GameFilter.ItemsSource = gamesCatchable;
                 LocationList.ItemsSource = pokemon.Routes;
+                pulledPreviously = true;
             }
         }
 

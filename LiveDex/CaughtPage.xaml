@@ -20,6 +20,7 @@
             BackgroundColor = "#34393D"
             ItemTapped      = "PokemonTapped"
             SelectionMode   = "None"
+            HasUnevenRows   = "true"
             SeparatorColor  = "White">
             <ListView.ItemTemplate>
                 <DataTemplate>

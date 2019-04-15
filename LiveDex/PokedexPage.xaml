@@ -15,11 +15,17 @@
             TextColor               = "White"
             Text                    = "Loading..."
             FontAttributes          = "Bold" />
+        <Picker
+            x:Name = "GenFilter"
+            Title  = "Filter by Generation"
+            SelectedIndexChanged="FilterChanged"
+        />
         <ListView
             x:Name          = "PokedexList"
             BackgroundColor = "#34393D"
             ItemTapped      = "PokemonTapped"
             SelectionMode   = "None"
+            HasUnevenRows   = "true"
             SeparatorColor  = "White">
             <ListView.ItemTemplate>
                 <DataTemplate>

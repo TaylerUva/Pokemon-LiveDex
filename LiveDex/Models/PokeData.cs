@@ -138,6 +138,60 @@ namespace LiveDex.Models {
             }
         }
 
+        public static GenerationModel Gen1 = new GenerationModel {
+            Name = "Gen 1",
+            Region = "Kanto",
+            DexStart = 0,
+            DexEnd = 151
+        };
+        public static GenerationModel Gen2 = new GenerationModel {
+            Name = "Gen 2",
+            Region = "Johto",
+            DexStart = 152,
+            DexEnd = 251
+        };
+        public static GenerationModel Gen3 = new GenerationModel {
+            Name = "Gen 3",
+            Region = "Hoenn",
+            DexStart = 252,
+            DexEnd = 386
+        };
+        public static GenerationModel Gen4 = new GenerationModel {
+            Name = "Gen 4",
+            Region = "Sinnoh",
+            DexStart = 387,
+            DexEnd = 493
+        };
+        public static GenerationModel Gen5 = new GenerationModel {
+            Name = "Gen 5",
+            Region = "Sinnoh",
+            DexStart = 494,
+            DexEnd = 649
+        };
+        public static GenerationModel Gen6 = new GenerationModel {
+            Name = "Gen 6",
+            Region = "Unova",
+            DexStart = 650,
+            DexEnd = 721
+        };
+        public static GenerationModel Gen7 = new GenerationModel {
+            Name = "Gen 7",
+            Region = "Alola",
+            DexStart = 722,
+            DexEnd = 807
+        };
+
+        public static List<GenerationModel> Generations = new List<GenerationModel> {
+            Gen1,Gen2,Gen3,Gen4,Gen5,Gen6,Gen7
+        };
+
+        public class GenerationModel {
+            public string Name { get; set; }
+            public string Region { get; set; }
+            public int DexStart { get; set; }
+            public int DexEnd { get; set; }
+        }
+
     }
 
     public class CaughtModel {
@@ -147,5 +201,7 @@ namespace LiveDex.Models {
         public bool Obtained { get; set; }
 
     }
+
+
 
 }
