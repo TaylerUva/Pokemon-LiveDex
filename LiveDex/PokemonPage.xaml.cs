@@ -11,7 +11,6 @@ namespace LiveDex {
 
         Pokemon pokemon;
         DexEntry dexEntry;
-        //List<Game> games = new List<Game>();
 
         public PokemonPage(DexEntry pkm) {
             InitializeComponent();

@@ -66,11 +66,6 @@ namespace LiveDex.Models {
         public LocationVersionDetail Details { get; set; }
     }
 
-    public class Game {
-        public string Name { get; set; }
-        public List<Route> Routes { get; set; } = new List<Route>();
-    }
-
     public partial class PokemonLocation {
         public static List<PokemonLocation> FromJson(string json) => JsonConvert.DeserializeObject<List<PokemonLocation>>(json, Converter.Settings);
     }
