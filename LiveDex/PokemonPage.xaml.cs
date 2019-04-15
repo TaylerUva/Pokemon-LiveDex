@@ -67,7 +67,9 @@ namespace LiveDex {
 
         async void RouteTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {
             var route = e.Item as Route;
-            await Navigation.PushAsync(new RoutePage(route));
+            if (route.Details != null) {
+                await Navigation.PushAsync(new RoutePage(route));
+            }
         }
     }
 }
