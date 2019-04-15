@@ -11,6 +11,7 @@ namespace LiveDex.Models {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Globalization;
+    using System.Linq;
     using System.Net.Http;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -64,9 +65,9 @@ namespace LiveDex.Models {
 
         public List<PokemonLocation> EncounterDetails { get; set; }
 
-        public ObservableCollection<Route> Routes {
+        public List<Route> Routes {
             get {
-                var routes = new ObservableCollection<Route>();
+                var routes = new List<Route>();
                 if (EncounterDetails.Count != 0) {
                     foreach (PokemonLocation location in EncounterDetails) {
                         foreach (LocationVersionDetail details in location.VersionDetails) {
@@ -77,6 +78,7 @@ namespace LiveDex.Models {
                             routes.Add(route);
                         }
                     }
+                    //return routes.OrderBy(r => r.Details.Version.FormattedName).ToList();
                 } else routes.Add(new Route { Name = "Cannot be caught" });
                 return routes;
             }

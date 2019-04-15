@@ -11,6 +11,7 @@ namespace LiveDex {
 
         Pokemon pokemon;
         DexEntry dexEntry;
+        List<string> gameList = new List<string>();
 
         public PokemonPage(DexEntry pkm) {
             InitializeComponent();
@@ -26,7 +27,11 @@ namespace LiveDex {
                 pkmSprite.Source = dexEntry.Sprite;
                 string type1 = pokemon.Types[0].Type.Name;
                 BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
-
+                foreach (var game in pokemon.Routes) {
+                    var gameName = game.Details.Version.FormattedName;
+                    if (!gameList.Contains(gameName)) gameList.Add(gameName);
+                }
+                gameFilter.ItemsSource = gameList;
                 LocationList.ItemsSource = pokemon.Routes;
             }
         }
@@ -54,6 +59,10 @@ namespace LiveDex {
             if (route.Details != null) {
                 await Navigation.PushAsync(new RoutePage(route));
             }
+        }
+
+        void Handle_SelectedIndexChanged(object sender, System.EventArgs e) {
+            throw new NotImplementedException();
         }
     }
 }

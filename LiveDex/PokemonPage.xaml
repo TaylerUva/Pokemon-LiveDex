@@ -23,6 +23,10 @@
                 HorizontalOptions = "CenterAndExpand"
                 OnColor           = "Red"
                 Toggled           = "Handle_Toggled" />
+            <Picker
+            x:Name="gameFilter"
+                SelectedIndexChanged="Handle_SelectedIndexChanged"
+            />
             <ListView
                 x:Name          = "LocationList"
                 BackgroundColor = "#34393D"
