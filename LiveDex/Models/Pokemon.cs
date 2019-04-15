@@ -9,7 +9,7 @@
 namespace LiveDex.Models {
     using System;
     using System.Collections.Generic;
-
+    using System.Collections.ObjectModel;
     using System.Globalization;
     using System.Net.Http;
     using Newtonsoft.Json;
@@ -64,12 +64,12 @@ namespace LiveDex.Models {
 
         public List<PokemonLocation> EncounterDetails { get; set; }
 
-        public List<Route> Routes {
+        public ObservableCollection<Route> Routes {
             get {
-                var routes = new List<Route>();
+                var routes = new ObservableCollection<Route>();
                 if (EncounterDetails.Count != 0) {
                     foreach (PokemonLocation location in EncounterDetails) {
-                        foreach (VersionDetail details in location.VersionDetails) {
+                        foreach (LocationVersionDetail details in location.VersionDetails) {
                             var route = new Route {
                                 Name = location.LocationArea.FormattedName,
                                 Details = details
@@ -159,10 +159,10 @@ namespace LiveDex.Models {
         public NameURL Item { get; set; }
 
         [JsonProperty("version_details")]
-        public List<VersionDetail> VersionDetails { get; set; }
+        public List<ItemVersionDetail> VersionDetails { get; set; }
     }
 
-    public partial class VersionDetail {
+    public partial class ItemVersionDetail {
         [JsonProperty("rarity")]
         public long Rarity { get; set; }
 

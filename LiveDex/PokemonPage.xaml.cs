@@ -28,7 +28,6 @@ namespace LiveDex {
                 string type1 = pokemon.Types[0].Type.Name;
                 BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
 
-
                 LocationList.ItemsSource = pokemon.Routes;
             }
         }

@@ -19,15 +19,18 @@ namespace LiveDex.Models {
         public NameURL LocationArea { get; set; }
 
         [JsonProperty("version_details")]
-        public List<VersionDetail> VersionDetails { get; set; }
+        public List<LocationVersionDetail> VersionDetails { get; set; }
     }
 
-    public partial class VersionDetail {
+    public partial class LocationVersionDetail {
         [JsonProperty("encounter_details")]
         public List<EncounterDetail> EncounterDetails { get; set; }
 
         [JsonProperty("max_chance")]
         public long MaxChance { get; set; }
+
+        [JsonProperty("version")]
+        public NameURL Version { get; set; }
     }
 
     public partial class EncounterDetail {
@@ -60,7 +63,7 @@ namespace LiveDex.Models {
 
     public class Route {
         public string Name { get; set; }
-        public VersionDetail Details { get; set; }
+        public LocationVersionDetail Details { get; set; }
     }
 
     public class Game {
