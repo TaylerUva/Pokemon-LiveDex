@@ -13,9 +13,11 @@ namespace LiveDex {
         bool obtainedCheck;
 
         public PokedexPage(bool checkIsCaught) {
+            InitializeComponent();
             isSubdex = true;
             obtainedCheck = checkIsCaught;
-            InitializeComponent();
+            if (checkIsCaught) Title = "Caught";
+            else Title = "Missing";
             PokedexList.IsRefreshing = true;
         }
 

@@ -35,7 +35,9 @@ namespace LiveDex {
         }
 
         async void LoadSettingsPage(object sender, System.EventArgs e) {
-            await Navigation.PushAsync(new SettingsPage());
+            if (await DonePulling()) {
+                await Navigation.PushAsync(new SettingsPage());
+            } else await PullData();
         }
 
         private async Task<bool> HasInternet() {
@@ -56,8 +58,8 @@ namespace LiveDex {
 
         async Task PullData() {
             if (await HasInternet() && pullingData.IsRunning) {
-                await App.CaughtDatabaseInstance.PopulateDatabase(false);
                 PokeData.NationalDex = await PokeData.GetPokedexList();
+                await App.CaughtDatabaseInstance.PopulateDatabase(false);
                 pullingData.IsRunning = false;
             }
         }
