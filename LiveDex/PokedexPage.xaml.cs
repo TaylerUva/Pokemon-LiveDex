@@ -37,7 +37,6 @@ namespace LiveDex {
 
         async void Handle_Appearing(object sender, System.EventArgs e) {
             await PullPokedex();
-            var selected = GenFilter.SelectedItem;
         }
 
         private async Task<bool> HasInternet() {
@@ -50,6 +49,7 @@ namespace LiveDex {
 
         void FilterChanged(object sender, System.EventArgs e) {
             var selectedItem = GenFilter.SelectedItem as PokeData.GenerationModel;
+            DexCount.Text = "Dex Count: " + (selectedItem.DexEnd - selectedItem.DexStart + 1);
             PokedexList.ItemsSource = pokedexEntries.Where(
                 p => p.DexNum >= selectedItem.DexStart && p.DexNum <= selectedItem.DexEnd);
         }
