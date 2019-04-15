@@ -12,17 +12,7 @@ namespace LiveDex {
         Pokemon pokemon;
         DexEntry dexEntry;
         List<Route> routes = new List<Route>();
-        List<Game> games = new List<Game>();
-
-        public class Route {
-            public string Name { get; set; }
-            public VersionDetail Details { get; set; }
-        }
-
-        public class Game {
-            public string Name { get; set; }
-            public List<Route> Routes { get; set; } = new List<Route>();
-        }
+        //List<Game> games = new List<Game>();
 
         public PokemonPage(DexEntry pkm) {
             InitializeComponent();
@@ -73,6 +63,11 @@ namespace LiveDex {
                 return false;
             }
             return true;
+        }
+
+        async void RouteTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {
+            var route = e.Item as Route;
+            await Navigation.PushAsync(new RoutePage(route));
         }
     }
 }

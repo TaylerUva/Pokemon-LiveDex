@@ -35,7 +35,18 @@ namespace LiveDex.Models {
         public long Chance { get; set; }
 
         [JsonProperty("condition_values")]
-        public List<NameURL> ConditionValues { get; set; }
+        private List<NameURL> ConditionsList { get; set; }
+
+        public string ConditionsString {
+            get {
+                var conditionsStringList = new List<string>();
+                foreach (NameURL condition in ConditionsList) {
+                    conditionsStringList.Add(condition.FormattedName);
+                }
+                return string.Join(", ", conditionsStringList);
+            }
+            set { }
+        }
 
         [JsonProperty("max_level")]
         public long MaxLevel { get; set; }
@@ -45,6 +56,16 @@ namespace LiveDex.Models {
 
         [JsonProperty("min_level")]
         public long MinLevel { get; set; }
+    }
+
+    public class Route {
+        public string Name { get; set; }
+        public VersionDetail Details { get; set; }
+    }
+
+    public class Game {
+        public string Name { get; set; }
+        public List<Route> Routes { get; set; } = new List<Route>();
     }
 
     public partial class PokemonLocation {
