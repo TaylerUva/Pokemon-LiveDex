@@ -27,6 +27,7 @@ namespace LiveDex.Models {
             } else if (populated) return;
             if ((await GetAllPokemonCaught()).Count != PokeData.MAX_DEX_NUM) {
                 for (int id = 0; id < PokeData.MAX_DEX_NUM; id++) {
+                    PokeData.Caught[id].Obtained = populateWith;
                     var pokemon = new CaughtModel { ID = id, Obtained = populateWith };
                     await caughtDatabase.InsertAsync(pokemon);
                 }
