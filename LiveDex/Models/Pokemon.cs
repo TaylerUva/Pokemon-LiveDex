@@ -85,6 +85,21 @@ namespace LiveDex.Models {
             set { }
         }
 
+        public List<string> GamesCatchable {
+            get {
+                var gameList = new List<string>();
+                if (EncounterDetails.Count != 0) {
+                    foreach (var game in Routes) {
+                        var gameName = game.Details.Version.FormattedName;
+                        if (!gameList.Contains(gameName)) gameList.Add(gameName);
+                    }
+                }
+                gameList.Sort();
+                return gameList;
+            }
+            set { }
+        }
+
         [JsonProperty("moves")]
         public List<Move> Moves { get; set; }
 

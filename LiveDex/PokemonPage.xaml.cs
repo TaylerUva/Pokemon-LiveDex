@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using LiveDex.Models;
 using Plugin.Connectivity;
@@ -11,7 +12,6 @@ namespace LiveDex {
 
         Pokemon pokemon;
         DexEntry dexEntry;
-        List<string> gameList = new List<string>();
 
         public PokemonPage(DexEntry pkm) {
             InitializeComponent();
@@ -27,11 +27,8 @@ namespace LiveDex {
                 pkmSprite.Source = dexEntry.Sprite;
                 string type1 = pokemon.Types[0].Type.Name;
                 BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
-                foreach (var game in pokemon.Routes) {
-                    var gameName = game.Details.Version.FormattedName;
-                    if (!gameList.Contains(gameName)) gameList.Add(gameName);
-                }
-                gameFilter.ItemsSource = gameList;
+
+                GameFilter.ItemsSource = pokemon.GamesCatchable;
                 LocationList.ItemsSource = pokemon.Routes;
             }
         }
@@ -61,8 +58,8 @@ namespace LiveDex {
             }
         }
 
-        void Handle_SelectedIndexChanged(object sender, System.EventArgs e) {
-            throw new NotImplementedException();
+        void FilterChanged(object sender, System.EventArgs e) {
+            LocationList.ItemsSource = pokemon.Routes.Where(r => r.Details.Version.FormattedName.Equals(GameFilter.SelectedItem.ToString()));
         }
     }
 }
