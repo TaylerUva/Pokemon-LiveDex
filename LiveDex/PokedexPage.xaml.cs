@@ -9,27 +9,24 @@ using Xamarin.Forms;
 namespace LiveDex {
     public partial class PokedexPage : ContentPage {
 
+        bool pulledPreviously;
+
         List<DexEntry> pokedexEntries;
 
         public PokedexPage() {
             InitializeComponent();
             PokedexList.IsRefreshing = true;
 
-            List<string> generationNames = new List<string>();
-            generationNames.Add("All Generations");
-            foreach (var gen in PokeData.Generations) {
-                generationNames.Add(gen.Name + " - " + gen.Region + ": " + gen.DexStart + "-" + gen.DexEnd);
-            }
-
-            GenFilter.ItemsSource = generationNames;
+            GenFilter.ItemsSource = PokeData.Generations;
         }
 
         private async Task PullPokedex() {
-            if (await HasInternet()) {
+            if (await HasInternet() && !pulledPreviously) {
                 pokedexEntries = (await PokeData.GetPokedexList()).DexEntries;
                 PokedexList.ItemsSource = pokedexEntries;
                 DexCount.Text = "Dex Count: " + PokeData.MAX_DEX_NUM;
                 PokedexList.IsRefreshing = false;
+                pulledPreviously = true;
             }
         }
 
@@ -40,6 +37,7 @@ namespace LiveDex {
 
         async void Handle_Appearing(object sender, System.EventArgs e) {
             await PullPokedex();
+            var selected = GenFilter.SelectedItem;
         }
 
         private async Task<bool> HasInternet() {
@@ -51,9 +49,9 @@ namespace LiveDex {
         }
 
         void FilterChanged(object sender, System.EventArgs e) {
-            string selectedItem = GenFilter.SelectedItem.ToString();
+            var selectedItem = GenFilter.SelectedItem as PokeData.GenerationModel;
             PokedexList.ItemsSource = pokedexEntries.Where(
-                p => p.DexNum >= PokeData.CompareGenName(selectedItem).DexStart && p.DexNum <= PokeData.CompareGenName(selectedItem).DexEnd);
+                p => p.DexNum >= selectedItem.DexStart && p.DexNum <= selectedItem.DexEnd);
         }
     }
 }
