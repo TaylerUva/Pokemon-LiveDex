@@ -51,15 +51,9 @@ namespace LiveDex {
         }
 
         void FilterChanged(object sender, System.EventArgs e) {
-            PokedexList.ItemsSource = pokedexEntries.Where(p => p.DexNum >= CheckFilter().DexStart && p.DexNum <= CheckFilter().DexEnd);
-        }
-
-        PokeData.GenerationModel CheckFilter() {
-            foreach (var gen in PokeData.Generations) {
-                if (GenFilter.SelectedItem.ToString().Contains(gen.Region)) return gen;
-            }
-            return new PokeData.GenerationModel { Name = "All", DexStart = PokeData.MIN_DEX_NUM, DexEnd = PokeData.MAX_DEX_NUM };
-
+            string selectedItem = GenFilter.SelectedItem.ToString();
+            PokedexList.ItemsSource = pokedexEntries.Where(
+                p => p.DexNum >= PokeData.CompareGenName(selectedItem).DexStart && p.DexNum <= PokeData.CompareGenName(selectedItem).DexEnd);
         }
     }
 }

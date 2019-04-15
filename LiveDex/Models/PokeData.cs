@@ -164,13 +164,13 @@ namespace LiveDex.Models {
         };
         public static GenerationModel Gen5 = new GenerationModel {
             Name = "Gen 5",
-            Region = "Sinnoh",
+            Region = "Unova",
             DexStart = 494,
             DexEnd = 649
         };
         public static GenerationModel Gen6 = new GenerationModel {
             Name = "Gen 6",
-            Region = "Unova",
+            Region = "Kalos",
             DexStart = 650,
             DexEnd = 721
         };
@@ -184,6 +184,13 @@ namespace LiveDex.Models {
         public static List<GenerationModel> Generations = new List<GenerationModel> {
             Gen1,Gen2,Gen3,Gen4,Gen5,Gen6,Gen7
         };
+
+        public static GenerationModel CompareGenName(string checkString) {
+            foreach (var gen in Generations) {
+                if (checkString.Contains(gen.Name)) return gen;
+            }
+            return new GenerationModel { Name = "All", DexStart = MIN_DEX_NUM, DexEnd = MAX_DEX_NUM, Region = "Pokemon World" };
+        }
 
         public class GenerationModel {
             public string Name { get; set; }
