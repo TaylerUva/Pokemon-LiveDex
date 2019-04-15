@@ -62,7 +62,26 @@ namespace LiveDex.Models {
         [JsonProperty("location_area_encounters")]
         public Uri LocationAreaEncounters { get; set; }
 
-        public List<PokemonLocation> EncounterData { get; set; }
+        public List<PokemonLocation> EncounterDetails { get; set; }
+
+        public List<Route> Routes {
+            get {
+                var routes = new List<Route>();
+                if (EncounterDetails.Count != 0) {
+                    foreach (PokemonLocation location in EncounterDetails) {
+                        foreach (VersionDetail details in location.VersionDetails) {
+                            var route = new Route {
+                                Name = location.LocationArea.FormattedName,
+                                Details = details
+                            };
+                            routes.Add(route);
+                        }
+                    }
+                } else routes.Add(new Route { Name = "Cannot be caught" });
+                return routes;
+            }
+            set { }
+        }
 
         [JsonProperty("moves")]
         public List<Move> Moves { get; set; }

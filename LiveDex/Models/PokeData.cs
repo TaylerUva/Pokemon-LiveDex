@@ -28,7 +28,7 @@ namespace LiveDex.Models {
                 var pokedexEntry = Pokemon.FromJson(jsonContent);
 
                 if (pokedexEntry != null) {
-                    pokedexEntry.EncounterData = await GetPokemonLocation(pokedexEntry.LocationAreaEncounters.ToString());
+                    pokedexEntry.EncounterDetails = await GetPokemonLocation(pokedexEntry.LocationAreaEncounters.ToString());
                     //pokedexEntry.SpeciesData = await GetPokemonSpecies(pokedexEntry.Species.Url.ToString());
                     return pokedexEntry;
                 }
