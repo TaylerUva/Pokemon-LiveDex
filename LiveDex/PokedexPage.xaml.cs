@@ -11,6 +11,7 @@ namespace LiveDex {
 
         bool isSubdex;
         bool obtainedCheck;
+        IEnumerable<DexEntry> filteredDex;
 
         public PokedexPage(bool checkIsCaught) {
             InitializeComponent();
@@ -46,16 +47,27 @@ namespace LiveDex {
         void UpdateListView(object sender, System.EventArgs e) {
             var selectedItem = GenFilter.SelectedItem as PokeData.GenerationModel;
             if (!isSubdex) {
-                Count.Text = "Pokemon Count: " + (selectedItem.DexEnd - selectedItem.DexStart + 1);
-                PokedexList.ItemsSource = PokeData.NationalDex.Where(
+                filteredDex = PokeData.NationalDex.Where(
                     p => p.DexNum >= selectedItem.DexStart && p.DexNum <= selectedItem.DexEnd);
+
+                Count.Text = "Pokemon Count: " + (selectedItem.DexEnd - selectedItem.DexStart + 1);
+
             } else {
-                var subdex = PokeData.NationalDex.Where(
+                filteredDex = PokeData.NationalDex.Where(
                     p => p.DexNum >= selectedItem.DexStart && p.DexNum <= selectedItem.DexEnd && p.Obtained == obtainedCheck);
-                Count.Text = subdex.Count() + " of " + (selectedItem.DexEnd - selectedItem.DexStart + 1);
-                PokedexList.ItemsSource = subdex;
+
+                Count.Text = filteredDex.Count() + " of " + (selectedItem.DexEnd - selectedItem.DexStart + 1);
             }
+            PokedexList.ItemsSource = filteredDex;
             PokedexList.IsRefreshing = false;
+        }
+
+        void Handle_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e) {
+            if (string.IsNullOrEmpty(e.NewTextValue)) {
+                PokedexList.ItemsSource = filteredDex;
+            } else {
+                PokedexList.ItemsSource = filteredDex.Where(x => x.Name.StartsWith(e.NewTextValue) || x.DexNum.ToString().StartsWith(e.NewTextValue));
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
     BackgroundColor      = "#990D11"
     xmlns:ios            = "clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea = "true"
-    Appearing="Handle_Appearing"
+    Appearing            = "Handle_Appearing"
     x:Class              = "LiveDex.PokedexPage"
     Title                = "Pokedex">
     <StackLayout>
@@ -15,12 +15,18 @@
             TextColor               = "White"
             Text                    = "Loading..."
             FontAttributes          = "Bold" />
+        <SearchBar
+            x:Name            = "searchPokemon"
+            Placeholder       = "Search for Pokemon by ID or Name"
+            TextChanged       = "Handle_TextChanged"
+            BackgroundColor   = "#990D11"
+            CancelButtonColor = "Red" />
         <Picker
-            x:Name = "GenFilter"
-            ItemDisplayBinding="{Binding ExtendedName}"
-            Title  = "Filter by Generation"
-            SelectedIndexChanged="UpdateListView"
-        />
+            x:Name               = "GenFilter"
+            ItemDisplayBinding   = "{Binding ExtendedName}"
+            Title                = "Filter by Generation"
+            Margin               = "7,0"
+            SelectedIndexChanged = "UpdateListView" />
         <ListView
             x:Name          = "PokedexList"
             BackgroundColor = "#34393D"
