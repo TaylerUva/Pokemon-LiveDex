@@ -80,10 +80,12 @@ namespace LiveDex {
         }
 
         async void Handle_SearchButtonPressed(object sender, System.EventArgs e) {
-            var searchText = searchPokemon.Text.ToLower();
-            var pokemon = PokeData.NationalDex.Find((mon) => mon.Name.ToLower() == searchText || mon.DexNum.ToString() == searchText);
-            if (pokemon == null) await DisplayAlert("Pokemon Not Found", "Pokemon Name or ID does not exist", "Okay");
-            else await Navigation.PushAsync(new PokemonPage(pokemon));
+            if (await DonePulling()) {
+                var searchText = searchPokemon.Text.ToLower();
+                var pokemon = PokeData.NationalDex.Find((mon) => mon.Name.ToLower() == searchText || mon.DexNum.ToString() == searchText);
+                if (pokemon == null) await DisplayAlert("Pokemon Not Found", "Pokemon Name or ID does not exist", "Okay");
+                else await Navigation.PushAsync(new PokemonPage(pokemon));
+            } else await PullData();
         }
     }
 }
