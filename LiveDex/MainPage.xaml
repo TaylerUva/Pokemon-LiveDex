@@ -9,6 +9,12 @@
     x:Class              = "LiveDex.MainPage">
     <StackLayout>
         <!-- Place new controls here -->
+        <SearchBar
+            x:Name            = "searchPokemon"
+            Placeholder       = "Search for Pokemon by ID or Name"
+            SearchButtonPressed="Handle_SearchButtonPressed"
+            BackgroundColor="#34393D"
+            CancelButtonColor = "Red" />
         <Label
             Text              = "Welcome to the ultimate pokedex"
             HorizontalOptions = "Center" />
