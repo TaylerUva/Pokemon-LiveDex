@@ -18,15 +18,16 @@ namespace LiveDex {
         public PokemonPage(DexEntry pkm) {
             InitializeComponent();
             loadingIcon.IsRunning = true;
+            LocationList.IsRefreshing = true;
             Title = pkm.Name;
             dexEntry = pkm;
         }
 
         private async Task PullPokemonDetails() {
+            pkmSprite.Source = dexEntry.Sprite;
             pkmCaught.IsToggled = dexEntry.Obtained;
             if (!pulledPreviously && await HasInternet()) {
                 pokemon = await PokeData.GetPokemon(dexEntry.DexNum);
-                pkmSprite.Source = dexEntry.Sprite;
                 string type1 = pokemon.Types[0].Type.Name;
                 BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
 
@@ -48,11 +49,12 @@ namespace LiveDex {
             loadingIcon.IsRunning = true;
             await PullPokemonDetails();
             loadingIcon.IsRunning = false;
+            LocationList.IsRefreshing = false;
         }
 
         private async Task<bool> HasInternet() {
             if (!CrossConnectivity.Current.IsConnected) {
-                await DisplayAlert("No Internet!", "Unable to get additional data! Caught status can still be set when offline.", "Okay");
+                await DisplayAlert("No Internet!", "Unable to get additional data!\nCaught status can still be set when offline.", "Okay");
                 return false;
             }
             return true;
