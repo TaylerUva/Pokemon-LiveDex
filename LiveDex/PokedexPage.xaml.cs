@@ -18,21 +18,24 @@ namespace LiveDex {
             obtainedCheck = checkIsCaught;
             if (checkIsCaught) Title = "Caught";
             else Title = "Missing";
-            PokedexList.IsRefreshing = true;
+
+            InitialLoad();
         }
 
         public PokedexPage() {
             InitializeComponent();
-            PokedexList.IsRefreshing = true;
+
+            InitialLoad();
+        }
+
+        void InitialLoad() {
+            GenFilter.ItemsSource = PokeData.Generations;
+            GenFilter.SelectedIndex = 0;
+            UpdateListView(null, null);
         }
 
         void Handle_Appearing(object sender, System.EventArgs e) {
-            if (PokedexList.IsRefreshing == true) {
-                GenFilter.ItemsSource = PokeData.Generations;
-                GenFilter.SelectedIndex = 0;
-                PokedexList.IsRefreshing = false;
-            } else
-                UpdateListView(null, null);
+            UpdateListView(null, null);
         }
 
         async void PokemonTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {

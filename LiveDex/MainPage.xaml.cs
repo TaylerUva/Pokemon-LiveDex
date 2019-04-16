@@ -10,6 +10,9 @@ using Xamarin.Forms;
 namespace LiveDex {
     public partial class MainPage : ContentPage {
 
+        PokedexPage FullDex;
+        PokedexPage CaughtDex;
+        PokedexPage MissingDex;
 
         public MainPage() {
             InitializeComponent();
@@ -18,19 +21,19 @@ namespace LiveDex {
 
         async void LoadPokedexPage(object sender, System.EventArgs e) {
             if (await DonePulling()) {
-                await Navigation.PushAsync(new PokedexPage());
+                await Navigation.PushAsync(FullDex);
             } else await PullData();
         }
 
         async void LoadCaughtPage(object sender, System.EventArgs e) {
             if (await DonePulling()) {
-                await Navigation.PushAsync(new PokedexPage(true));
+                await Navigation.PushAsync(CaughtDex);
             } else await PullData();
         }
 
         async void LoadMissingPage(object sender, System.EventArgs e) {
             if (await DonePulling()) {
-                await Navigation.PushAsync(new PokedexPage(false));
+                await Navigation.PushAsync(MissingDex);
             } else await PullData();
         }
 
@@ -57,9 +60,14 @@ namespace LiveDex {
         }
 
         async Task PullData() {
-            if (await HasInternet() && pullingData.IsRunning) {
+            if (pullingData.IsRunning && await HasInternet()) {
                 PokeData.NationalDex = await PokeData.GetPokedexList();
                 await App.CaughtDatabaseInstance.PopulateDatabase(false);
+
+                FullDex = new PokedexPage();
+                CaughtDex = new PokedexPage(true);
+                MissingDex = new PokedexPage(false);
+
                 pullingData.IsRunning = false;
             }
         }
