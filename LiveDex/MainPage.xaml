@@ -13,7 +13,8 @@
             Text              = "Welcome to the ultimate pokedex"
             HorizontalOptions = "Center" />
         <ActivityIndicator
-            x:Name = "pullingData" />
+            x:Name = "pullingData"
+            Color  = "Red" />
         <Button
             Text    = "All Pokemon"
             Clicked = "LoadPokedexPage" />

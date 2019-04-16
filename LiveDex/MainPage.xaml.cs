@@ -10,6 +10,8 @@ using Xamarin.Forms;
 namespace LiveDex {
     public partial class MainPage : ContentPage {
 
+        bool loadingData = true;
+
         PokedexPage FullDex;
         PokedexPage CaughtDex;
         PokedexPage MissingDex;
@@ -52,7 +54,7 @@ namespace LiveDex {
         }
 
         private async Task<bool> DonePulling() {
-            if (pullingData.IsRunning) {
+            if (loadingData) {
                 await DisplayAlert("Pokedex Still Loading", "Pokedex data is still being downloaded. Please wait until the activity indicator disappears.", "Okay");
                 return false;
             }
@@ -60,7 +62,7 @@ namespace LiveDex {
         }
 
         async Task PullData() {
-            if (pullingData.IsRunning && await HasInternet()) {
+            if (loadingData && await HasInternet()) {
                 PokeData.NationalDex = await PokeData.GetPokedexList();
                 await App.CaughtDatabaseInstance.PopulateDatabase(false);
 
@@ -69,6 +71,7 @@ namespace LiveDex {
                 MissingDex = new PokedexPage(false);
 
                 pullingData.IsRunning = false;
+                loadingData = false;
             }
         }
 
