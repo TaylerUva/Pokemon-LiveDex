@@ -22,10 +22,10 @@ namespace LiveDex {
             dexEntry = pkm;
         }
 
-        private async Task PullPokemon() {
-            if (await HasInternet() && !pulledPreviously) {
+        private async Task PullPokemonDetails() {
+            pkmCaught.IsToggled = dexEntry.Obtained;
+            if (!pulledPreviously && await HasInternet()) {
                 pokemon = await PokeData.GetPokemon(dexEntry.DexNum);
-                pkmCaught.IsToggled = dexEntry.Obtained;
                 pkmSprite.Source = dexEntry.Sprite;
                 string type1 = pokemon.Types[0].Type.Name;
                 BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
@@ -46,13 +46,13 @@ namespace LiveDex {
 
         async void Handle_Appearing(object sender, System.EventArgs e) {
             loadingIcon.IsRunning = true;
-            await PullPokemon();
+            await PullPokemonDetails();
             loadingIcon.IsRunning = false;
         }
 
         private async Task<bool> HasInternet() {
             if (!CrossConnectivity.Current.IsConnected) {
-                await DisplayAlert("No Internet", "Please connect to the internet", "Close");
+                await DisplayAlert("No Internet!", "Unable to get additional data! Caught status can still be set when offline.", "Okay");
                 return false;
             }
             return true;
