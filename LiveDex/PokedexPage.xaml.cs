@@ -58,15 +58,18 @@ namespace LiveDex {
 
                 Count.Text = filteredDex.Count() + " of " + (selectedItem.DexEnd - selectedItem.DexStart + 1);
             }
-            PokedexList.ItemsSource = filteredDex;
+            FilterBySearch(null, null);
             PokedexList.IsRefreshing = false;
         }
 
-        void Handle_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e) {
-            if (string.IsNullOrEmpty(e.NewTextValue)) {
+        void FilterBySearch(object sender, Xamarin.Forms.TextChangedEventArgs e) {
+            var search = searchPokemon.Text;
+            if (string.IsNullOrEmpty(search)) {
                 PokedexList.ItemsSource = filteredDex;
             } else {
-                PokedexList.ItemsSource = filteredDex.Where(x => x.Name.StartsWith(e.NewTextValue) || x.DexNum.ToString().StartsWith(e.NewTextValue));
+                PokedexList.ItemsSource = filteredDex.Where(mon => {
+                    return mon.Name.ToLower().StartsWith(search.ToLower()) || mon.DexNum.ToString().StartsWith(search);
+                });
             }
         }
     }
