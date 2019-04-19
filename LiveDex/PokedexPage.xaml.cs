@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using LiveDex.Models;
 using Plugin.Connectivity;
 using Xamarin.Forms;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace LiveDex {
     public partial class PokedexPage : ContentPage {
@@ -41,6 +44,7 @@ namespace LiveDex {
 
         async void PokemonTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {
             var pokemon = e.Item as DexEntry;
+            Analytics.TrackEvent("Pokemon tapped");
             await Navigation.PushAsync(new PokemonPage(pokemon));
         }
 

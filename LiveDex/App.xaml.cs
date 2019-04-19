@@ -3,6 +3,9 @@ using System.IO;
 using LiveDex.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace LiveDex {
@@ -33,6 +36,10 @@ namespace LiveDex {
 
         protected override void OnStart() {
             // Handle when your app starts
+            AppCenter.Start("ios=48055069-0d12-4176-b13c-e13dbdc569b6;" +
+                  "uwp={Your UWP App secret here};" +
+                  "android={Your Android App secret here}",
+                  typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnSleep() {
