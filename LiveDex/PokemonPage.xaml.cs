@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using LiveDex.Models;
 using Plugin.Connectivity;
 using Xamarin.Forms;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace LiveDex {
     public partial class PokemonPage : ContentPage {
@@ -43,6 +46,10 @@ namespace LiveDex {
 
         void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e) {
             dexEntry.Obtained = e.Value;
+            if (dexEntry.Obtained){
+                string sendEvent = dexEntry.DexNum.ToString("000") + " - " + dexEntry.Name + " - Caught";
+                Analytics.TrackEvent(sendEvent);
+            }
         }
 
         async void Handle_Appearing(object sender, System.EventArgs e) {
