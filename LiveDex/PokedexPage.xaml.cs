@@ -44,7 +44,9 @@ namespace LiveDex {
 
         async void PokemonTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {
             var pokemon = e.Item as DexEntry;
-            Analytics.TrackEvent("Pokemon tapped");
+
+            string sendEvent = pokemon.DexNum.ToString("000") + " - " + pokemon.Name + " - Detail Lookup";
+            Analytics.TrackEvent(sendEvent);
             await Navigation.PushAsync(new PokemonPage(pokemon));
         }
 
