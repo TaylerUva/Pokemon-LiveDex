@@ -45,22 +45,6 @@ namespace LiveDex.Models {
             set { }
         }
 
-        public string FormattedDexNum {
-            get {
-                string idString = EntryUrl.Segments[4];
-                idString = idString.Replace("/", "");
-                if(idString.Length == 1) {
-                    idString = "00" + idString;
-                }
-                else if(idString.Length == 2) {
-                    idString = "0" + idString;
-                }
-
-                return idString;
-            }
-            set { }
-        }
-
         public int index {
             get {
                 return DexNum - 1;
