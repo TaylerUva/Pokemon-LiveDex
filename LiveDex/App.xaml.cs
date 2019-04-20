@@ -38,7 +38,7 @@ namespace LiveDex {
             // Handle when your app starts
             AppCenter.Start("ios=48055069-0d12-4176-b13c-e13dbdc569b6;" +
                   "uwp={Your UWP App secret here};" +
-                  "android={Your Android App secret here}",
+                  "android=c56427a6-56a5-4665-9848-feda4c7b652a;",
                   typeof(Analytics), typeof(Crashes));
         }
 
