@@ -36,7 +36,7 @@ namespace LiveDex {
 
         protected override void OnStart() {
             // Handle when your app starts
-            AppCenter.Start("ios=48055069-0d12-4176-b13c-e13dbdc569b6;" +
+            AppCenter.Start("ios=22292377-6970-442f-8f33-810fb60d5fab;" +
                   "uwp={Your UWP App secret here};" +
                   "android=c56427a6-56a5-4665-9848-feda4c7b652a;",
                   typeof(Analytics), typeof(Crashes));

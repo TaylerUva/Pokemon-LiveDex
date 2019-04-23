@@ -46,7 +46,7 @@ namespace LiveDex {
 
         void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e) {
             dexEntry.Obtained = e.Value;
-            if (dexEntry.Obtained){
+            if (dexEntry.Obtained && pulledPreviously){
                 string sendEvent = dexEntry.DexNum.ToString("000") + " - " + dexEntry.Name + " - Caught";
                 Analytics.TrackEvent(sendEvent);
             }
