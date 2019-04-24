@@ -95,6 +95,32 @@ namespace LiveDex.Models {
             return null;
         }
 
+        public static bool AllCaught()
+        {
+            foreach (var i in Caught)
+            {
+                if (!i.Obtained)
+                {
+                    return false;
+                }
+            }
+            return true;    
+
+        }
+
+        public static bool AllMissing()
+        {
+            foreach (var i in Caught)
+            {
+                if (i.Obtained)
+                {
+                    return false;
+                }
+            }
+            return true;
+
+        }
+
         public static string GetTypeColor(string type) {
             switch (type) {
             case "normal":
