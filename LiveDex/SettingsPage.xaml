@@ -27,6 +27,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition
                     Height = "*" />
+                <!--<RowDefinition
+                    Height = "50" />-->
                 <RowDefinition
                     Height = "*" />
                 <RowDefinition
@@ -42,12 +44,33 @@
                 FontSize          = "24"
                 TextColor         = "White"
                 FontAttributes    = "Bold" />
+            <!--<Label
+                Text            = " "
+                FontSize        = "Large"
+                BackgroundColor = "#34393D"
+                Grid.Row        = "1" />-->
             <StackLayout
                 Grid.Row        = "1"
                 Grid.RowSpan    = "3"
                 BackgroundColor = "White">
+                <!--<Label
+                    Text            = " "
+                    FontSize        = "45"
+                    BackgroundColor = "#34393D" />-->
+                <BoxView
+                    Color             = "#34393D"
+                    ScaleY            = "1.4"
+                    VerticalOptions   = "Start"
+                    HorizontalOptions = "Fill" />
                 <ActivityIndicator
                     x:Name = "loading" />
+                <!--
+                <BoxView
+                    Color             = "#34393D"
+                    WidthRequest      = "160"
+                    HeightRequest     = "60"
+                    VerticalOptions   = "Center"
+                    HorizontalOptions = "Center" />-->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition

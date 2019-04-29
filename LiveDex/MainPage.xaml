@@ -45,6 +45,7 @@
             FontSize          = "24"
             TextColor         = "White"
             FontAttributes    = "Bold" />
+        
         <StackLayout
             Grid.Row        = "1"
             Grid.RowSpan    = "3"
@@ -73,6 +74,8 @@
                         Width = "*" />
                     <ColumnDefinition
                         Width = "*" />
+                    <ColumnDefinition
+                        Width = "*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition
@@ -85,29 +88,33 @@
                         Height = "*" />
                 </Grid.RowDefinitions>
                 <Button
-                    Grid.Column = "1"
-                    Grid.Row    = "0"
-                    Text        = "All Pokemon"
-                    Style       = "{StaticResource buttonStyle}"
-                    Clicked     = "LoadPokedexPage" />
+                    Grid.Column     = "1"
+                    Grid.ColumnSpan = "2"
+                    Grid.Row        = "0"
+                    Text            = "All Pokemon"
+                    Style           = "{StaticResource buttonStyle}"
+                    Clicked         = "LoadPokedexPage" />
                 <Button
-                    Grid.Column = "1"
-                    Grid.Row    = "1"
-                    Text        = "Caught Pokemon"
-                    Style       = "{StaticResource buttonStyle}"
-                    Clicked     = "LoadCaughtPage" />
+                    Grid.Column     = "1"
+                    Grid.ColumnSpan = "2"
+                    Grid.Row        = "1"
+                    Text            = "Caught Pokemon"
+                    Style           = "{StaticResource buttonStyle}"
+                    Clicked         = "LoadCaughtPage" />
                 <Button
-                    Grid.Column = "1"
-                    Grid.Row    = "2"
-                    Text        = "Missing Pokemon"
-                    Style       = "{StaticResource buttonStyle}"
-                    Clicked     = "LoadMissingPage" />
+                    Grid.Column     = "1"
+                    Grid.ColumnSpan = "2"
+                    Grid.Row        = "2"
+                    Text            = "Missing Pokemon"
+                    Style           = "{StaticResource buttonStyle}"
+                    Clicked         = "LoadMissingPage" />
                 <Button
-                    Grid.Column = "1"
-                    Grid.Row    = "3"
-                    Text        = "Settings"
-                    Style       = "{StaticResource buttonStyle}"
-                    Clicked     = "LoadSettingsPage" />
+                    Grid.Column     = "1"
+                    Grid.ColumnSpan = "2"
+                    Grid.Row        = "3"
+                    Text            = "Settings"
+                    Style           = "{StaticResource buttonStyle}"
+                    Clicked         = "LoadSettingsPage" />
             </Grid>
         </StackLayout>
     </Grid>

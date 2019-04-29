@@ -15,7 +15,7 @@
                 Color  = "Red" />
             <Image
                 x:Name          = "pkmSprite"
-                BackgroundColor = "White"
+                BackgroundColor = "#34393D"
                 HeightRequest   = "250"
                 WidthRequest    = "250" />
             <Switch
