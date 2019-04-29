@@ -4,6 +4,23 @@
     xmlns:x     = "http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local = "clr-namespace:LiveDex.Models"
     x:Class     = "LiveDex.SettingsPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key      = "buttonStyle"
+                TargetType = "Button">
+                <Setter
+                    Property = "BackgroundColor"
+                    Value    = "#34393D" />
+                <Setter
+                    Property = "TextColor"
+                    Value    = "White" />
+                <Setter
+                    Property = "FontAttributes"
+                    Value    = "Bold" />
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
     <ContentPage.Content>
         <StackLayout
             HorizontalOptions = "CenterAndExpand">
@@ -11,7 +28,8 @@
                 x:Name = "loading" />
             <Button
                 Text    = "Release 'em All"
-                Clicked = "SetAllPokemonMissing">
+                Clicked = "SetAllPokemonMissing"
+                Style       = "{StaticResource buttonStyle}">
                 <Button.Triggers>
                     <EventTrigger
                         Event = "Clicked">
@@ -21,7 +39,8 @@
             </Button>
             <Button
                 Text    = "Catch 'em All"
-                Clicked = "SetAllPokemonCaught">
+                Clicked = "SetAllPokemonCaught"
+                Style       = "{StaticResource buttonStyle}">
                 <Button.Triggers>
                     <EventTrigger
                         Event = "Clicked">

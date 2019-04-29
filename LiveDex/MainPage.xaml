@@ -24,65 +24,91 @@
             </Style>
         </ResourceDictionary>
     </Page.Resources>
-    <StackLayout>
+    <Grid
+        BackgroundColor = "#990D11">
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height = "*" />
+            <RowDefinition
+                Height = "*" />
+            <RowDefinition
+                Height = "*" />
+            <RowDefinition
+                Height = "*" />
+        </Grid.RowDefinitions>
         <!-- Place new controls here -->
-        <SearchBar
-            x:Name              = "searchPokemon"
-            Placeholder         = "Search for Pokemon by ID or Name"
-            SearchButtonPressed = "Handle_SearchButtonPressed"
-            BackgroundColor     = "#34393D"
-            CancelButtonColor   = "Red" />
+        <Label
+            Text              = "Welcome to the ultimate pokedex"
+            Grid.Row          = "0"
+            HorizontalOptions = "Center"
+            VerticalOptions   = "Center"
+            FontSize          = "24"
+            TextColor         = "White"
+            FontAttributes    = "Bold" />
+        <StackLayout
+            Grid.Row        = "1"
+            Grid.RowSpan    = "3"
+            BackgroundColor = "White">
+            <SearchBar
+                x:Name              = "searchPokemon"
+                Placeholder         = "Search for Pokemon by ID or Name"
+                SearchButtonPressed = "Handle_SearchButtonPressed"
+                BackgroundColor     = "#34393D"
+                CancelButtonColor   = "Red" />
+            <!--
         <Label
             Text              = "Welcome to the ultimate pokedex"
             HorizontalOptions = "Center"
             FontSize          = "Large"
             FontAttributes    = "Bold" />
-        <ActivityIndicator
-            x:Name = "pullingData"
-            Color  = "Red" />
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width = "*" />
-                <ColumnDefinition
-                    Width = "*" />
-                <ColumnDefinition
-                    Width = "*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition
-                    Height = "*" />
-                <RowDefinition
-                    Height = "*" />
-                <RowDefinition
-                    Height = "*" />
-                <RowDefinition
-                    Height = "*" />
-            </Grid.RowDefinitions>
-            <Button
-                Grid.Column = "1"
-                Grid.Row    = "0"
-                Text        = "All Pokemon"
-                Style       = "{StaticResource buttonStyle}"
-                Clicked     = "LoadPokedexPage" />
-            <Button
-                Grid.Column = "1"
-                Grid.Row    = "1"
-                Text        = "Caught Pokemon"
-                Style       = "{StaticResource buttonStyle}"
-                Clicked     = "LoadCaughtPage" />
-            <Button
-                Grid.Column = "1"
-                Grid.Row    = "2"
-                Text        = "Missing Pokemon"
-                Style       = "{StaticResource buttonStyle}"
-                Clicked     = "LoadMissingPage" />
-            <Button
-                Grid.Column = "1"
-                Grid.Row    = "3"
-                Text        = "Settings"
-                Style       = "{StaticResource buttonStyle}"
-                Clicked     = "LoadSettingsPage" />
-        </Grid>
-    </StackLayout>
+        -->
+            <ActivityIndicator
+                x:Name = "pullingData"
+                Color  = "Red" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width = "*" />
+                    <ColumnDefinition
+                        Width = "*" />
+                    <ColumnDefinition
+                        Width = "*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height = "*" />
+                    <RowDefinition
+                        Height = "*" />
+                    <RowDefinition
+                        Height = "*" />
+                    <RowDefinition
+                        Height = "*" />
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.Column = "1"
+                    Grid.Row    = "0"
+                    Text        = "All Pokemon"
+                    Style       = "{StaticResource buttonStyle}"
+                    Clicked     = "LoadPokedexPage" />
+                <Button
+                    Grid.Column = "1"
+                    Grid.Row    = "1"
+                    Text        = "Caught Pokemon"
+                    Style       = "{StaticResource buttonStyle}"
+                    Clicked     = "LoadCaughtPage" />
+                <Button
+                    Grid.Column = "1"
+                    Grid.Row    = "2"
+                    Text        = "Missing Pokemon"
+                    Style       = "{StaticResource buttonStyle}"
+                    Clicked     = "LoadMissingPage" />
+                <Button
+                    Grid.Column = "1"
+                    Grid.Row    = "3"
+                    Text        = "Settings"
+                    Style       = "{StaticResource buttonStyle}"
+                    Clicked     = "LoadSettingsPage" />
+            </Grid>
+        </StackLayout>
+    </Grid>
 </ContentPage>
