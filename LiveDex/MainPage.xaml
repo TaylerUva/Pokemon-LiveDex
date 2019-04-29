@@ -7,31 +7,82 @@
     Appearing            = "Handle_Appearing"
     ios:Page.UseSafeArea = "true"
     x:Class              = "LiveDex.MainPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key      = "buttonStyle"
+                TargetType = "Button">
+                <Setter
+                    Property = "BackgroundColor"
+                    Value    = "#34393D" />
+                <Setter
+                    Property = "TextColor"
+                    Value    = "White" />
+                <Setter
+                    Property = "FontAttributes"
+                    Value    = "Bold" />
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
     <StackLayout>
         <!-- Place new controls here -->
         <SearchBar
-            x:Name            = "searchPokemon"
-            Placeholder       = "Search for Pokemon by ID or Name"
-            SearchButtonPressed="Handle_SearchButtonPressed"
-            BackgroundColor="#34393D"
-            CancelButtonColor = "Red" />
+            x:Name              = "searchPokemon"
+            Placeholder         = "Search for Pokemon by ID or Name"
+            SearchButtonPressed = "Handle_SearchButtonPressed"
+            BackgroundColor     = "#34393D"
+            CancelButtonColor   = "Red" />
         <Label
             Text              = "Welcome to the ultimate pokedex"
-            HorizontalOptions = "Center" />
+            HorizontalOptions = "Center"
+            FontSize          = "Large"
+            FontAttributes    = "Bold" />
         <ActivityIndicator
             x:Name = "pullingData"
             Color  = "Red" />
-        <Button
-            Text    = "All Pokemon"
-            Clicked = "LoadPokedexPage" />
-        <Button
-            Text    = "Caught Pokemon"
-            Clicked = "LoadCaughtPage" />
-        <Button
-            Text    = "Missing Pokemon"
-            Clicked = "LoadMissingPage" />
-        <Button
-            Text    = "Settings"
-            Clicked = "LoadSettingsPage" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width = "*" />
+                <ColumnDefinition
+                    Width = "*" />
+                <ColumnDefinition
+                    Width = "*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height = "*" />
+                <RowDefinition
+                    Height = "*" />
+                <RowDefinition
+                    Height = "*" />
+                <RowDefinition
+                    Height = "*" />
+            </Grid.RowDefinitions>
+            <Button
+                Grid.Column = "1"
+                Grid.Row    = "0"
+                Text        = "All Pokemon"
+                Style       = "{StaticResource buttonStyle}"
+                Clicked     = "LoadPokedexPage" />
+            <Button
+                Grid.Column = "1"
+                Grid.Row    = "1"
+                Text        = "Caught Pokemon"
+                Style       = "{StaticResource buttonStyle}"
+                Clicked     = "LoadCaughtPage" />
+            <Button
+                Grid.Column = "1"
+                Grid.Row    = "2"
+                Text        = "Missing Pokemon"
+                Style       = "{StaticResource buttonStyle}"
+                Clicked     = "LoadMissingPage" />
+            <Button
+                Grid.Column = "1"
+                Grid.Row    = "3"
+                Text        = "Settings"
+                Style       = "{StaticResource buttonStyle}"
+                Clicked     = "LoadSettingsPage" />
+        </Grid>
     </StackLayout>
 </ContentPage>

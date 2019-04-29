@@ -8,13 +8,26 @@
     Appearing            = "Handle_Appearing"
     x:Class              = "LiveDex.PokedexPage"
     Title                = "Pokedex">
+    <Page.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key      = "labelStyle"
+                TargetType = "Label">
+                <Setter
+                    Property = "FontAttributes"
+                    Value    = "Bold" />
+                <Setter
+                    Property = "TextColor"
+                    Value    = "White" />
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
     <StackLayout>
         <Label
             x:Name                  = "Count"
             HorizontalTextAlignment = "Center"
-            TextColor               = "White"
             Text                    = "Loading..."
-            FontAttributes          = "Bold" />
+            Style                   = "{StaticResource labelStyle}" />
         <SearchBar
             x:Name            = "searchPokemon"
             Placeholder       = "Search for Pokemon by ID or Name"
@@ -64,12 +77,10 @@
                                     Grid.Row    = "0"
                                     Orientation = "Horizontal">
                                     <Label
-                                        TextColor      = "White"
-                                        FontAttributes = "Bold"
+                                        Style="{StaticResource labelStyle}"
                                         Text           = "{Binding DexNum, StringFormat=' {0:000}'}" />
                                     <Label
-                                        TextColor      = "White"
-                                        FontAttributes = "Bold"
+                                        Style="{StaticResource labelStyle}"
                                         Text           = "{Binding Name}" />
                                 </StackLayout>
                                 <StackLayout
@@ -77,9 +88,8 @@
                                     Grid.Row    = "1"
                                     Orientation = "Horizontal">
                                     <Label
-                                        TextColor      = "White"
-                                        FontAttributes = "Bold"
-                                        Text           = "{Binding Obtained, StringFormat='Caught: {0}'}" />
+                                        Style = "{StaticResource labelStyle}"
+                                        Text  = "{Binding Obtained, StringFormat='Caught: {0}'}" />
                                 </StackLayout>
                             </Grid>
                         </ViewCell.View>
