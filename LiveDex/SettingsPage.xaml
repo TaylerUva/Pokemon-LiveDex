@@ -22,32 +22,83 @@
         </ResourceDictionary>
     </Page.Resources>
     <ContentPage.Content>
-        <StackLayout
-            HorizontalOptions = "CenterAndExpand">
-            <ActivityIndicator
-                x:Name = "loading" />
-            <Button
-                Text    = "Release 'em All"
-                Clicked = "SetAllPokemonMissing"
-                Style       = "{StaticResource buttonStyle}">
-                <Button.Triggers>
-                    <EventTrigger
-                        Event = "Clicked">
-                        <local:ReleaseAllTrigger />
-                    </EventTrigger>
-                </Button.Triggers>
-            </Button>
-            <Button
-                Text    = "Catch 'em All"
-                Clicked = "SetAllPokemonCaught"
-                Style       = "{StaticResource buttonStyle}">
-                <Button.Triggers>
-                    <EventTrigger
-                        Event = "Clicked">
-                        <local:PokedexBehavior />
-                    </EventTrigger>
-                </Button.Triggers>
-            </Button>
-        </StackLayout>
+        <Grid
+            BackgroundColor = "#990D11">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height = "*" />
+                <RowDefinition
+                    Height = "*" />
+                <RowDefinition
+                    Height = "*" />
+                <RowDefinition
+                    Height = "*" />
+            </Grid.RowDefinitions>
+            <Label
+                Text              = "Settings"
+                Grid.Row          = "0"
+                HorizontalOptions = "Center"
+                VerticalOptions   = "Center"
+                FontSize          = "24"
+                TextColor         = "White"
+                FontAttributes    = "Bold" />
+            <StackLayout
+                Grid.Row        = "1"
+                Grid.RowSpan    = "3"
+                BackgroundColor = "White">
+                <ActivityIndicator
+                    x:Name = "loading" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width = "*" />
+                        <ColumnDefinition
+                            Width = "*" />
+                        <ColumnDefinition
+                            Width = "*" />
+                        <ColumnDefinition
+                            Width = "*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height = "*" />
+                        <RowDefinition
+                            Height = "*" />
+                        <RowDefinition
+                            Height = "*" />
+                        <RowDefinition
+                            Height = "*" />
+                    </Grid.RowDefinitions>
+                    <Button
+                        Text            = "Release 'em All"
+                        Grid.Column     = "1"
+                        Grid.ColumnSpan = "2"
+                        Grid.Row        = "0"
+                        Clicked         = "SetAllPokemonMissing"
+                        Style           = "{StaticResource buttonStyle}">
+                        <Button.Triggers>
+                            <EventTrigger
+                                Event = "Clicked">
+                                <local:ReleaseAllTrigger />
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+                    <Button
+                        Text            = "Catch 'em All"
+                        Grid.Column     = "1"
+                        Grid.ColumnSpan = "2"
+                        Grid.Row        = "1"
+                        Clicked         = "SetAllPokemonCaught"
+                        Style           = "{StaticResource buttonStyle}">
+                        <Button.Triggers>
+                            <EventTrigger
+                                Event = "Clicked">
+                                <local:PokedexBehavior />
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+                </Grid>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
