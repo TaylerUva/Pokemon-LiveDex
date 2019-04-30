@@ -33,30 +33,30 @@ namespace LiveDex.Models{
     }
     */
 
-    public class MultiTriggerConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType,
-            object parameter, CultureInfo culture)
-        {
-            if (!PokeData.AllCaught()) // length > 0 ?
-                return true;            // some data has been entered
-            else
-                return false;            // input is empty
-        }
+    //public class MultiTriggerConverter : IValueConverter
+    //{
+    //    public object Convert(object value, Type targetType,
+    //        object parameter, CultureInfo culture)
+    //    {
+    //        if (!PokeData.AllCaught()) // length > 0 ?
+    //            return true;            // some data has been entered
+    //        else
+    //            return false;            // input is empty
+    //    }
 
-        public object ConvertBack(object value, Type targetType,
-            object parameter, CultureInfo culture)
-        {
-            throw new NotSupportedException();
-        }
-    }
+    //    public object ConvertBack(object value, Type targetType,
+    //        object parameter, CultureInfo culture)
+    //    {
+    //        throw new NotSupportedException();
+    //    }
+    //}
 
 
-    public class PokedexBehavior : TriggerAction<Button>{
+    public class CatchAllTrigger : TriggerAction<Button>{
         protected override void Invoke(Button sender){
             //throw new NotImplementedException();
             if (!PokeData.AllCaught()){
-                sender.Text = "YOU GOT ALL THE POKEMON";
+                sender.Text = "You got 'em all!";
                 sender.IsEnabled = false;
             }
         }
@@ -66,7 +66,7 @@ namespace LiveDex.Models{
         protected override void Invoke(Button sender){
             //throw new NotImplementedException();
             if (!PokeData.AllMissing()){
-                sender.Text = "ALL THE POKEMON ARE GONE";
+                sender.Text = "Better catch 'em all!";
                 sender.IsEnabled = false;
             }
 
