@@ -81,6 +81,27 @@ namespace LiveDex {
 
         async void Handle_Appearing(object sender, System.EventArgs e) {
             await PullData();
+            if (PokeData.AllCaught())
+            {
+                catchButton.IsEnabled = true;
+                releaseButton.IsEnabled = false;
+                //releaseButton.Text = "Release 'em All";
+                //catchButton.Text = "Better catch 'em all!";
+            }
+            else if (PokeData.AllMissing())
+            {
+                releaseButton.IsEnabled = true;
+                catchButton.IsEnabled = false;
+                //catchButton.Text = "Catch 'em All";
+                //releaseButton.Text = "You got 'em all!";
+            }
+            else
+            {
+                catchButton.IsEnabled = true;
+                releaseButton.IsEnabled = true;
+                //releaseButton.Text = "Release 'em All";
+                //catchButton.Text = "Catch 'em All";
+            }
         }
 
         async void Handle_SearchButtonPressed(object sender, System.EventArgs e) {

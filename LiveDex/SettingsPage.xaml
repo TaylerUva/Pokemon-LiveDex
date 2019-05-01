@@ -105,64 +105,10 @@
                             <RowDefinition
                                 Height = "*" />
                         </Grid.RowDefinitions>
-                        <!--<Label Grid.Row="3"
-                            Text                    = "{Binding Name, StringFormat='Good morning {0}'}"
-                            HorizontalTextAlignment = "Center">
-                            <Label.Triggers>
-                                <DataTrigger
-                                    TargetType = "Label"
-                                    Binding    = "{Binding Name}"
-                                    Value      = "">
-                                    <Setter
-                                        Property = "IsVisible"
-                                        Value    = "False" />
-                                </DataTrigger>
-                            </Label.Triggers>
-                        </Label>-->
-                        <!--<Button
-                            x:Name="releaseButton"
-                            Text            = "Release 'em All"
-                            Grid.Column     = "1"
-                            Grid.ColumnSpan = "2"
-                            Grid.Row        = "0"
-                            Clicked         = "SetAllPokemonMissing"
-                            Style           = "{StaticResource buttonStyle}">
-                            <Button.Triggers>
-                                <DataTrigger
-                                    TargetType = "Button"
-                                    Binding    = "{Binding checkAllMissing}"
-                                    Value      = "True">
-                                    <Setter
-                                        Property = "IsEnabled"
-                                        Value    = "False" />
-                                    <Setter
-                                        Property = "Text"
-                                        Value    = "AHHHHHH" />
-                                </DataTrigger>
-                            </Button.Triggers>
-                        </Button>
-                        <Button
-                            x:Name="catchButton"
-                            Text            = "Catch 'em All"
-                            Grid.Column     = "1"
-                            Grid.ColumnSpan = "2"
-                            Grid.Row        = "1"
-                            Clicked         = "SetAllPokemonCaught"
-                            Style           = "{StaticResource buttonStyle}">
-                           <Button.Triggers>
-                                <DataTrigger
-                                    TargetType = "Button"
-                                    Binding    = "{Binding checkAllCaught}"
-                                    Value      = "True">
-                                    <Setter
-                                        Property = "IsEnabled"
-                                        Value    = "False" />
-                                </DataTrigger>
-                            </Button.Triggers>
-                        </Button>-->
+                       
                         <Button
                             x:Name="releaseButton"
-                            Text            = "Release 'em All"
+                            
                             Grid.Column     = "1"
                             Grid.ColumnSpan = "2"
                             Grid.Row        = "0"
@@ -173,11 +119,14 @@
                                     Event = "Clicked">
                                     <local:ReleaseAllTrigger />
                                 </EventTrigger>
+                                <DataTrigger TargetType="Button" Binding="{Binding catchButton}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </DataTrigger>
                             </Button.Triggers>
                         </Button>
                         <Button
                             x:Name="catchButton"
-                            Text            = "Catch 'em All"
+                            
                             Grid.Column     = "1"
                             Grid.ColumnSpan = "2"
                             Grid.Row        = "1"
@@ -188,6 +137,9 @@
                                     Event = "Clicked">
                                     <local:CatchAllTrigger />
                                 </EventTrigger>
+                                <DataTrigger TargetType="Button" Binding="{Binding releaseButton}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </DataTrigger>
                             </Button.Triggers>
                         </Button>
                     </Grid>

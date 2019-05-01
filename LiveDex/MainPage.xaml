@@ -107,6 +107,7 @@
                         Style           = "{StaticResource buttonStyle}"
                         Clicked         = "LoadPokedexPage" />
                     <Button
+                        x:Name          = "catchButton"
                         Grid.Column     = "1"
                         Grid.ColumnSpan = "2"
                         Grid.Row        = "1"
@@ -114,6 +115,7 @@
                         Style           = "{StaticResource buttonStyle}"
                         Clicked         = "LoadCaughtPage" />
                     <Button
+                        x:Name          = "releaseButton"
                         Grid.Column     = "1"
                         Grid.ColumnSpan = "2"
                         Grid.Row        = "2"
