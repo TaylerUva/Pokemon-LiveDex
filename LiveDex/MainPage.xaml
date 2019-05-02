@@ -38,7 +38,7 @@
         </Grid.RowDefinitions>
         <!-- Place new controls here -->
         <Label
-            Text              = "Welcome to the ultimate pokedex"
+            Text              = "LiveDex Tracker"
             Grid.Row          = "0"
             HorizontalOptions = "Center"
             VerticalOptions   = "Center"
