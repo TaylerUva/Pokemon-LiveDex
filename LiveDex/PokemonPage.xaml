@@ -5,6 +5,7 @@
     Appearing            = "Handle_Appearing"
     xmlns:ios            = "clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea = "true"
+    xmlns:local          = "clr-namespace:LiveDex.Models"
     x:Class              = "LiveDex.PokemonPage">
     <ContentPage.Content>
         <StackLayout
@@ -26,7 +27,11 @@
             <Picker
                 x:Name               = "GameFilter"
                 SelectedIndexChanged = "FilterChanged"
-                Title                = "Filter by Game" />
+                Title                = "Filter by Game">
+                <Picker.Behaviors>
+                    <local:PickerBehavior />
+                </Picker.Behaviors>
+            </Picker>
             <ListView
                 x:Name          = "LocationList"
                 BackgroundColor = "#34393D"
