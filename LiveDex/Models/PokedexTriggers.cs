@@ -56,7 +56,12 @@ namespace LiveDex.Models{
     {
         static readonly BindableProperty blueGenProperties = BindableProperty.Create(nameof(blueGens), typeof(string[]), typeof(PickerBehavior));
 
-        public string[] blueGens = {"blue", "diamond", "x" };
+        public string[] blueGens = {"blue", "diamond", "sapphire", "x" };
+        public string[] redGens = {"firered", "ruby", "red", "y" };
+        public string[] greenGens = { "leafgreen", "emerald"};
+        public string[] silverGens = { "platinum", "soulsilver" };
+        public string[] blackGens = {"black", "black 2" };
+        public string[] whiteGens = { "white", "white 2" };
         //public string[] blueGens
         //{
         //    get => (string[])GetValue(blueGenProperties);
@@ -77,44 +82,58 @@ namespace LiveDex.Models{
 
         void Bindable_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if(!(sender is Picker bindable)) { return; }
-            //if(!(bindable.ItemDisplayBinding is Binding displayBiding)) { return; }
-
-            //var displayBindingPath = displayBiding.Path;
-
-            //var selectedItem = bindable.SelectedItem.GetType().GetRuntimeProperty(displayBindingPath);
-            //var selectedText = selectedItem.GetValue(bindable.SelectedItem);
-
-
-            ////((Picker)sender).SelectedItem.T
-
-            ////((Picker)sender).ItemsSource.
-            //if (blueGens.Contains(selectedText))
-            //{
-            //    bindable.BackgroundColor = Color.Blue;
-            //}
-
-            //if (blueGens.Contains(((Picker)sender).SelectedItem.ToString().ToLower()))
-            //{
-            //    bindable.BackgroundColor = Color.Blue;
-            //    ((Picker)sender).BackgroundColor = Color.Blue;
-            //}
-
             if (blueGens.Contains(((Picker)sender).SelectedItem.ToString().ToLower()))
             {
                 ((Picker)sender).BackgroundColor = Color.Blue;
                 ((Picker)sender).TextColor = Color.White;
             }
+            else if (redGens.Contains(((Picker)sender).SelectedItem.ToString().ToLower()))
+            {
+                ((Picker)sender).BackgroundColor = Color.Red;
+                ((Picker)sender).TextColor = Color.White;
+            }
+            else if (greenGens.Contains(((Picker)sender).SelectedItem.ToString().ToLower()))
+            {
+                ((Picker)sender).BackgroundColor = Color.Green;
+                ((Picker)sender).TextColor = Color.White;
+            }
+            else if (silverGens.Contains(((Picker)sender).SelectedItem.ToString().ToLower()))
+            {
+                ((Picker)sender).BackgroundColor = Color.Silver;
+                ((Picker)sender).TextColor = Color.White;
+            }
+            else if (((Picker)sender).SelectedItem.ToString().ToLower()=="heartgold")
+            {
+                ((Picker)sender).BackgroundColor = Color.Goldenrod;
+                ((Picker)sender).TextColor = Color.White;
+            }
+            else if (((Picker)sender).SelectedItem.ToString().ToLower() == "yellow")
+            {
+                ((Picker)sender).BackgroundColor = Color.Gold;
+                ((Picker)sender).TextColor = Color.White;
+            }
+            else if (((Picker)sender).SelectedItem.ToString().ToLower() == "pearl")
+            {
+                ((Picker)sender).BackgroundColor = Color.DeepPink;
+                ((Picker)sender).TextColor = Color.White;
+            }
+            else if (blackGens.Contains(((Picker)sender).SelectedItem.ToString().ToLower()))
+            {
+                ((Picker)sender).BackgroundColor = Color.Black;
+                ((Picker)sender).TextColor = Color.White;
+            }
+            //else if (whiteGens.Contains(((Picker)sender).SelectedItem.ToString().ToLower()))
+            //{
+            //    ((Picker)sender).BackgroundColor = Color.Default;
+            //    ((Picker)sender).TextColor = Color.White;
+            //}
             else
             {
                 ((Picker)sender).BackgroundColor = Color.Default;
                 ((Picker)sender).TextColor = Color.Default;
 
             }
-            //if (selectedText.ToString() == "Blue")
-            //{
-            //    ((Picker)sender).BackgroundColor = Color.Blue;
-            //}
+
         }
     }
 
