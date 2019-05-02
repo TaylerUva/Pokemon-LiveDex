@@ -75,6 +75,7 @@
                                 <StackLayout
                                     Grid.Column = "1"
                                     Grid.Row    = "0"
+                                    Grid.ColumnSpan="2"
                                     Orientation = "Horizontal">
                                     <Label
                                         Style="{StaticResource labelStyle}"
