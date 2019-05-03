@@ -45,12 +45,12 @@ namespace LiveDex {
         }
 
         void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e) {
-            dexEntry.Obtained = e.Value;
-            if (dexEntry.Obtained && pulledPreviously){
-                string sendEvent = dexEntry.DexNum.ToString("000") + " - " + dexEntry.Name + " - Caught";
-                Analytics.TrackEvent(sendEvent);
-            }
-            SetCaughtIcon();
+            //dexEntry.Obtained = e.Value;
+            //if (dexEntry.Obtained && pulledPreviously){
+            //    string sendEvent = dexEntry.DexNum.ToString("000") + " - " + dexEntry.Name + " - Caught";
+            //    Analytics.TrackEvent(sendEvent);
+            //}
+            //SetCaughtIcon();
 
         }
 
@@ -107,6 +107,17 @@ namespace LiveDex {
                 caughtLabel.Text = "Not Caught";
                 pokeBall.Opacity = 0.4;
             }
+        }
+
+        void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            dexEntry.Obtained = !dexEntry.Obtained;
+            if (dexEntry.Obtained && pulledPreviously)
+            {
+                string sendEvent = dexEntry.DexNum.ToString("000") + " - " + dexEntry.Name + " - Caught";
+                Analytics.TrackEvent(sendEvent);
+            }
+            SetCaughtIcon();
         }
     }
 }
