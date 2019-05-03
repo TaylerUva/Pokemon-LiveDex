@@ -41,7 +41,47 @@ namespace LiveDex {
                 GameFilter.ItemsSource = gamesCatchable;
                 LocationList.ItemsSource = pokemon.Routes;
                 pulledPreviously = true;
+
+
+                SetBadges();
             }
+            //Type1.Source = "grass.png";
+        }
+
+        void SetBadges()
+        {
+            string types = pokemon.Types[0].Type.Name;
+            if (pokemon.Types.Count == 2)
+            {
+                types = types + "," + pokemon.Types[1].Type.Name;
+                Type2.IsEnabled = true;
+            }
+            System.Diagnostics.Debug.WriteLine("Type Badges " + types);
+
+            string [] badges = PokeData.GetTypeBadge(types).Split(',');
+            Type1.Source = badges[0];
+
+            System.Diagnostics.Debug.WriteLine("Count " + badges.Count());
+            if (badges.Count() == 2)
+            {
+                Type1.Source = badges[1];
+                Type2.Source = badges[0];
+                System.Diagnostics.Debug.WriteLine("Badges " + badges[0] + badges[1]);
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Badges " + badges[0]);
+                Type1.Source = badges[0];
+            }
+
+            //foreach(string item in badges)
+            //{
+            //    System.Diagnostics.Debug.WriteLine("Badges " + item);
+            //    var badge = new Image { Source = item };
+            //    badge.
+            //    pokeBall.Source = item;
+            //}
+
         }
 
         void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e) {

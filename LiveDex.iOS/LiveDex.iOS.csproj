@@ -168,5 +168,24 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\pokeball.png" />
+    <BundleResource Include="Resources\bug.png" />
+    <BundleResource Include="Resources\dark.png" />
+    <BundleResource Include="Resources\dragon.png" />
+    <BundleResource Include="Resources\electric.png" />
+    <BundleResource Include="Resources\fairy.png" />
+    <BundleResource Include="Resources\fighting.png" />
+    <BundleResource Include="Resources\fire.png" />
+    <BundleResource Include="Resources\flying.png" />
+    <BundleResource Include="Resources\ghost.png" />
+    <BundleResource Include="Resources\grass.png" />
+    <BundleResource Include="Resources\ground.png" />
+    <BundleResource Include="Resources\ice.png" />
+    <BundleResource Include="Resources\normal.png" />
+    <BundleResource Include="Resources\poison.png" />
+    <BundleResource Include="Resources\psychic.png" />
+    <BundleResource Include="Resources\rock.png" />
+    <BundleResource Include="Resources\steel.png" />
+    <BundleResource Include="Resources\unknown.png" />
+    <BundleResource Include="Resources\water.png" />
   </ItemGroup>
 </Project>

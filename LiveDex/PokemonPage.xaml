@@ -34,10 +34,18 @@
                     </DataTrigger>
                 </Label.Triggers>-->
             </Label>
+            <Image
+                x:Name = "Type1"
+                 />
+            <Image
+                x:Name    = "Type2"
+                IsEnabled = "false"
+                 />
             <ImageButton
-                x:Name = "pokeBall"
-                Source = "pokeball.png"
-                Margin = "0,0,0,0" Clicked="Handle_Clicked"/>
+                x:Name  = "pokeBall"
+                Source  = "pokeball.png"
+                Margin  = "0,0,0,0"
+                Clicked = "Handle_Clicked" />
             <Switch
                 x:Name            = "pkmCaught"
                 HorizontalOptions = "CenterAndExpand"
