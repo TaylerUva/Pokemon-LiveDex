@@ -73,16 +73,16 @@
                                     WidthRequest = "45"
                                     Source       = "{Binding Sprite}" />
                                 <StackLayout
-                                    Grid.Column = "1"
-                                    Grid.Row    = "0"
-                                    Grid.ColumnSpan="2"
-                                    Orientation = "Horizontal">
+                                    Grid.Column     = "1"
+                                    Grid.Row        = "0"
+                                    Grid.ColumnSpan = "2"
+                                    Orientation     = "Horizontal">
                                     <Label
-                                        Style="{StaticResource labelStyle}"
-                                        Text           = "{Binding DexNum, StringFormat=' {0:000}'}" />
+                                        Style = "{StaticResource labelStyle}"
+                                        Text  = "{Binding DexNum, StringFormat=' {0:000}'}" />
                                     <Label
-                                        Style="{StaticResource labelStyle}"
-                                        Text           = "{Binding Name}" />
+                                        Style = "{StaticResource labelStyle}"
+                                        Text  = "{Binding Name}" />
                                 </StackLayout>
                                 <StackLayout
                                     Grid.Column = "2"
@@ -92,6 +92,13 @@
                                         Style = "{StaticResource labelStyle}"
                                         Text  = "{Binding Obtained, StringFormat='Caught: {0}'}" />
                                 </StackLayout>
+                                <!--<Image
+                                    x:Name      = "Pokeball"
+                                    Source      = "pokeball.png"
+                                    HorizontalOptions="End"
+                                    Grid.Row    = "0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column = "3" IsVisible="{Binding Obtained}" />-->
                             </Grid>
                         </ViewCell.View>
                     </ViewCell>

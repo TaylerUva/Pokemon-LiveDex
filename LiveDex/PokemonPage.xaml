@@ -7,6 +7,20 @@
     ios:Page.UseSafeArea = "true"
     xmlns:local          = "clr-namespace:LiveDex.Models"
     x:Class              = "LiveDex.PokemonPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key      = "labelStyle"
+                TargetType = "Label">
+                <Setter
+                    Property = "FontAttributes"
+                    Value    = "Bold" />
+                <Setter
+                    Property = "TextColor"
+                    Value    = "White" />
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
     <ContentPage.Content>
         <StackLayout
             Margin            = "5"
@@ -60,6 +74,12 @@
                         x:Name      = "Type2"
                         IsEnabled   = "false"
                         Grid.Column = "2" />
+                    <Label
+                        Grid.Column = "4"
+                        Style       = "{StaticResource labelStyle}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="End"
+                        Text        = "Tap Here" />
                 </Grid>
                 <Grid
                     Grid.Row = "2">
