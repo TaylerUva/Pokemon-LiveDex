@@ -50,6 +50,8 @@ namespace LiveDex {
                 string sendEvent = dexEntry.DexNum.ToString("000") + " - " + dexEntry.Name + " - Caught";
                 Analytics.TrackEvent(sendEvent);
             }
+            SetCaughtIcon();
+
         }
 
         async void Handle_Appearing(object sender, System.EventArgs e) {
@@ -57,6 +59,7 @@ namespace LiveDex {
             await PullPokemonDetails();
             loadingIcon.IsRunning = false;
             LocationList.IsRefreshing = false;
+            SetCaughtIcon();
         }
 
         private async Task<bool> HasInternet() {
@@ -90,6 +93,20 @@ namespace LiveDex {
             string selectedFilter = GameFilter.SelectedItem.ToString();
             if (selectedFilter.Equals("All Games")) LocationList.ItemsSource = pokemon.Routes;
             else LocationList.ItemsSource = pokemon.Routes.Where(r => r.Details.Version.FormattedName.Equals(selectedFilter));
+        }
+
+        void SetCaughtIcon()
+        {
+            if (dexEntry.Obtained)
+            {
+                caughtLabel.Text = "Caught";
+                pokeBall.Opacity = 1;
+            }
+            else
+            {
+                caughtLabel.Text = "Not Caught";
+                pokeBall.Opacity = 0.4;
+            }
         }
     }
 }

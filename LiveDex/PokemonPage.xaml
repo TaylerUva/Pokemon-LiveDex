@@ -25,6 +25,19 @@
                     HeightRequest   = "250"
                     WidthRequest    = "250" />
             </Frame>
+            <Label
+                x:Name                  = "caughtLabel"
+                HorizontalTextAlignment = "Center"
+                TextColor               = "White">
+                <!--<Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="pkmCaught">
+                    </DataTrigger>
+                </Label.Triggers>-->
+            </Label>
+            <Image
+                x:Name = "pokeBall"
+                Source = "pokeball.png"
+                Margin = "0,0,0,0" />
             <Switch
                 x:Name            = "pkmCaught"
                 HorizontalOptions = "CenterAndExpand"
@@ -43,7 +56,8 @@
                 CornerRadius      = "10"
                 IsClippedToBounds = "true"
                 BackgroundColor   = "#34393D"
-                Margin            = "10,0,10,0" Padding="0,0,0,0">
+                Margin            = "10,0,10,0"
+                Padding           = "0,0,0,0">
                 <ListView
                     x:Name          = "LocationList"
                     BackgroundColor = "#34393D"

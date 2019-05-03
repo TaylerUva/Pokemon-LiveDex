@@ -166,4 +166,7 @@
       <Name>LiveDex</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pokeball.png" />
+  </ItemGroup>
 </Project>
