@@ -91,6 +91,26 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\pokeball.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\bug.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\dark.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\dragon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\electric.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\fairy.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\fighting.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Fire.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\flying.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ghost.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\grass.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ground.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ice.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\normal.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\poison.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\psychic.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\rock.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\steel.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\unknown.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\water.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

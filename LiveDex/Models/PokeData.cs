@@ -171,10 +171,10 @@ namespace LiveDex.Models {
             //int typeCount = 0;
             string [] parsedType = type.Split(',');
             string badges = "";
-            badges = parsedType[0];
+            badges = parsedType[0] + ".png";
             if(parsedType.Count() > 1)
             {
-                badges = badges + "," + parsedType[1];
+                badges = badges + "," + parsedType[1] + ".png";
             }
             /*
             foreach(string item in parsedType)
