@@ -14,7 +14,11 @@
             <ActivityIndicator
                 x:Name = "loadingIcon"
                 Color  = "Red" />
-            <Frame CornerRadius="10" IsClippedToBounds="true" BackgroundColor="#34393D" Margin="10,10,10,10" >
+            <Frame
+                CornerRadius      = "10"
+                IsClippedToBounds = "true"
+                BackgroundColor   = "#34393D"
+                Margin            = "10,10,10,10">
                 <Image
                     x:Name          = "pkmSprite"
                     BackgroundColor = "#34393D"
@@ -29,52 +33,59 @@
             <Picker
                 x:Name               = "GameFilter"
                 SelectedIndexChanged = "FilterChanged"
-                Title                = "Filter by Game">
+                Title                = "Filter by Game"
+                Margin               = "10,0,10,0">
                 <Picker.Behaviors>
                     <local:PickerBehavior />
                 </Picker.Behaviors>
             </Picker>
-            <ListView
-                x:Name          = "LocationList"
-                BackgroundColor = "#34393D"
-                SelectionMode   = "None"
-                HasUnevenRows   = "true"
-                ItemTapped      = "RouteTapped"
-                SeparatorColor  = "White">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.View>
-                                <Grid
-                                    Padding = "5">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition
-                                            Width = "Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition
-                                            Height = "*" />
-                                        <RowDefinition
-                                            Height = "*" />
-                                    </Grid.RowDefinitions>
-                                    <Label
-                                        Grid.Row       = "1"
-                                        Grid.Column    = "0"
-                                        TextColor      = "White"
-                                        FontAttributes = "Bold"
-                                        Text           = "{Binding Name}" />
-                                    <Label
-                                        Grid.Row       = "0"
-                                        Grid.Column    = "0"
-                                        TextColor      = "White"
-                                        FontAttributes = "Bold"
-                                        Text           = "{Binding Details.Version.FormattedName,StringFormat='Game: {0}'}" />
-                                </Grid>
-                            </ViewCell.View>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <Frame
+                CornerRadius      = "10"
+                IsClippedToBounds = "true"
+                BackgroundColor   = "#34393D"
+                Margin            = "10,0,10,0" Padding="0,0,0,0">
+                <ListView
+                    x:Name          = "LocationList"
+                    BackgroundColor = "#34393D"
+                    SelectionMode   = "None"
+                    HasUnevenRows   = "true"
+                    ItemTapped      = "RouteTapped"
+                    SeparatorColor  = "White">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid
+                                        Padding = "5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition
+                                                Width = "Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition
+                                                Height = "*" />
+                                            <RowDefinition
+                                                Height = "*" />
+                                        </Grid.RowDefinitions>
+                                        <Label
+                                            Grid.Row       = "1"
+                                            Grid.Column    = "0"
+                                            TextColor      = "White"
+                                            FontAttributes = "Bold"
+                                            Text           = "{Binding Name}" />
+                                        <Label
+                                            Grid.Row       = "0"
+                                            Grid.Column    = "0"
+                                            TextColor      = "White"
+                                            FontAttributes = "Bold"
+                                            Text           = "{Binding Details.Version.FormattedName,StringFormat='Game: {0}'}" />
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
