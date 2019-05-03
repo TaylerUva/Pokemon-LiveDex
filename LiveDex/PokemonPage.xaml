@@ -14,11 +14,13 @@
             <ActivityIndicator
                 x:Name = "loadingIcon"
                 Color  = "Red" />
-            <Image
-                x:Name          = "pkmSprite"
-                BackgroundColor = "#34393D"
-                HeightRequest   = "250"
-                WidthRequest    = "250" />
+            <Frame CornerRadius="10" IsClippedToBounds="true" BackgroundColor="#34393D" Margin="10,10,10,10" >
+                <Image
+                    x:Name          = "pkmSprite"
+                    BackgroundColor = "#34393D"
+                    HeightRequest   = "250"
+                    WidthRequest    = "250" />
+            </Frame>
             <Switch
                 x:Name            = "pkmCaught"
                 HorizontalOptions = "CenterAndExpand"

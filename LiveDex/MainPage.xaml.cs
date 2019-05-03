@@ -49,9 +49,20 @@ namespace LiveDex {
         }
 
         private async Task<bool> HasInternet() {
-            if (!CrossConnectivity.Current.IsConnected) {
-                Crashes.TrackError(new Exception("No internet connection"));
-                await DisplayAlert("No Internet Connection", "Our data is pulled from the web.\nPlease connect to the internet.", "Okay");
+            try
+            {
+                if (!CrossConnectivity.Current.IsConnected)
+                {
+                    //Crashes.TrackError(new Exception("No internet connection"));
+                    //Analytics.TrackEvent("No internet connection");
+
+                    await DisplayAlert("No Internet Connection", "Our data is pulled from the web.\nPlease connect to the internet.", "Okay");
+                    throw new Exception("No internet connection");
+                }
+            }
+            catch(Exception e)
+            {
+                Crashes.TrackError(e);
                 return false;
             }
             return true;
