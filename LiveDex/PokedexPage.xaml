@@ -10,6 +10,8 @@
     Title                = "Pokedex">
     <Page.Resources>
         <ResourceDictionary>
+            <x:Double
+                x:Key = "spriteSize">60</x:Double>
             <Style
                 x:Key      = "labelStyle"
                 TargetType = "Label">
@@ -58,23 +60,23 @@
                                     <ColumnDefinition
                                         Width = "*" />
                                     <ColumnDefinition
-                                        Width = "60" />
+                                        Width = "{StaticResource spriteSize}" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition
-                                        Height = "60" />
+                                        Height = "{StaticResource spriteSize}" />
                                 </Grid.RowDefinitions>
                                 <Image
                                     x:Name       = "Pokeball"
                                     Source       = "{Binding ObtainedSprite}"
-                                    WidthRequest = "60"
+                                    WidthRequest = "{StaticResource spriteSize}"
                                     Grid.Row     = "0"
                                     Grid.Column  = "0" />
                                 <Image
                                     Grid.Column  = "2"
                                     Grid.Row     = "0"
                                     Aspect       = "AspectFill"
-                                    WidthRequest = "60"
+                                    WidthRequest = "{StaticResource spriteSize}"
                                     Source       = "{Binding Sprite}" />
                                 <StackLayout
                                     Grid.Column     = "1"

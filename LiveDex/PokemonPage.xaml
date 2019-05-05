@@ -75,11 +75,11 @@
                         IsEnabled   = "false"
                         Grid.Column = "2" />
                     <Label
-                        Grid.Column = "4"
-                        Style       = "{StaticResource labelStyle}"
-                        HorizontalOptions="Center"
-                        VerticalOptions="End"
-                        Text        = "Tap Here" />
+                        Grid.Column       = "4"
+                        Style             = "{StaticResource labelStyle}"
+                        HorizontalOptions = "Center"
+                        VerticalOptions   = "End"
+                        Text              = "Tap Here" />
                 </Grid>
                 <Grid
                     Grid.Row = "2">
