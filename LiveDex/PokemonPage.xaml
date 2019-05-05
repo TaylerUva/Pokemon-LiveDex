@@ -105,7 +105,7 @@
                     <ImageButton
                         x:Name      = "pokeBall"
                         Grid.Column = "4"
-                        Source      = "pokeball.png"
+                        Source      = "missing.png"
                         Margin      = "0,0,0,0"
                         Clicked     = "Handle_Clicked" />
                     <Switch

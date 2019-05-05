@@ -71,6 +71,13 @@ namespace LiveDex.Models {
                 PokeData.Caught[index].Obtained = value;
             }
         }
+
+        public string ObtainedSprite {
+            get {
+                if (PokeData.Caught[index].Obtained) return "pokeball.png";
+                else return "missing.png";
+            }
+        }
     }
 
     public partial class Pokedex {

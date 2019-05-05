@@ -48,28 +48,23 @@ namespace LiveDex {
             //Type1.Source = "grass.png";
         }
 
-        void SetBadges()
-        {
+        void SetBadges() {
             string types = pokemon.Types[0].Type.Name;
-            if (pokemon.Types.Count == 2)
-            {
+            if (pokemon.Types.Count == 2) {
                 types = types + "," + pokemon.Types[1].Type.Name;
                 Type2.IsEnabled = true;
             }
             System.Diagnostics.Debug.WriteLine("Type Badges " + types);
 
-            string [] badges = PokeData.GetTypeBadge(types).Split(',');
+            string[] badges = PokeData.GetTypeBadge(types).Split(',');
             Type1.Source = badges[0];
 
             System.Diagnostics.Debug.WriteLine("Count " + badges.Count());
-            if (badges.Count() == 2)
-            {
+            if (badges.Count() == 2) {
                 Type1.Source = badges[1];
                 Type2.Source = badges[0];
                 System.Diagnostics.Debug.WriteLine("Badges " + badges[0] + badges[1]);
-            }
-            else
-            {
+            } else {
                 System.Diagnostics.Debug.WriteLine("Badges " + badges[0]);
                 Type1.Source = badges[0];
             }
@@ -103,19 +98,15 @@ namespace LiveDex {
         }
 
         private async Task<bool> HasInternet() {
-            try
-            {
-                if (!CrossConnectivity.Current.IsConnected)
-                {
+            try {
+                if (!CrossConnectivity.Current.IsConnected) {
                     //Crashes.TrackError(new Exception("No internet connection"));
                     //Analytics.TrackEvent("No internet connection");
 
                     await DisplayAlert("No Internet Connection", "Our data is pulled from the web.\nPlease connect to the internet.", "Okay");
                     throw new Exception("No internet connection");
                 }
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 Crashes.TrackError(e);
                 return false;
             }
@@ -135,25 +126,19 @@ namespace LiveDex {
             else LocationList.ItemsSource = pokemon.Routes.Where(r => r.Details.Version.FormattedName.Equals(selectedFilter));
         }
 
-        void SetCaughtIcon()
-        {
-            if (dexEntry.Obtained)
-            {
+        void SetCaughtIcon() {
+            if (dexEntry.Obtained) {
                 caughtLabel.Text = "Caught";
-                pokeBall.Opacity = 1;
-            }
-            else
-            {
+                pokeBall.Source = "pokeball.png";
+            } else {
                 caughtLabel.Text = "Not Caught";
-                pokeBall.Opacity = 0.4;
+                pokeBall.Source = "missing.png";
             }
         }
 
-        void Handle_Clicked(object sender, System.EventArgs e)
-        {
+        void Handle_Clicked(object sender, System.EventArgs e) {
             dexEntry.Obtained = !dexEntry.Obtained;
-            if (dexEntry.Obtained && pulledPreviously)
-            {
+            if (dexEntry.Obtained && pulledPreviously) {
                 string sendEvent = dexEntry.DexNum.ToString("000") + " - " + dexEntry.Name + " - Caught";
                 Analytics.TrackEvent(sendEvent);
             }

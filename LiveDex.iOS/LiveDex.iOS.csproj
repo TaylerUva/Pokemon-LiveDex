@@ -167,7 +167,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\pokeball.png" />
     <BundleResource Include="Resources\bug.png" />
     <BundleResource Include="Resources\dark.png" />
     <BundleResource Include="Resources\dragon.png" />
@@ -187,5 +186,7 @@
     <BundleResource Include="Resources\steel.png" />
     <BundleResource Include="Resources\unknown.png" />
     <BundleResource Include="Resources\water.png" />
+    <BundleResource Include="Resources\missing%403x.png" />
+    <BundleResource Include="Resources\pokeball%403x.png" />
   </ItemGroup>
 </Project>
