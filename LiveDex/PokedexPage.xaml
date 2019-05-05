@@ -84,21 +84,21 @@
                                         Style = "{StaticResource labelStyle}"
                                         Text  = "{Binding Name}" />
                                 </StackLayout>
-                                <StackLayout
+                                <!--<StackLayout
                                     Grid.Column = "2"
                                     Grid.Row    = "1"
                                     Orientation = "Horizontal">
                                     <Label
                                         Style = "{StaticResource labelStyle}"
                                         Text  = "{Binding Obtained, StringFormat='Caught: {0}'}" />
-                                </StackLayout>
-                                <!--<Image
+                                </StackLayout>-->
+                                <Image
                                     x:Name      = "Pokeball"
                                     Source      = "pokeball.png"
                                     HorizontalOptions="End"
                                     Grid.Row    = "0"
                                     Grid.RowSpan="2"
-                                    Grid.Column = "3" IsVisible="{Binding Obtained}" />-->
+                                    Grid.Column = "3" IsVisible="{Binding Obtained}" />
                             </Grid>
                         </ViewCell.View>
                     </ViewCell>
