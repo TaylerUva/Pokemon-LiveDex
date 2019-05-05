@@ -32,7 +32,7 @@ namespace LiveDex {
             if (!pulledPreviously && await HasInternet()) {
                 pokemon = await PokeData.GetPokemon(dexEntry.DexNum);
                 string type1 = pokemon.Types[0].Type.Name;
-                BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
+                //BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
 
                 var gamesCatchable = pokemon.GamesCatchable;
                 gamesCatchable.Add("All Games");
