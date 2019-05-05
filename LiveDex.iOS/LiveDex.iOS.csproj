@@ -173,7 +173,6 @@
     <BundleResource Include="Resources\electric.png" />
     <BundleResource Include="Resources\fairy.png" />
     <BundleResource Include="Resources\fighting.png" />
-    <BundleResource Include="Resources\fire.png" />
     <BundleResource Include="Resources\flying.png" />
     <BundleResource Include="Resources\ghost.png" />
     <BundleResource Include="Resources\grass.png" />
@@ -188,5 +187,6 @@
     <BundleResource Include="Resources\water.png" />
     <BundleResource Include="Resources\missing%403x.png" />
     <BundleResource Include="Resources\pokeball%403x.png" />
+    <BundleResource Include="Resources\fire.png" />
   </ItemGroup>
 </Project>

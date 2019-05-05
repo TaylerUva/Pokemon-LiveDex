@@ -25,9 +25,6 @@
         <StackLayout
             Margin            = "5"
             HorizontalOptions = "CenterAndExpand">
-            <ActivityIndicator
-                x:Name = "loadingIcon"
-                Color  = "Red" />
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition
@@ -74,6 +71,11 @@
                         x:Name      = "Type2"
                         IsEnabled   = "false"
                         Grid.Column = "2" />
+                     <ActivityIndicator
+                        Grid.Column = "1"
+                        x:Name      = "loadingIcon"
+                        HorizontalOptions="Center"
+                        Color       = "Red" />
                     <Label
                         Grid.Column       = "4"
                         Style             = "{StaticResource labelStyle}"
@@ -102,6 +104,7 @@
                         VerticalTextAlignment   = "Center"
                         FontAttributes          = "Bold"
                         TextColor               = "White" />
+                   
                     <ImageButton
                         x:Name      = "pokeBall"
                         Grid.Column = "4"
