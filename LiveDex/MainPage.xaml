@@ -36,7 +36,6 @@
             <RowDefinition
                 Height = "*" />
         </Grid.RowDefinitions>
-        <!-- Place new controls here -->
         <Label
             Text              = "LiveDex Tracker"
             Grid.Row          = "0"
@@ -66,13 +65,6 @@
                     BackgroundColor     = "#34393D"
                     VerticalOptions     = "Fill"
                     CancelButtonColor   = "Red" />
-                <!--
-        <Label
-            Text              = "Welcome to the ultimate pokedex"
-            HorizontalOptions = "Center"
-            FontSize          = "Large"
-            FontAttributes    = "Bold" />
-        -->
                 <ActivityIndicator
                     x:Name   = "pullingData"
                     Grid.Row = "1"
