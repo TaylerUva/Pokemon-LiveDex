@@ -52,6 +52,17 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem
+                                Text="Release"
+                                IsDestructive="true"
+                                Clicked          = "Release"
+                                CommandParameter = "{Binding .}" />
+                            <MenuItem
+                                Text="Catch"
+                                Clicked          = "Catch"
+                                CommandParameter = "{Binding .}" />
+                        </ViewCell.ContextActions>
                         <ViewCell.View>
                             <Grid>
                                 <Grid.ColumnDefinitions>

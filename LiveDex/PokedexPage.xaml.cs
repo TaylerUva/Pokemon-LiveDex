@@ -42,6 +42,20 @@ namespace LiveDex {
             UpdateListView(null, null);
         }
 
+        void Release(object sender, System.EventArgs e) {
+            var menuItem = (MenuItem)sender;
+            var pokemon = menuItem.CommandParameter as DexEntry;
+            pokemon.Obtained = false;
+            UpdateListView(null, null);
+        }
+
+        void Catch(object sender, System.EventArgs e) {
+            var menuItem = (MenuItem)sender;
+            var pokemon = menuItem.CommandParameter as DexEntry;
+            pokemon.Obtained = true;
+            UpdateListView(null, null);
+        }
+
         async void PokemonTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e) {
             var pokemon = e.Item as DexEntry;
 
