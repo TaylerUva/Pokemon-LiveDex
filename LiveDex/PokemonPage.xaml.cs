@@ -28,11 +28,9 @@ namespace LiveDex {
 
         private async Task PullPokemonDetails() {
             pkmSprite.Source = dexEntry.Sprite;
-            pkmCaught.IsToggled = dexEntry.Obtained;
             if (!pulledPreviously && await HasInternet()) {
                 pokemon = await PokeData.GetPokemon(dexEntry.DexNum);
                 string type1 = pokemon.Types[0].Type.Name;
-                //BackgroundColor = Color.FromHex(PokeData.GetTypeColor(type1));
 
                 var gamesCatchable = pokemon.GamesCatchable;
                 gamesCatchable.Add("All Games");
@@ -45,7 +43,6 @@ namespace LiveDex {
 
                 SetBadges();
             }
-            //Type1.Source = "grass.png";
         }
 
         void SetBadges() {
@@ -68,25 +65,6 @@ namespace LiveDex {
                 System.Diagnostics.Debug.WriteLine("Badges " + badges[0]);
                 Type1.Source = badges[0];
             }
-
-            //foreach(string item in badges)
-            //{
-            //    System.Diagnostics.Debug.WriteLine("Badges " + item);
-            //    var badge = new Image { Source = item };
-            //    badge.
-            //    pokeBall.Source = item;
-            //}
-
-        }
-
-        void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e) {
-            //dexEntry.Obtained = e.Value;
-            //if (dexEntry.Obtained && pulledPreviously){
-            //    string sendEvent = dexEntry.DexNum.ToString("000") + " - " + dexEntry.Name + " - Caught";
-            //    Analytics.TrackEvent(sendEvent);
-            //}
-            //SetCaughtIcon();
-
         }
 
         async void Handle_Appearing(object sender, System.EventArgs e) {
@@ -100,9 +78,6 @@ namespace LiveDex {
         private async Task<bool> HasInternet() {
             try {
                 if (!CrossConnectivity.Current.IsConnected) {
-                    //Crashes.TrackError(new Exception("No internet connection"));
-                    //Analytics.TrackEvent("No internet connection");
-
                     await DisplayAlert("No Internet Connection", "Our data is pulled from the web.\nPlease connect to the internet.", "Okay");
                     throw new Exception("No internet connection");
                 }

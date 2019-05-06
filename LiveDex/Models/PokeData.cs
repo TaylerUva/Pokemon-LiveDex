@@ -96,25 +96,19 @@ namespace LiveDex.Models {
             return null;
         }
 
-        public static bool AllCaught()
-        {
-            foreach (var i in Caught)
-            {
-                if (!i.Obtained)
-                {
+        public static bool AllCaught() {
+            foreach (var i in Caught) {
+                if (!i.Obtained) {
                     return false;
                 }
             }
-            return true;    
+            return true;
 
         }
 
-        public static bool AllMissing()
-        {
-            foreach (var i in Caught)
-            {
-                if (i.Obtained)
-                {
+        public static bool AllMissing() {
+            foreach (var i in Caught) {
+                if (i.Obtained) {
                     return false;
                 }
             }
@@ -123,7 +117,6 @@ namespace LiveDex.Models {
         }
 
         public static string GetTypeColor(string type) {
-            System.Diagnostics.Debug.WriteLine("Type " + type);//remove
             switch (type) {
             case "normal":
                 return "#A8A878";
@@ -166,64 +159,13 @@ namespace LiveDex.Models {
             }
         }
 
-        public static string GetTypeBadge(string type)
-        {
-            //int typeCount = 0;
-            string [] parsedType = type.Split(',');
+        public static string GetTypeBadge(string type) {
+            string[] parsedType = type.Split(',');
             string badges = "";
             badges = parsedType[0] + ".png";
-            if(parsedType.Count() > 1)
-            {
+            if (parsedType.Count() > 1) {
                 badges = badges + "," + parsedType[1] + ".png";
             }
-            /*
-            foreach(string item in parsedType)
-            {
-                badges = badges + "," + item + ".png";
-                //switch (item)
-                //{
-                //    case "normal":
-                //        badges = badges + "," + item + ".png";
-                //    case "fighting":
-                //        return "#C03028";
-                //    case "flying":
-                //        return "#A891F0";
-                //    case "posion":
-                //        return "#A040A0";
-                //    case "ground":
-                //        return "#E0C068";
-                //    case "rock":
-                //        return "#B8A038";
-                //    case "bug":
-                //        return "#A8B820";
-                //    case "ghost":
-                //        return "#705898";
-                //    case "steel":
-                //        return "#B8B8D0";
-                //    case "fire":
-                //        return "#FA7C00";
-                //    case "water":
-                //        return "#6890F0";
-                //    case "grass":
-                //        return "#32CD32";
-                //    case "electric":
-                //        return "#FFC631";
-                //    case "psychic":
-                //        return "#F85888";
-                //    case "ice":
-                //        return "#98D8D8";
-                //    case "dragon":
-                //        return "#7038F8";
-                //    case "dark":
-                //        return "#705848";
-                //    case "fariy":
-                //        return "#EE99AC";
-                //    default:
-                //        return "#68A090";
-                //}
-            }
-            */
-            System.Diagnostics.Debug.WriteLine("Returning " + badges);
             return badges;
         }
 

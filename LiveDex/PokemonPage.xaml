@@ -72,11 +72,6 @@
                         x:Name      = "Type2"
                         IsEnabled   = "false"
                         Grid.Column = "2" />
-                    <ActivityIndicator
-                        Grid.Column       = "1"
-                        x:Name            = "loadingIcon"
-                        HorizontalOptions = "Center"
-                        Color             = "Red" />
                     <Label
                         Grid.Column       = "4"
                         Style             = "{StaticResource labelStyle}"
@@ -111,14 +106,11 @@
                         Source      = "missing.png"
                         Margin      = "0,0,0,0"
                         Clicked     = "Handle_Clicked" />
-                    <Switch
-                        x:Name            = "pkmCaught"
-                        Grid.Column       = "0"
-                        HorizontalOptions = "CenterAndExpand"
-                        OnColor           = "Red"
-                        Toggled           = "Handle_Toggled"
-                        IsEnabled         = "false"
-                        IsVisible         = "false" />
+                    <ActivityIndicator
+                        Grid.Column       = "4"
+                        x:Name            = "loadingIcon"
+                        HorizontalOptions = "Center"
+                        Color             = "White" />
                 </Grid>
                 <Picker
                     x:Name               = "GameFilter"
