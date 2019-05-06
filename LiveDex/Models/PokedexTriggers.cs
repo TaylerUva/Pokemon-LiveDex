@@ -6,52 +6,7 @@ using System.Reflection;
 using System.Windows.Input;
 
 namespace LiveDex.Models {
-    /*
-    public class SettingsAppear : Trigger
-    {
-        protected override void Invoke(ContentPage sender)
-        {
-            throw new NotImplementedException();
-        }
-    }
-    */
-    /*
-    public class MultiTriggerConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType,
-            object parameter, CultureInfo culture)
-        {
-            if ((int)value > 0) // length > 0 ?
-                return true;            // some data has been entered
-            else
-                return false;            // input is empty
-        }
 
-        public object ConvertBack(object value, Type targetType,
-            object parameter, CultureInfo culture)
-        {
-            throw new NotSupportedException();
-        }
-    }
-    */
-
-    //public class MultiTriggerConverter : IValueConverter
-    //{
-    //    public object Convert(object value, Type targetType,
-    //        object parameter, CultureInfo culture)
-    //    {
-    //        if (!PokeData.AllCaught()) // length > 0 ?
-    //            return true;            // some data has been entered
-    //        else
-    //            return false;            // input is empty
-    //    }
-
-    //    public object ConvertBack(object value, Type targetType,
-    //        object parameter, CultureInfo culture)
-    //    {
-    //        throw new NotSupportedException();
-    //    }
-    //}
     public class PickerBehavior : Behavior<Picker> {
         static readonly BindableProperty blueGenProperties = BindableProperty.Create(nameof(blueGens), typeof(string[]), typeof(PickerBehavior));
 
@@ -61,19 +16,11 @@ namespace LiveDex.Models {
         public string[] silverGens = { "platinum", "soulsilver" };
         public string[] blackGens = { "black", "black 2" };
         public string[] whiteGens = { "white", "white 2" };
-        //public string[] blueGens
-        //{
-        //    get => (string[])GetValue(blueGenProperties);
-        //    set => SetValue(blueGenProperties, value);
-        //}
-
 
         protected override void OnAttachedTo(Picker bindable) {
-            //base.OnAttachedTo(bindable);
             bindable.SelectedIndexChanged += Bindable_SelectedIndexChanged;
         }
         protected override void OnDetachingFrom(Picker bindable) {
-            //base.OnDetachingFrom(bindable);
             bindable.SelectedIndexChanged -= Bindable_SelectedIndexChanged;
         }
 
@@ -102,26 +49,18 @@ namespace LiveDex.Models {
             } else if (blackGens.Contains(((Picker)sender).SelectedItem.ToString().ToLower())) {
                 ((Picker)sender).BackgroundColor = Color.Black;
                 ((Picker)sender).TextColor = Color.White;
-            }
-              //else if (whiteGens.Contains(((Picker)sender).SelectedItem.ToString().ToLower()))
-              //{
-              //    ((Picker)sender).BackgroundColor = Color.Default;
-              //    ((Picker)sender).TextColor = Color.White;
-              //}
-              else {
+            } else if (whiteGens.Contains(((Picker)sender).SelectedItem.ToString().ToLower())) {
+                ((Picker)sender).BackgroundColor = Color.White;
+                ((Picker)sender).TextColor = Color.Black;
+            } else {
                 ((Picker)sender).BackgroundColor = Color.Default;
                 ((Picker)sender).TextColor = Color.Default;
-
             }
-
         }
     }
 
-
-
     public class CatchAllTrigger : TriggerAction<Button> {
         protected override void Invoke(Button sender) {
-            //throw new NotImplementedException();
             if (!PokeData.AllCaught()) {
                 sender.Text = "You got 'em all!";
                 sender.IsEnabled = false;
@@ -131,7 +70,6 @@ namespace LiveDex.Models {
 
     public class ReleaseAllTrigger : TriggerAction<Button> {
         protected override void Invoke(Button sender) {
-            //throw new NotImplementedException();
             if (!PokeData.AllMissing()) {
                 sender.Text = "Better catch 'em all!";
                 sender.IsEnabled = false;
