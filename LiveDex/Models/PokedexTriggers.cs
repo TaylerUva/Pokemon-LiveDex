@@ -79,25 +79,25 @@ namespace LiveDex.Models {
 
         void Bindable_SelectedIndexChanged(object sender, EventArgs e) {
             if (blueGens.Contains(((Picker)sender).SelectedItem.ToString().ToLower())) {
-                ((Picker)sender).BackgroundColor = Color.FromHex("2B206F");
+                ((Picker)sender).BackgroundColor = Color.Navy;
                 ((Picker)sender).TextColor = Color.White;
             } else if (redGens.Contains(((Picker)sender).SelectedItem.ToString().ToLower())) {
-                ((Picker)sender).BackgroundColor = Color.Red;
+                ((Picker)sender).BackgroundColor = Color.Maroon;
                 ((Picker)sender).TextColor = Color.White;
             } else if (greenGens.Contains(((Picker)sender).SelectedItem.ToString().ToLower())) {
                 ((Picker)sender).BackgroundColor = Color.Green;
                 ((Picker)sender).TextColor = Color.White;
             } else if (silverGens.Contains(((Picker)sender).SelectedItem.ToString().ToLower())) {
-                ((Picker)sender).BackgroundColor = Color.Silver;
+                ((Picker)sender).BackgroundColor = Color.SlateGray;
                 ((Picker)sender).TextColor = Color.White;
             } else if (((Picker)sender).SelectedItem.ToString().ToLower() == "heartgold") {
-                ((Picker)sender).BackgroundColor = Color.Goldenrod;
+                ((Picker)sender).BackgroundColor = Color.DarkGoldenrod;
                 ((Picker)sender).TextColor = Color.White;
             } else if (((Picker)sender).SelectedItem.ToString().ToLower() == "yellow") {
-                ((Picker)sender).BackgroundColor = Color.Gold;
+                ((Picker)sender).BackgroundColor = Color.Orange;
                 ((Picker)sender).TextColor = Color.White;
             } else if (((Picker)sender).SelectedItem.ToString().ToLower() == "pearl") {
-                ((Picker)sender).BackgroundColor = Color.DeepPink;
+                ((Picker)sender).BackgroundColor = Color.DarkOrchid;
                 ((Picker)sender).TextColor = Color.White;
             } else if (blackGens.Contains(((Picker)sender).SelectedItem.ToString().ToLower())) {
                 ((Picker)sender).BackgroundColor = Color.Black;
