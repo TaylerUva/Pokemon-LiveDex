@@ -34,7 +34,7 @@
             x:Name            = "searchPokemon"
             Placeholder       = "Search for Pokemon by ID or Name"
             TextChanged       = "FilterBySearch"
-            BackgroundColor   = "#990D11"
+            BackgroundColor   = "Transparent"
             CancelButtonColor = "White" />
         <Picker
             x:Name               = "GenFilter"

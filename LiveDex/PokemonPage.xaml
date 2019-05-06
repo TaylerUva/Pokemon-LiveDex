@@ -35,7 +35,7 @@
                     <RowDefinition
                         Height = "50" />
                     <RowDefinition
-                        Height = "30" />
+                        Height = "auto" />
                     <RowDefinition
                         Height = "*" />
                 </Grid.RowDefinitions>
