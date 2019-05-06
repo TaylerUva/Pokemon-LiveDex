@@ -98,19 +98,18 @@
                         Grid.Column             = "1"
                         HorizontalTextAlignment = "Start"
                         VerticalTextAlignment   = "Center"
-                        FontAttributes          = "Bold"
-                        TextColor               = "White" />
+                        Style                   = "{StaticResource labelStyle}" />
+                    <ActivityIndicator
+                        Grid.Column       = "4"
+                        x:Name            = "loadingIcon"
+                        HorizontalOptions = "Center"
+                        Color             = "White" />
                     <ImageButton
                         x:Name      = "pokeBall"
                         Grid.Column = "4"
                         Source      = "missing.png"
                         Margin      = "0,0,0,0"
                         Clicked     = "Handle_Clicked" />
-                    <ActivityIndicator
-                        Grid.Column       = "4"
-                        x:Name            = "loadingIcon"
-                        HorizontalOptions = "Center"
-                        Color             = "White" />
                 </Grid>
                 <Picker
                     x:Name               = "GameFilter"
@@ -153,17 +152,15 @@
                                                     Height = "*" />
                                             </Grid.RowDefinitions>
                                             <Label
-                                                Grid.Row       = "1"
-                                                Grid.Column    = "0"
-                                                TextColor      = "White"
-                                                FontAttributes = "Bold"
-                                                Text           = "{Binding Name}" />
+                                                Grid.Row    = "1"
+                                                Grid.Column = "0"
+                                                Style       = "{StaticResource labelStyle}"
+                                                Text        = "{Binding Name}" />
                                             <Label
-                                                Grid.Row       = "0"
-                                                Grid.Column    = "0"
-                                                TextColor      = "White"
-                                                FontAttributes = "Bold"
-                                                Text           = "{Binding Details.Version.FormattedName,StringFormat='Game: {0}'}" />
+                                                Grid.Row    = "0"
+                                                Grid.Column = "0"
+                                                Style       = "{StaticResource labelStyle}"
+                                                Text        = "{Binding Details.Version.FormattedName,StringFormat='Game: {0}'}" />
                                         </Grid>
                                     </ViewCell.View>
                                 </ViewCell>

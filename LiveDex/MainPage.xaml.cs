@@ -49,19 +49,12 @@ namespace LiveDex {
         }
 
         private async Task<bool> HasInternet() {
-            try
-            {
-                if (!CrossConnectivity.Current.IsConnected)
-                {
-                    //Crashes.TrackError(new Exception("No internet connection"));
-                    //Analytics.TrackEvent("No internet connection");
-
+            try {
+                if (!CrossConnectivity.Current.IsConnected) {
                     await DisplayAlert("No Internet Connection", "Our data is pulled from the web.\nPlease connect to the internet.", "Okay");
                     throw new Exception("No internet connection");
                 }
-            }
-            catch(Exception e)
-            {
+            } catch (Exception e) {
                 Crashes.TrackError(e);
                 return false;
             }
@@ -96,18 +89,12 @@ namespace LiveDex {
                 if (PokeData.AllCaught()) {
                     catchButton.IsEnabled = true;
                     releaseButton.IsEnabled = false;
-                    //releaseButton.Text = "Release 'em All";
-                    //catchButton.Text = "Better catch 'em all!";
                 } else if (PokeData.AllMissing()) {
                     releaseButton.IsEnabled = true;
                     catchButton.IsEnabled = false;
-                    //catchButton.Text = "Catch 'em All";
-                    //releaseButton.Text = "You got 'em all!";
                 } else {
                     catchButton.IsEnabled = true;
                     releaseButton.IsEnabled = true;
-                    //releaseButton.Text = "Release 'em All";
-                    //catchButton.Text = "Catch 'em All";
                 }
             }
         }

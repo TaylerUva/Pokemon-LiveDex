@@ -3,6 +3,20 @@
     xmlns  = "http://xamarin.com/schemas/2014/forms"
     xmlns:x = "http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class = "LiveDex.RoutePage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key      = "labelStyle"
+                TargetType = "Label">
+                <Setter
+                    Property = "FontAttributes"
+                    Value    = "Bold" />
+                <Setter
+                    Property = "TextColor"
+                    Value    = "White" />
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
     <ContentPage.Content>
         <StackLayout
             HorizontalOptions = "CenterAndExpand">
@@ -33,36 +47,31 @@
                                             Height = "Auto" />
                                     </Grid.RowDefinitions>
                                     <Label
-                                        Grid.Row       = "0"
-                                        Grid.Column    = "0"
-                                        TextColor      = "White"
-                                        FontAttributes = "Bold"
-                                        Text           = "{Binding Method.FormattedName, StringFormat='Method: {0}'}" />
+                                        Grid.Row    = "0"
+                                        Grid.Column = "0"
+                                        Style       = "{StaticResource labelStyle}"
+                                        Text        = "{Binding Method.FormattedName, StringFormat='Method: {0}'}" />
                                     <Label
-                                        Grid.Row       = "0"
-                                        Grid.Column    = "1"
-                                        TextColor      = "White"
-                                        FontAttributes = "Bold"
-                                        Text           = "{Binding Chance, StringFormat='Route Rarity: {0}%'}" />
+                                        Grid.Row    = "0"
+                                        Grid.Column = "1"
+                                        Style       = "{StaticResource labelStyle}"
+                                        Text        = "{Binding Chance, StringFormat='Route Rarity: {0}%'}" />
                                     <Label
                                         Grid.Row        = "2"
                                         Grid.ColumnSpan = "2"
                                         Grid.Column     = "0"
-                                        TextColor       = "White"
-                                        FontAttributes  = "Bold"
+                                        Style           = "{StaticResource labelStyle}"
                                         Text            = "{Binding ConditionsString, StringFormat='Conditions: {0}'}" />
                                     <Label
-                                        Grid.Row       = "1"
-                                        Grid.Column    = "0"
-                                        TextColor      = "White"
-                                        FontAttributes = "Bold"
-                                        Text           = "{Binding MaxLevel,StringFormat='Min Level: {0}'}" />
+                                        Grid.Row    = "1"
+                                        Grid.Column = "0"
+                                        Style       = "{StaticResource labelStyle}"
+                                        Text        = "{Binding MaxLevel,StringFormat='Min Level: {0}'}" />
                                     <Label
-                                        Grid.Row       = "1"
-                                        Grid.Column    = "1"
-                                        TextColor      = "White"
-                                        FontAttributes = "Bold"
-                                        Text           = "{Binding MaxLevel,StringFormat='Max Level: {0}'}" />
+                                        Grid.Row    = "1"
+                                        Grid.Column = "1"
+                                        Style       = "{StaticResource labelStyle}"
+                                        Text        = "{Binding MaxLevel,StringFormat='Max Level: {0}'}" />
                                 </Grid>
                             </ViewCell.View>
                         </ViewCell>

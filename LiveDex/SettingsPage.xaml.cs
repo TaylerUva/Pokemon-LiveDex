@@ -20,14 +20,12 @@ namespace LiveDex {
 
         async void SetAllPokemonMissing(object sender, System.EventArgs e) {
             await SetAllCaughtStatus(false);
-            //releaseButton.IsEnabled = false;
             catchButton.IsEnabled = true;
             catchButton.Text = "Catch 'em All";
         }
 
         async void SetAllPokemonCaught(object sender, System.EventArgs e) {
             await SetAllCaughtStatus(true);
-            //catchButton.IsEnabled = false;
             releaseButton.IsEnabled = true;
             releaseButton.Text = "Release 'em All";
         }
@@ -49,23 +47,20 @@ namespace LiveDex {
             }
         }
 
-        void Handle_Appearing(object sender, System.EventArgs e)
-        {
-            if (PokeData.AllCaught()) { 
-                catchButton.IsEnabled = false; 
-                releaseButton.Text = "Release 'em All"; 
+        void Handle_Appearing(object sender, System.EventArgs e) {
+            if (PokeData.AllCaught()) {
+                catchButton.IsEnabled = false;
+                releaseButton.Text = "Release 'em All";
                 catchButton.Text = "You got 'em all!";
-            }
-            else if (PokeData.AllMissing()) { 
-                releaseButton.IsEnabled = false; 
-                catchButton.Text = "Catch 'em All"; 
+            } else if (PokeData.AllMissing()) {
+                releaseButton.IsEnabled = false;
+                catchButton.Text = "Catch 'em All";
                 releaseButton.Text = "Better catch 'em all!";
-            }
-            else { 
-                catchButton.IsEnabled = true; 
-                releaseButton.IsEnabled = true; 
-                releaseButton.Text = "Release 'em All"; 
-                catchButton.Text = "Catch 'em All"; 
+            } else {
+                catchButton.IsEnabled = true;
+                releaseButton.IsEnabled = true;
+                releaseButton.Text = "Release 'em All";
+                catchButton.Text = "Catch 'em All";
             }
         }
     }

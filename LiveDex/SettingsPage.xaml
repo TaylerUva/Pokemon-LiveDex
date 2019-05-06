@@ -3,7 +3,8 @@
     xmlns      = "http://xamarin.com/schemas/2014/forms"
     xmlns:x     = "http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local = "clr-namespace:LiveDex.Models"
-    x:Class     = "LiveDex.SettingsPage" Appearing="Handle_Appearing">
+    x:Class     = "LiveDex.SettingsPage"
+    Appearing   = "Handle_Appearing">
     <Page.Resources>
         <ResourceDictionary>
             <Style
@@ -27,8 +28,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition
                     Height = "*" />
-                <!--<RowDefinition
-                    Height = "50" />-->
                 <RowDefinition
                     Height = "*" />
                 <RowDefinition
@@ -44,11 +43,6 @@
                 FontSize          = "24"
                 TextColor         = "White"
                 FontAttributes    = "Bold" />
-            <!--<Label
-                Text            = " "
-                FontSize        = "Large"
-                BackgroundColor = "#34393D"
-                Grid.Row        = "1" />-->
             <StackLayout
                 Grid.Row        = "1"
                 Grid.RowSpan    = "3"
@@ -62,12 +56,6 @@
                         <RowDefinition
                             Height = "*" />
                     </Grid.RowDefinitions>
-                    <!--<Label
-                        Text              = " "
-                        Grid.Row          = "0"
-                        VerticalOptions   = "Fill"
-                        HorizontalOptions = "Fill"
-                        BackgroundColor   = "#34393D" />-->
                     <BoxView
                         Color             = "#34393D"
                         Grid.Row          = "0"
@@ -76,13 +64,6 @@
                     <ActivityIndicator
                         x:Name   = "loading"
                         Grid.Row = "1" />
-                    <!--
-                <BoxView
-                    Color             = "#34393D"
-                    WidthRequest      = "160"
-                    HeightRequest     = "60"
-                    VerticalOptions   = "Center"
-                    HorizontalOptions = "Center" />-->
                     <Grid
                         Grid.Row = "2">
                         <Grid.ColumnDefinitions>
@@ -105,10 +86,8 @@
                             <RowDefinition
                                 Height = "*" />
                         </Grid.RowDefinitions>
-                       
                         <Button
-                            x:Name="releaseButton"
-                            
+                            x:Name          = "releaseButton"
                             Grid.Column     = "1"
                             Grid.ColumnSpan = "2"
                             Grid.Row        = "0"
@@ -119,14 +98,18 @@
                                     Event = "Clicked">
                                     <local:ReleaseAllTrigger />
                                 </EventTrigger>
-                                <DataTrigger TargetType="Button" Binding="{Binding catchButton}" Value="True">
-                                    <Setter Property="IsEnabled" Value="False"/>
+                                <DataTrigger
+                                    TargetType = "Button"
+                                    Binding    = "{Binding catchButton}"
+                                    Value      = "True">
+                                    <Setter
+                                        Property = "IsEnabled"
+                                        Value    = "False" />
                                 </DataTrigger>
                             </Button.Triggers>
                         </Button>
                         <Button
-                            x:Name="catchButton"
-                            
+                            x:Name          = "catchButton"
                             Grid.Column     = "1"
                             Grid.ColumnSpan = "2"
                             Grid.Row        = "1"
@@ -137,8 +120,13 @@
                                     Event = "Clicked">
                                     <local:CatchAllTrigger />
                                 </EventTrigger>
-                                <DataTrigger TargetType="Button" Binding="{Binding releaseButton}" Value="True">
-                                    <Setter Property="IsEnabled" Value="False"/>
+                                <DataTrigger
+                                    TargetType = "Button"
+                                    Binding    = "{Binding releaseButton}"
+                                    Value      = "True">
+                                    <Setter
+                                        Property = "IsEnabled"
+                                        Value    = "False" />
                                 </DataTrigger>
                             </Button.Triggers>
                         </Button>
